@@ -1,10 +1,13 @@
-const createError = require('http-errors');
-import express, { NextFunction, Request, Response } from 'express';
-const path = require('path');
-const cookieParser = require('cookie-parser');
-const logger = require('morgan');
+import dotenv from 'dotenv';
+import express, { Request, Response, NextFunction } from 'express';
+import path from 'path';
+import cookieParser from 'cookie-parser';
+import logger from 'morgan';
+
+dotenv.config();
 
 const app = express();
+const port = process.env.PORT || 3000;
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -12,30 +15,17 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-// catch 404 and forward to error handler
-app.use(function (req, res, next) {
-	next(createError(404));
+app.get('/', (req: Request, res: Response, next: NextFunction) => {
+	res.send('Hello world!');
 });
 
-// error handler
-interface Error {
-	message?: string;
-	status?: number;
-}
-
-app.use(function (
-	err: Error,
-	req: Request,
-	res: Response,
-	next: NextFunction
-): void {
-	// set locals, only providing error in development
-	res.locals.message = err.message;
-	res.locals.error = req.app.get('env') === 'development' ? err : {};
-
-	// render the error page
-	res.status(err.status || 500);
-	res.render('error');
+app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
+	console.error(err.stack);
+	res.status(500).send('Something went wrong');
 });
 
-module.exports = app;
+app.listen(port, () => {
+	console.log(`Server running at http://localhost:${port}`);
+});
+
+export default app;
