@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import api from '../../axiosConfig';
 
 function SignUpPage() {
 	const [username, setUsername] = useState('');
@@ -9,9 +10,25 @@ function SignUpPage() {
 		document.title = 'Sign Up';
 	});
 
+	const signUp = async () => {
+		try {
+			const response = await api.post('/user/sign-up', {
+				username: username,
+				password: password,
+				confirmPassword: confirmPassword,
+			});
+
+			console.log(response);
+		} catch (error) {
+			console.log(error);
+		}
+	};
+
 	const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
 		console.log('sign up form submit');
+
+		signUp();
 	};
 
 	const handleChange = ({ target }: React.ChangeEvent<HTMLInputElement>) => {
