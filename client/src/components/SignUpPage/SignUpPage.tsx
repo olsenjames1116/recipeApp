@@ -10,6 +10,7 @@ function SignUpPage() {
 		document.title = 'Sign Up';
 	});
 
+	// Send input to the backend.
 	const signUp = async () => {
 		try {
 			const response = await api.post('/user/sign-up', {
@@ -24,6 +25,7 @@ function SignUpPage() {
 		}
 	};
 
+	// Reached when the form has been submitted.
 	const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
 		console.log('sign up form submit');
@@ -31,21 +33,20 @@ function SignUpPage() {
 		signUp();
 	};
 
+	// Reached when a change has been made to an input field.
 	const handleChange = ({ target }: React.ChangeEvent<HTMLInputElement>) => {
 		const { id, value } = target;
 
+		// Determine which field was changed to store change in state.
 		switch (id) {
 			case 'username':
 				setUsername(value);
-				console.log(value);
 				break;
 			case 'password':
 				setPassword(value);
-				console.log(value);
 				break;
 			case 'confirmPassword':
 				setConfirmPassword(value);
-				console.log(value);
 				break;
 			default:
 				console.log('None of the ids matched');
