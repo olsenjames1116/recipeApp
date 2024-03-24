@@ -72,6 +72,8 @@ export const userSignUpPost = asyncHandler(
 				message: errorMessages,
 			});
 		} else {
+			// There are no errors. Store the user in the database and return a success message.
+			storeUser(user);
 			res.status(201).json({
 				message:
 					'Your account has been created. You will be redirected to log in.',

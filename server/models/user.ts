@@ -6,7 +6,7 @@ type UserModel = Model<IUser>;
 // Schema for a user document in MongoDB.
 const UserSchema = new Schema<IUser, UserModel>({
 	username: { type: String, required: true, maxLength: 20 },
-	password: { type: String, required: true, maxLength: 20 },
+	password: { type: String, required: true },
 	profilePic: {
 		type: String,
 		required: true,
