@@ -89,15 +89,15 @@ function SignUpForm() {
 		event.preventDefault();
 		setInputMessages([]);
 
-		if (
-			!event.currentTarget.checkValidity() ||
-			confirmPasswordRef.current?.value !== passwordRef.current?.value
-		) {
-			handleInputError();
-		} else {
-			// If input is valid, the below will execute.
-			signUp();
-		}
+		// if (
+		// 	!event.currentTarget.checkValidity() ||
+		// 	confirmPasswordRef.current?.value !== passwordRef.current?.value
+		// ) {
+		// 	handleInputError();
+		// } else {
+		// If input is valid, the below will execute.
+		signUp();
+		// }
 	};
 
 	// Reached when a change has been made to an input field.

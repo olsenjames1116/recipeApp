@@ -10,5 +10,8 @@ main().catch((err) => {
 	console.log(err);
 });
 async function main() {
-	if (mongoDB) await mongoose.connect(mongoDB);
+	if (mongoDB) {
+		await mongoose.connect(mongoDB);
+		console.log(mongoose.connection.readyState);
+	}
 }

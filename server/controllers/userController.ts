@@ -12,7 +12,14 @@ export const validateUserSignUp = [
 		.trim()
 		.escape()
 		.notEmpty()
-		.withMessage('Username must not be empty.'),
+		.withMessage('Username must not be empty.')
+		.custom(async (username: string) => {
+			const user = await User.findOne({ username: username });
+			if (user) {
+				// If a user is found in the db, the username is already in use.
+				throw new Error('Username is already in use.');
+			}
+		}),
 	body('password')
 		.trim()
 		.escape()
@@ -22,7 +29,12 @@ export const validateUserSignUp = [
 		.trim()
 		.escape()
 		.notEmpty()
-		.withMessage('Confirmation password must not be empty.'),
+		.withMessage('Confirmation password must not be empty.')
+		.custom((confirmPassword: string, { req }) => {
+			// If the password and confirmation password do not match, throw an error.
+			return confirmPassword === req.body.password;
+		})
+		.withMessage('Passwords do not match.'),
 ];
 
 // Store user in the database.
@@ -40,16 +52,30 @@ const storeUser = (user: HydratedDocument<IUser>) => {
 
 // Create a user to be stored in the database.
 export const userSignUpPost = asyncHandler(
-	async (req: Request, res: Response, next: NextFunction) => {
+	async (req: Request, res: Response, next: NextFunction): Promise<void> => {
 		// Extract the validation errors from the request.
 		const errors = validationResult(req);
 
+		// Create a User object with escaped and trimmed data.
+		const { username, password }: { username: string; password: string } =
+			req.body;
+		const user = new User({
+			username: username,
+			password: password,
+		});
+
 		if (!errors.isEmpty()) {
-			console.log(errors);
+			// There are errors. Render form again with error messages.
+			const errorMessages = errors.array().map((error) => error.msg);
+
+			res.status(400).json({
+				message: errorMessages,
+			});
 		} else {
-			console.log(
-				`username: ${req.body.username} password: ${req.body.password} confirmPassword: ${req.body.confirmPassword}`
-			);
+			res.status(201).json({
+				message:
+					'Your account has been created. You will be redirected to log in.',
+			});
 		}
 	}
 );

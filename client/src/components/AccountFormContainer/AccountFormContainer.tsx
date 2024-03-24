@@ -1,8 +1,4 @@
-interface AccountFormContainerProps {
-	children: React.ReactNode;
-}
-
-function AccountFormContainer({ children }: AccountFormContainerProps) {
+function AccountFormContainer({ children }: { children: React.ReactNode }) {
 	return (
 		<div>
 			<img src="" alt="" />
