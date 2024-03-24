@@ -1,6 +1,11 @@
-function InputMessages({ messages }: { messages: string[] }) {
+interface InputMessagesProps {
+	messages: string[];
+	inputMessagesRef: React.RefObject<HTMLUListElement>;
+}
+
+function InputMessages({ messages, inputMessagesRef }: InputMessagesProps) {
 	return (
-		<ul>
+		<ul ref={inputMessagesRef}>
 			{messages.map((message, index) => {
 				return <li key={index}>{message}</li>;
 			})}

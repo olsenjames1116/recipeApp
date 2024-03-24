@@ -14,11 +14,16 @@ function SignUpForm() {
 	const usernameRef = useRef<HTMLInputElement>(null);
 	const passwordRef = useRef<HTMLInputElement>(null);
 	const confirmPasswordRef = useRef<HTMLInputElement>(null);
+	const inputMessagesRef = useRef<HTMLUListElement>(null);
 
 	const navigate = useNavigate();
 
 	// Reached if backend validation and user storage was successful.s
 	const handleSuccess = (message: string) => {
+		// Style message from backend to appear valid.
+		if (inputMessagesRef.current)
+			inputMessagesRef.current.style.color = 'black';
+
 		// Display message from backend.
 		setInputMessages([message]);
 
@@ -43,6 +48,10 @@ function SignUpForm() {
 			if (error instanceof AxiosError && error.response?.status === 400) {
 				// A 400 error code is sent from the backend if data from the request was invalid.
 				const { message } = error.response.data;
+				// Style message from backend to appear as invalid.
+				if (inputMessagesRef.current)
+					inputMessagesRef.current.style.color = 'red';
+				// Display validation errors from backend.
 				setInputMessages([...message]);
 			} else {
 				console.log(error);
@@ -168,7 +177,10 @@ function SignUpForm() {
 				required
 				maxLength={20}
 			/>
-			<InputMessages messages={inputMessages} />
+			<InputMessages
+				messages={inputMessages}
+				inputMessagesRef={inputMessagesRef}
+			/>
 			<button>Sign Up</button>
 		</form>
 	);
