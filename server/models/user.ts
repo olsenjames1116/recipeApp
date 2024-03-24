@@ -1,21 +1,10 @@
-import { Schema, model, Types } from 'mongoose';
+import { Schema, model, Types, Model } from 'mongoose';
+import { IUser } from '../utils/types';
 
-interface Recipe {
-	title: string;
-	image: string;
-	url: string;
-}
-
-interface User {
-	username: string;
-	password: string;
-	profilePic: string;
-	recipes: Recipe[];
-	ingredients: Types.ObjectId[];
-}
+type UserModel = Model<IUser>;
 
 // Schema for a user document in MongoDB.
-const UserSchema = new Schema({
+const UserSchema = new Schema<IUser, UserModel>({
 	username: { type: String, required: true, maxLength: 20 },
 	password: { type: String, required: true, maxLength: 20 },
 	profilePic: {
@@ -34,4 +23,6 @@ const UserSchema = new Schema({
 	ingredients: [{ type: Types.ObjectId, ref: 'Ingredient' }],
 });
 
-export default model('User', UserSchema);
+const User = model<IUser, UserModel>('User', UserSchema);
+
+export default User;
