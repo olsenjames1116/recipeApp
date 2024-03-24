@@ -1,5 +1,8 @@
-import { useEffect, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import api from '../../axiosConfig';
+import InputMessages from '../InputMessages/InputMessages';
+import { AxiosError } from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 // Represents the sign up form to create a new user.
 function SignUpForm() {
@@ -12,9 +15,18 @@ function SignUpForm() {
 	const passwordRef = useRef<HTMLInputElement>(null);
 	const confirmPasswordRef = useRef<HTMLInputElement>(null);
 
-	useEffect(() => {
-		console.log(inputMessages);
-	}, [inputMessages]);
+	const navigate = useNavigate();
+
+	// Reached if backend validation and user storage was successful.s
+	const handleSuccess = (message: string) => {
+		// Display message from backend.
+		setInputMessages([message]);
+
+		// Redirect the user to log in with their account.
+		setTimeout(() => {
+			navigate('/log-in');
+		}, 3000);
+	};
 
 	// Send input to the backend.
 	const signUp = async () => {
@@ -26,9 +38,15 @@ function SignUpForm() {
 			});
 
 			// This is reached if all input is valid.
-			console.log(response);
+			handleSuccess(response.data.message);
 		} catch (error) {
-			console.log(error);
+			if (error instanceof AxiosError && error.response?.status === 400) {
+				// A 400 error code is sent from the backend if data from the request was invalid.
+				const { message } = error.response.data;
+				setInputMessages([...message]);
+			} else {
+				console.log(error);
+			}
 		}
 	};
 
@@ -89,15 +107,16 @@ function SignUpForm() {
 		event.preventDefault();
 		setInputMessages([]);
 
-		// if (
-		// 	!event.currentTarget.checkValidity() ||
-		// 	confirmPasswordRef.current?.value !== passwordRef.current?.value
-		// ) {
-		// 	handleInputError();
-		// } else {
-		// If input is valid, the below will execute.
-		signUp();
-		// }
+		if (
+			!event.currentTarget.checkValidity() ||
+			confirmPasswordRef.current?.value !== passwordRef.current?.value
+		) {
+			handleInputError();
+		} else {
+			// If input is valid, the below will execute.
+			signUp();
+			clearInput();
+		}
 	};
 
 	// Reached when a change has been made to an input field.
@@ -149,6 +168,7 @@ function SignUpForm() {
 				required
 				maxLength={20}
 			/>
+			<InputMessages messages={inputMessages} />
 			<button>Sign Up</button>
 		</form>
 	);

@@ -17,7 +17,7 @@ export const validateUserSignUp = [
 			const user = await User.findOne({ username: username });
 			if (user) {
 				// If a user is found in the db, the username is already in use.
-				throw new Error('Username is already in use.');
+				throw new Error(`Username ${username} is already in use.`);
 			}
 		}),
 	body('password')

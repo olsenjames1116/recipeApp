@@ -1,4 +1,5 @@
 import dotenv from 'dotenv';
+dotenv.config();
 import './utils/mongodb';
 import express, { Request, Response, NextFunction } from 'express';
 import path from 'path';
@@ -7,8 +8,6 @@ import logger from 'morgan';
 import cors from 'cors';
 
 import userRouter from './routes/user';
-
-dotenv.config();
 
 const app = express();
 const port = process.env.PORT || 3000;
