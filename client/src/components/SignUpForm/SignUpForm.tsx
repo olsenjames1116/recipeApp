@@ -1,10 +1,15 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import api from '../../axiosConfig';
 
+// Represents the sign up form to create a new user.
 function SignUpForm() {
 	const [username, setUsername] = useState('');
 	const [password, setPassword] = useState('');
 	const [confirmPassword, setConfirmPassword] = useState('');
+
+	const usernameRef = useRef<HTMLInputElement>(null);
+	const passwordRef = useRef<HTMLInputElement>(null);
+	const confirmPasswordRef = useRef<HTMLInputElement>(null);
 
 	// Send input to the backend.
 	const signUp = async () => {
@@ -21,11 +26,17 @@ function SignUpForm() {
 		}
 	};
 
+	const clearInput = () => {
+		if (usernameRef.current) usernameRef.current.value = '';
+		if (passwordRef.current) passwordRef.current.value = '';
+		if (confirmPasswordRef.current) confirmPasswordRef.current.value = '';
+	};
+
 	// Reached when the form has been submitted.
 	const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
 		console.log('sign up form submit');
-
+		clearInput();
 		signUp();
 	};
 
@@ -56,18 +67,21 @@ function SignUpForm() {
 				type="text"
 				placeholder="username"
 				onChange={handleChange}
+				ref={usernameRef}
 			/>
 			<input
 				id="password"
 				type="password"
 				placeholder="password"
 				onChange={handleChange}
+				ref={passwordRef}
 			/>
 			<input
 				id="confirmPassword"
 				type="password"
 				placeholder="confirm password"
 				onChange={handleChange}
+				ref={confirmPasswordRef}
 			/>
 			<button>Sign Up</button>
 		</form>
