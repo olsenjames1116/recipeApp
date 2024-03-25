@@ -110,5 +110,14 @@ export const vaidateUserLogIn = [
 export const userLogInPost = asyncHandler(async (req, res, next) => {
 	const errors = validationResult(req);
 
-	console.log(errors);
+	if (!errors.isEmpty()) {
+		// There are errors. Display error message to user.
+		const errorMessages = errors.array().map((error) => error.msg);
+
+		res.status(400).json({
+			message: errorMessages,
+		});
+	} else {
+		console.log('no validation errors');
+	}
 });

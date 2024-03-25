@@ -60,10 +60,14 @@ function LogInForm() {
 
 			console.log(response);
 		} catch (error) {
+			// Anything that reaches here is due to an error.
 			if (error instanceof AxiosError && error.response?.status === 400) {
+				// 400 error code is sent from the backend if data from the form is invalid.
 				const { message } = error.response.data;
+				// Style message from backend to appear as invalid.
 				if (inputMessagesRef.current)
-					inputMessagesRef.current.style.color = 'black';
+					inputMessagesRef.current.style.color = 'red';
+				// Display message from backend.
 				setInputMessages([...message]);
 			} else {
 				console.log(error);
