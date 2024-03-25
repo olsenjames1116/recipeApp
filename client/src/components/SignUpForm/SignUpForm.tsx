@@ -33,32 +33,7 @@ function SignUpForm() {
 		}, 3000);
 	};
 
-	// Send input to the backend.
-	const signUp = async () => {
-		try {
-			const response = await api.post('/user/sign-up', {
-				username: username,
-				password: password,
-				confirmPassword: confirmPassword,
-			});
-
-			// This is reached if all input is valid.
-			handleSuccess(response.data.message);
-		} catch (error) {
-			if (error instanceof AxiosError && error.response?.status === 400) {
-				// A 400 error code is sent from the backend if data from the request was invalid.
-				const { message } = error.response.data;
-				// Style message from backend to appear as invalid.
-				if (inputMessagesRef.current)
-					inputMessagesRef.current.style.color = 'red';
-				// Display validation errors from backend.
-				setInputMessages([...message]);
-			} else {
-				console.log(error);
-			}
-		}
-	};
-
+	// Clear all input in the form.
 	const clearInput = () => {
 		if (usernameRef.current) usernameRef.current.value = '';
 		if (passwordRef.current) passwordRef.current.value = '';
@@ -111,6 +86,32 @@ function SignUpForm() {
 		clearInput();
 	};
 
+	// Send input to the backend.
+	const signUp = async () => {
+		try {
+			const response = await api.post('/user/sign-up', {
+				username: username,
+				password: password,
+				confirmPassword: confirmPassword,
+			});
+
+			// This is reached if all input is valid.
+			handleSuccess(response.data.message);
+		} catch (error) {
+			if (error instanceof AxiosError && error.response?.status === 400) {
+				// A 400 error code is sent from the backend if data from the request was invalid.
+				const { message } = error.response.data;
+				// Style message from backend to appear as invalid.
+				if (inputMessagesRef.current)
+					inputMessagesRef.current.style.color = 'red';
+				// Display validation errors from backend.
+				setInputMessages([...message]);
+			} else {
+				console.log(error);
+			}
+		}
+	};
+
 	// Reached when the form has been submitted.
 	const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
@@ -120,6 +121,8 @@ function SignUpForm() {
 			!event.currentTarget.checkValidity() ||
 			confirmPasswordRef.current?.value !== passwordRef.current?.value
 		) {
+			if (inputMessagesRef.current)
+				inputMessagesRef.current.style.color = 'red';
 			handleInputError();
 		} else {
 			// If input is valid, the below will execute.
@@ -144,7 +147,7 @@ function SignUpForm() {
 				setConfirmPassword(value);
 				break;
 			default:
-				console.log('None of the ids matched');
+				console.log('None of the input ids matched.');
 		}
 	};
 
