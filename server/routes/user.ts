@@ -12,7 +12,7 @@ router.post(
 // POST a user's credentials to validate and log them in.
 router.post(
 	'/log-in',
-	userController.vaidateUserLogIn,
+	userController.validateUserLogIn,
 	userController.userLogInPost
 );
 

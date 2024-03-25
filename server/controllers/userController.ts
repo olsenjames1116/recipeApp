@@ -5,6 +5,7 @@ import bcrypt from 'bcrypt';
 import { HydratedDocument } from 'mongoose';
 import asyncHandler from 'express-async-handler';
 import { Request, Response, NextFunction } from 'express';
+import jwt from 'jsonwebtoken';
 
 // Validate and sanitize fields to create user on sign up.
 export const validateUserSignUp = [
@@ -90,7 +91,7 @@ export const userSignUpPost = asyncHandler(
 );
 
 // Validate and sanitize fields from user on log in.
-export const vaidateUserLogIn = [
+export const validateUserLogIn = [
 	body('username')
 		.trim()
 		.escape()
@@ -126,7 +127,7 @@ export const userLogInPost = asyncHandler(async (req, res, next) => {
 		if (!user) {
 			// User does not exist in database.
 			res.status(401).json({
-				message: ['Username does not exist.'],
+				message: [`Username "${username}" does not exist.`],
 			});
 
 			return;
@@ -141,5 +142,25 @@ export const userLogInPost = asyncHandler(async (req, res, next) => {
 
 			return;
 		}
+
+		// Anything below here is reached from a successful log in.
+
+		// Create an access token for the user.
+		const accessToken = jwt.sign(
+			user.toJSON(),
+			process.env.ACCESS_TOKEN_SECRET!,
+			{ expiresIn: '30m' }
+		);
+
+		const refreshToken = jwt.sign(
+			user.toJSON(),
+			process.env.REFRESH_TOKEN_SECRET!,
+			{ expiresIn: '1h' }
+		);
+
+		res.send({
+			accessToken: accessToken,
+			refreshToken: refreshToken,
+		});
 	}
 });
