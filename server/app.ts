@@ -31,7 +31,8 @@ app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
 
 // Listen on port when server is started.
 app.listen(port, () => {
-	console.log(`Server running at http://localhost:${port}`);
+	const url = process.env.URL ? process.env.URL : `http://localhost:${port}`;
+	console.log(`Server running at ${url}`);
 });
 
 export default app;
