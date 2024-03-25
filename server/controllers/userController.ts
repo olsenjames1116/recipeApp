@@ -6,6 +6,7 @@ import { HydratedDocument } from 'mongoose';
 import asyncHandler from 'express-async-handler';
 import { Request, Response, NextFunction } from 'express';
 import jwt from 'jsonwebtoken';
+import client from '../utils/redis';
 
 // Validate and sanitize fields to create user on sign up.
 export const validateUserSignUp = [
@@ -108,6 +109,36 @@ export const validateUserLogIn = [
 		.withMessage('Password must be less than 20 characters.'),
 ];
 
+// Create an access and refresh token and store in Redis for future authentication.
+const generateAndStoreToken = async (
+	user: HydratedDocument<IUser>,
+	res: Response
+) => {
+	// Create an access token for the user.
+	const accessToken = jwt.sign(
+		user.toJSON(),
+		process.env.ACCESS_TOKEN_SECRET!,
+		{ expiresIn: '30m' }
+	);
+
+	// Create a refresh token for the user.
+	const refreshToken = jwt.sign(
+		user.toJSON(),
+		process.env.REFRESH_TOKEN_SECRET!,
+		{ expiresIn: '1h' }
+	);
+
+	// Store the tokens in Redis.
+	await client.set('accessToken', accessToken);
+	await client.set('refreshToken', refreshToken);
+
+	// Return user info.
+	res.status(200).json({
+		username: user.username,
+		profilePic: user.profilePic,
+	});
+};
+
 // Checks input credentials against stored credentials to log user in.
 export const userLogInPost = asyncHandler(async (req, res, next) => {
 	const errors = validationResult(req);
@@ -145,22 +176,6 @@ export const userLogInPost = asyncHandler(async (req, res, next) => {
 
 		// Anything below here is reached from a successful log in.
 
-		// Create an access token for the user.
-		const accessToken = jwt.sign(
-			user.toJSON(),
-			process.env.ACCESS_TOKEN_SECRET!,
-			{ expiresIn: '30m' }
-		);
-
-		const refreshToken = jwt.sign(
-			user.toJSON(),
-			process.env.REFRESH_TOKEN_SECRET!,
-			{ expiresIn: '1h' }
-		);
-
-		res.send({
-			accessToken: accessToken,
-			refreshToken: refreshToken,
-		});
+		generateAndStoreToken(user, res);
 	}
 });
