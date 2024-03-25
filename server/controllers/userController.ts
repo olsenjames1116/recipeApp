@@ -81,8 +81,9 @@ export const userSignUpPost = asyncHandler(
 			// There are no errors. Store the user in the database and return a success message.
 			storeUser(user);
 			res.status(201).json({
-				message:
+				message: [
 					'Your account has been created. You will be redirected to log in.',
+				],
 			});
 		}
 	}
@@ -118,6 +119,17 @@ export const userLogInPost = asyncHandler(async (req, res, next) => {
 			message: errorMessages,
 		});
 	} else {
-		console.log('no validation errors');
+		// There are no validation errors. Further check user credentials before logging in.
+		const { username, password } = req.body;
+		const user = await User.findOne({ username: username });
+
+		if (!user) {
+			// User does not exist in database.
+			res.status(401).json({
+				message: ['Username does not exist.'],
+			});
+
+			return;
+		}
 	}
 });

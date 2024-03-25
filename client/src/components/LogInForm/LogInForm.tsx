@@ -61,7 +61,10 @@ function LogInForm() {
 			console.log(response);
 		} catch (error) {
 			// Anything that reaches here is due to an error.
-			if (error instanceof AxiosError && error.response?.status === 400) {
+			if (
+				error instanceof AxiosError &&
+				(error.response?.status === 400 || error.response?.status === 401)
+			) {
 				// 400 error code is sent from the backend if data from the form is invalid.
 				const { message } = error.response.data;
 				// Style message from backend to appear as invalid.
@@ -89,6 +92,9 @@ function LogInForm() {
 		logIn();
 		clearInput();
 		// }
+
+		setUsername('');
+		setPassword('');
 	};
 
 	// Reached when a change has been made to an input field.

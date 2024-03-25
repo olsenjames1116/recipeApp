@@ -72,13 +72,13 @@ function SignUpForm() {
 	};
 
 	// Reached if backend validation and user storage was successful.
-	const handleSuccess = (message: string) => {
+	const handleSuccess = (message: string[]) => {
 		// Style message from backend to appear valid.
 		if (inputMessagesRef.current)
 			inputMessagesRef.current.style.color = 'black';
 
 		// Display message from backend.
-		setInputMessages([message]);
+		setInputMessages(message);
 
 		// Redirect the user to log in with their account.
 		setTimeout(() => {
@@ -129,6 +129,10 @@ function SignUpForm() {
 			signUp();
 			clearInput();
 		}
+
+		setUsername('');
+		setPassword('');
+		setConfirmPassword('');
 	};
 
 	// Reached when a change has been made to an input field.
