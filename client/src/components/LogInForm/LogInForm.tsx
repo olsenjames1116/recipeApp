@@ -1,5 +1,7 @@
 import { useRef, useState } from 'react';
 import InputMessages from '../InputMessages/InputMessages';
+import { AxiosError } from 'axios';
+import api from '../../axiosConfig';
 
 // Represents the log in form to authenticate a user.
 function LogInForm() {
@@ -45,22 +47,44 @@ function LogInForm() {
 		clearInput();
 	};
 
-	const logIn = () => {};
+	// Reached if backend validation and user storage was successful.
+	const handleSuccess = () => {};
+
+	// Send input to the backend.
+	const logIn = async () => {
+		try {
+			const response = await api.post('/user/log-in', {
+				username: username,
+				password: password,
+			});
+
+			console.log(response);
+		} catch (error) {
+			if (error instanceof AxiosError && error.response?.status === 400) {
+				const { message } = error.response.data;
+				if (inputMessagesRef.current)
+					inputMessagesRef.current.style.color = 'black';
+				setInputMessages([...message]);
+			} else {
+				console.log(error);
+			}
+		}
+	};
 
 	// Reached when the form has been submitted.
 	const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
 		setInputMessages([]);
 
-		if (!event.currentTarget.checkValidity()) {
-			if (inputMessagesRef.current)
-				inputMessagesRef.current.style.color = 'red';
-			handleInputError();
-		} else {
-			// If input is valid, below will execute.
-			logIn();
-			clearInput();
-		}
+		// if (!event.currentTarget.checkValidity()) {
+		// 	if (inputMessagesRef.current)
+		// 		inputMessagesRef.current.style.color = 'red';
+		// 	handleInputError();
+		// } else {
+		// If input is valid, below will execute.
+		logIn();
+		clearInput();
+		// }
 	};
 
 	// Reached when a change has been made to an input field.

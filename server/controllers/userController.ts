@@ -13,6 +13,8 @@ export const validateUserSignUp = [
 		.escape()
 		.notEmpty()
 		.withMessage('Username must not be empty.')
+		.isLength({ max: 20 })
+		.withMessage('Username must be less than 20 characters.')
 		.custom(async (username: string) => {
 			const user = await User.findOne({ username: username });
 			if (user) {
@@ -24,7 +26,9 @@ export const validateUserSignUp = [
 		.trim()
 		.escape()
 		.notEmpty()
-		.withMessage('Password must not be empty.'),
+		.withMessage('Password must not be empty.')
+		.isLength({ max: 20 })
+		.withMessage('Password must be less than 20 characters.'),
 	body('confirmPassword')
 		.trim()
 		.escape()
@@ -34,7 +38,9 @@ export const validateUserSignUp = [
 			// If the password and confirmation password do not match, throw an error.
 			return confirmPassword === req.body.password;
 		})
-		.withMessage('Passwords do not match.'),
+		.withMessage('Passwords do not match.')
+		.isLength({ max: 20 })
+		.withMessage('Confirmation password must be less than 20 characters.'),
 ];
 
 // Store user in the database.
@@ -81,3 +87,28 @@ export const userSignUpPost = asyncHandler(
 		}
 	}
 );
+
+// Validate and sanitize fields from user on log in.
+export const vaidateUserLogIn = [
+	body('username')
+		.trim()
+		.escape()
+		.notEmpty()
+		.withMessage('Username must not be empty.')
+		.isLength({ max: 20 })
+		.withMessage('Username must be less than 20 characters.'),
+	body('password')
+		.trim()
+		.escape()
+		.notEmpty()
+		.withMessage('Password must not be empty.')
+		.isLength({ max: 20 })
+		.withMessage('Password must be less than 20 characters.'),
+];
+
+// Checks input credentials against stored credentials to log user in.
+export const userLogInPost = asyncHandler(async (req, res, next) => {
+	const errors = validationResult(req);
+
+	console.log(errors);
+});

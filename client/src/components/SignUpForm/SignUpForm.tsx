@@ -18,21 +18,6 @@ function SignUpForm() {
 
 	const navigate = useNavigate();
 
-	// Reached if backend validation and user storage was successful.s
-	const handleSuccess = (message: string) => {
-		// Style message from backend to appear valid.
-		if (inputMessagesRef.current)
-			inputMessagesRef.current.style.color = 'black';
-
-		// Display message from backend.
-		setInputMessages([message]);
-
-		// Redirect the user to log in with their account.
-		setTimeout(() => {
-			navigate('/log-in');
-		}, 3000);
-	};
-
 	// Clear all input in the form.
 	const clearInput = () => {
 		if (usernameRef.current) usernameRef.current.value = '';
@@ -84,6 +69,21 @@ function SignUpForm() {
 		}
 
 		clearInput();
+	};
+
+	// Reached if backend validation and user storage was successful.
+	const handleSuccess = (message: string) => {
+		// Style message from backend to appear valid.
+		if (inputMessagesRef.current)
+			inputMessagesRef.current.style.color = 'black';
+
+		// Display message from backend.
+		setInputMessages([message]);
+
+		// Redirect the user to log in with their account.
+		setTimeout(() => {
+			navigate('/log-in');
+		}, 3000);
 	};
 
 	// Send input to the backend.
