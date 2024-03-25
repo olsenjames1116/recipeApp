@@ -4,7 +4,7 @@ function LogInOptions() {
 	return (
 		<ul>
 			<li>
-				Don't have an account? <a href="/sign-up">Create one</a>
+				Don't have an account? <a href="/sign-up">Create One</a>
 			</li>
 			<DemoAccountLogIn />
 		</ul>

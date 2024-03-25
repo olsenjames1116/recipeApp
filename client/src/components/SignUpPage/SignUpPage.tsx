@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import AccountFormContainer from '../AccountFormContainer/AccountFormContainer';
 import SignUpForm from '../SignUpForm/SignUpForm';
+import SignUpOptions from '../SignUpOptions/SignUpOptions';
 
 function SignUpPage() {
 	useEffect(() => {
@@ -11,6 +12,7 @@ function SignUpPage() {
 		<main>
 			<AccountFormContainer>
 				<SignUpForm />
+				<SignUpOptions />
 			</AccountFormContainer>
 		</main>
 	);
