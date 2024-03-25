@@ -131,5 +131,15 @@ export const userLogInPost = asyncHandler(async (req, res, next) => {
 
 			return;
 		}
+
+		const match = await bcrypt.compare(password, user.password);
+		if (!match) {
+			// Input password and decrypted stored password do not match.
+			res.status(401).json({
+				message: ['Invalid password.'],
+			});
+
+			return;
+		}
 	}
 });
