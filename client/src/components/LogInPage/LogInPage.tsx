@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import AccountFormContainer from '../AccountFormContainer/AccountFormContainer';
 import LogInForm from '../LogInForm/LogInForm';
+import LogInOptions from '../LogInOptions/LogInOptions';
 
 function LogInPage() {
 	useEffect(() => {
@@ -11,6 +12,7 @@ function LogInPage() {
 		<main>
 			<AccountFormContainer>
 				<LogInForm />
+				<LogInOptions />
 			</AccountFormContainer>
 		</main>
 	);

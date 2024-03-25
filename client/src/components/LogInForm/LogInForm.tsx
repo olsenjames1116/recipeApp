@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react';
 import InputMessages from '../InputMessages/InputMessages';
-import { AxiosError } from 'axios';
+import { AxiosError, AxiosResponse } from 'axios';
 import api from '../../axiosConfig';
 
 // Represents the log in form to authenticate a user.
@@ -48,7 +48,9 @@ function LogInForm() {
 	};
 
 	// Reached if backend validation and user storage was successful.
-	const handleSuccess = () => {};
+	const handleSuccess = (response: AxiosResponse) => {
+		console.log(response);
+	};
 
 	// Send input to the backend.
 	const logIn = async () => {
@@ -58,7 +60,7 @@ function LogInForm() {
 				password: password,
 			});
 
-			console.log(response);
+			handleSuccess(response);
 		} catch (error) {
 			// Anything that reaches here is due to an error.
 			if (
@@ -83,15 +85,15 @@ function LogInForm() {
 		event.preventDefault();
 		setInputMessages([]);
 
-		// if (!event.currentTarget.checkValidity()) {
-		// 	if (inputMessagesRef.current)
-		// 		inputMessagesRef.current.style.color = 'red';
-		// 	handleInputError();
-		// } else {
-		// If input is valid, below will execute.
-		logIn();
-		clearInput();
-		// }
+		if (!event.currentTarget.checkValidity()) {
+			if (inputMessagesRef.current)
+				inputMessagesRef.current.style.color = 'red';
+			handleInputError();
+		} else {
+			// If input is valid, below will execute.
+			logIn();
+			clearInput();
+		}
 
 		setUsername('');
 		setPassword('');
