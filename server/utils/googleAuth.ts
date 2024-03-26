@@ -5,10 +5,12 @@ import { Request } from 'express';
 
 const GoogleStrategy = passportGoogleOAth2.Strategy;
 
+// Use the production url if in production, otherwise use the development url.
 const callbackURL = process.env.SERVER_URI
 	? `${process.env.SERVER_URI}/api/user/auth/google/callback`
 	: 'http://localhost:3000/api/user/auth/google/callback';
 
+// Google strategy to authenticate users through Google OAuth.
 passport.use(
 	new GoogleStrategy(
 		{
@@ -27,6 +29,8 @@ passport.use(
 			const { email } = profile;
 
 			const user = await User.findOne({ username: email });
+
+			// If user is not found in db with input username, create a new user in the db.
 			if (!user) {
 				const newUser = new User({
 					username: email,
@@ -36,6 +40,7 @@ passport.use(
 
 				return done(null, newUser);
 			} else {
+				// A user exists. Pass on user object.
 				return done(null, user);
 			}
 		}
@@ -47,6 +52,7 @@ passport.serializeUser((user, done) => {
 });
 
 passport.deserializeUser(async ({ _id }, done) => {
+	// Retrieve user from db.
 	const user = await User.findOne({ _id: _id });
 
 	done(null, user);

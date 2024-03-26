@@ -1,12 +1,10 @@
-const serverURI = import.meta.env.SERVER_URI
-	? `${import.meta.env.SERVER_URI}`
-	: 'http://localhost:3000/api';
+import GoogleAuthForm from '../GoogleAuthForm/GoogleAuthForm';
 
 function ExternalAuthOptions() {
 	return (
-		<form action={`${serverURI}/user/auth/google`}>
-			<button>Google</button>
-		</form>
+		<ul>
+			<GoogleAuthForm />
+		</ul>
 	);
 }
 

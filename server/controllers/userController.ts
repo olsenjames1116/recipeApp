@@ -122,32 +122,42 @@ export const checkLogInValidationResult = asyncHandler(
 			});
 		}
 
+		// There are no errors, pass on to the next middleware.
 		next();
 	}
 );
 
+// Authenticate the user using passport local strategy.
 export const authenticateUserLocal = (
 	req: Request,
 	res: Response,
 	next: NextFunction
 ) => {
 	passport.authenticate('local', (err: any, user: any, info: any) => {
+		// If there is an error, pass on to next middleware.
 		if (err) {
 			return next(err);
 		}
+
+		// There is not a user, an error has occurred in authentication.
 		if (!user) {
+			// Return an error message to display to user for clarity.
 			return res.status(401).json({
 				message: [info.message],
 			});
 		}
+
+		// No errors. Send response back to front end.
 		res.sendStatus(200);
 	})(req, res, next);
 };
 
+// Get a Google user's account info and pass through passport authentication.
 export const getGoogleAccountInfo = passport.authenticate('google', {
 	scope: ['email'],
 });
 
+// Called after successful Google authentication.
 export const getGoogleCallback = passport.authenticate('google', {
 	successRedirect: process.env.CLIENT_URI || 'http://localhost:5173',
 	failureRedirect:
