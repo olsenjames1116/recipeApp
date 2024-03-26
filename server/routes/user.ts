@@ -13,7 +13,8 @@ router.post(
 router.post(
 	'/log-in',
 	userController.validateUserLogIn,
-	userController.userLogInPost
+	userController.checkLogInValidationResult,
+	userController.authenticateUserLocal
 );
 
 router.get('/auth/google', userController.getGoogleAccountInfo);

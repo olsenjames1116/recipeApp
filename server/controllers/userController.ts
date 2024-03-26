@@ -5,8 +5,6 @@ import bcrypt from 'bcrypt';
 import { HydratedDocument } from 'mongoose';
 import asyncHandler from 'express-async-handler';
 import { Request, Response, NextFunction } from 'express';
-import jwt from 'jsonwebtoken';
-import client from '../utils/redis';
 import passport from 'passport';
 
 // Validate and sanitize fields to create user on sign up.
@@ -110,80 +108,49 @@ export const validateUserLogIn = [
 		.withMessage('Password must be less than 50 characters.'),
 ];
 
-// Create an access and refresh token and store in Redis for future authentication.
-const generateAndStoreToken = async (user: HydratedDocument<IUser>) => {
-	// Create an access token for the user.
-	const accessToken = jwt.sign(
-		user.toJSON(),
-		process.env.ACCESS_TOKEN_SECRET!,
-		{ expiresIn: '30m' }
-	);
-
-	// Create a refresh token for the user.
-	const refreshToken = jwt.sign(
-		user.toJSON(),
-		process.env.REFRESH_TOKEN_SECRET!,
-		{ expiresIn: '1h' }
-	);
-
-	// Store the tokens in Redis.
-	await client.set('accessToken', accessToken);
-	await client.set('refreshToken', refreshToken);
-};
-
 // Checks input credentials against stored credentials to log user in.
-export const userLogInPost = asyncHandler(async (req, res, next) => {
-	const errors = validationResult(req);
+export const checkLogInValidationResult = asyncHandler(
+	async (req, res, next) => {
+		const errors = validationResult(req);
 
-	if (!errors.isEmpty()) {
-		// There are errors. Display error message to user.
-		const errorMessages = errors.array().map((error) => error.msg);
+		if (!errors.isEmpty()) {
+			// There are errors. Display error message to user.
+			const errorMessages = errors.array().map((error) => error.msg);
 
-		res.status(400).json({
-			message: errorMessages,
-		});
-	} else {
-		// There are no validation errors. Further check user credentials before logging in.
-		const { username, password } = req.body;
-		const user = await User.findOne({ username: username });
-
-		if (!user) {
-			// User does not exist in database.
-			res.status(401).json({
-				message: [`Username "${username}" does not exist.`],
+			res.status(400).json({
+				message: errorMessages,
 			});
-
-			return;
 		}
 
-		const match = await bcrypt.compare(password, user.password);
-		if (!match) {
-			// Input password and decrypted stored password do not match.
-			res.status(401).json({
-				message: ['Invalid password.'],
-			});
-
-			return;
-		}
-
-		// Anything below here is reached from a successful log in.
-
-		generateAndStoreToken(user);
-
-		// Return user info.
-		res.status(200).json({
-			username: username,
-		});
+		next();
 	}
-});
+);
+
+export const authenticateUserLocal = (
+	req: Request,
+	res: Response,
+	next: NextFunction
+) => {
+	passport.authenticate('local', (err: any, user: any, info: any) => {
+		if (err) {
+			return next(err);
+		}
+		if (!user) {
+			return res.status(401).json({
+				message: [info.message],
+			});
+		}
+		res.sendStatus(200);
+	})(req, res, next);
+};
 
 export const getGoogleAccountInfo = passport.authenticate('google', {
 	scope: ['email'],
 });
 
 export const getGoogleCallback = passport.authenticate('google', {
-	successRedirect: '/api/user/profile',
-	failureRedirect: '/log-in',
-	successFlash: 'Successful log in!',
+	successRedirect: process.env.CLIENT_URI || 'http://localhost:5173',
+	failureRedirect:
+		`${process.env.CLIENT_URI}/log-in` || 'http://localhost:5173/log-in',
 	failureFlash: true,
 });

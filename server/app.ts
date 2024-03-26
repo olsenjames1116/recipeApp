@@ -2,6 +2,7 @@ import dotenv from 'dotenv';
 dotenv.config();
 import './utils/mongodb';
 import './utils/googleAuth';
+import './utils/auth';
 import express, { Request, Response, NextFunction } from 'express';
 import path from 'path';
 import cookieParser from 'cookie-parser';
@@ -9,7 +10,7 @@ import logger from 'morgan';
 import cors from 'cors';
 import flash from 'express-flash';
 import session from 'express-session';
-// import passport from 'passport';
+import passport from 'passport';
 
 import userRouter from './routes/user';
 
@@ -19,12 +20,14 @@ const port = process.env.PORT || 3000;
 // Middleware for all routes.
 app.use(
 	session({
-		secret: 'secret',
+		secret: process.env.SESSION_SECRET!,
 		resave: false,
 		saveUninitialized: true,
 	})
 );
 app.use(flash());
+app.use(passport.initialize());
+app.use(passport.session());
 app.use(cors());
 app.use(logger('dev'));
 app.use(express.json());
@@ -43,7 +46,9 @@ app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
 
 // Listen on port when server is started.
 app.listen(port, () => {
-	const url = process.env.URL ? process.env.URL : `http://localhost:${port}`;
+	const url = process.env.SERVER_URI
+		? process.env.SERVER_URI
+		: `http://localhost:${port}`;
 	console.log(`Server running at ${url}`);
 });
 

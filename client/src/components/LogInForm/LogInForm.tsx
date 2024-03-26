@@ -1,7 +1,8 @@
 import { useRef, useState } from 'react';
 import InputMessages from '../InputMessages/InputMessages';
-import { AxiosError, AxiosResponse } from 'axios';
+import { AxiosError } from 'axios';
 import api from '../../axiosConfig';
+import { useNavigate } from 'react-router-dom';
 
 // Represents the log in form to authenticate a user.
 function LogInForm() {
@@ -12,6 +13,8 @@ function LogInForm() {
 	const usernameRef = useRef<HTMLInputElement>(null);
 	const passwordRef = useRef<HTMLInputElement>(null);
 	const inputMessagesRef = useRef<HTMLUListElement>(null);
+
+	const navigate = useNavigate();
 
 	// Clear all input in the form.
 	const clearInput = () => {
@@ -47,20 +50,16 @@ function LogInForm() {
 		clearInput();
 	};
 
-	// Reached if backend validation and user storage was successful.
-	const handleSuccess = (response: AxiosResponse) => {
-		console.log(response);
-	};
-
 	// Send input to the backend.
 	const logIn = async () => {
 		try {
-			const response = await api.post('/user/log-in', {
+			await api.post('/user/log-in', {
 				username: username,
 				password: password,
 			});
 
-			handleSuccess(response);
+			// Reached if backend validation and user was found in database.
+			navigate('/');
 		} catch (error) {
 			// Anything that reaches here is due to an error.
 			if (

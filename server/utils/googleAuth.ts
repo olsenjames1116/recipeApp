@@ -42,12 +42,12 @@ passport.use(
 	)
 );
 
-passport.serializeUser(function (user, done) {
+passport.serializeUser((user, done) => {
 	done(null, user);
 });
 
-passport.deserializeUser(function (user: any, done) {
-	console.log(`deserialize: ${user}`);
+passport.deserializeUser(async ({ _id }, done) => {
+	const user = await User.findOne({ _id: _id });
 
 	done(null, user);
 });
