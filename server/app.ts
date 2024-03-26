@@ -1,6 +1,7 @@
 import dotenv from 'dotenv';
 dotenv.config();
 import './utils/mongodb';
+import './utils/googleAuth';
 import express, { Request, Response, NextFunction } from 'express';
 import path from 'path';
 import cookieParser from 'cookie-parser';

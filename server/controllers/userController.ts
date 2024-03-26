@@ -7,6 +7,8 @@ import asyncHandler from 'express-async-handler';
 import { Request, Response, NextFunction } from 'express';
 import jwt from 'jsonwebtoken';
 import client from '../utils/redis';
+import querystring from 'node:querystring';
+import passport from 'passport';
 
 // Validate and sanitize fields to create user on sign up.
 export const validateUserSignUp = [
@@ -60,7 +62,7 @@ const storeUser = (user: HydratedDocument<IUser>) => {
 
 // Create a user to be stored in the database.
 export const userSignUpPost = asyncHandler(
-	async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+	async (req: Request, res: Response, next: NextFunction) => {
 		// Extract the validation errors from the request.
 		const errors = validationResult(req);
 
@@ -179,3 +181,14 @@ export const userLogInPost = asyncHandler(async (req, res, next) => {
 		generateAndStoreToken(user, res);
 	}
 });
+
+export const getGoogleAccountInfo = passport.authenticate('google', {
+	scope: ['email', 'profile'],
+});
+
+export const getGoogleCallback = passport.authenticate('google', {
+	successRedirect: '/protected',
+	failureRedirect: '/auth/failure',
+});
+
+// res.send('made it past authentication');

@@ -16,4 +16,16 @@ router.post(
 	userController.userLogInPost
 );
 
+router.get('/auth/google', userController.getGoogleAccountInfo);
+
+router.get('/auth/google/callback', userController.getGoogleCallback);
+
+router.get('/protected', (req, res, next) => {
+	res.send('Protected');
+});
+
+router.get('/auth/failure', (req, res, next) => {
+	res.send('failure');
+});
+
 export default router;
