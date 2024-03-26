@@ -35,7 +35,7 @@ function SignUpForm() {
 			usernameRef.current?.validity.tooLong &&
 				setInputMessages((state) => [
 					...state,
-					'Username must be less than 20 characters.',
+					'Username must be less than 50 characters.',
 				]);
 		}
 
@@ -46,7 +46,7 @@ function SignUpForm() {
 			passwordRef.current?.validity.tooLong &&
 				setInputMessages((state) => [
 					...state,
-					'Password must be less than 20 characters.',
+					'Password must be less than 50 characters.',
 				]);
 		}
 
@@ -60,7 +60,7 @@ function SignUpForm() {
 			confirmPasswordRef.current?.validity.tooLong &&
 				setInputMessages((state) => [
 					...state,
-					'Confirmation password must be less than 20 characters.',
+					'Confirmation password must be less than 50 characters.',
 				]);
 		}
 
@@ -164,7 +164,7 @@ function SignUpForm() {
 				onChange={handleChange}
 				ref={usernameRef}
 				required
-				maxLength={20}
+				maxLength={50}
 			/>
 			<input
 				id="password"
@@ -173,7 +173,7 @@ function SignUpForm() {
 				onChange={handleChange}
 				ref={passwordRef}
 				required
-				maxLength={20}
+				maxLength={50}
 			/>
 			<input
 				id="confirmPassword"
@@ -182,7 +182,7 @@ function SignUpForm() {
 				onChange={handleChange}
 				ref={confirmPasswordRef}
 				required
-				maxLength={20}
+				maxLength={50}
 			/>
 			<InputMessages
 				messages={inputMessages}

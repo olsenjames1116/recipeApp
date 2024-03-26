@@ -29,7 +29,7 @@ function LogInForm() {
 			usernameRef.current?.validity.tooLong &&
 				setInputMessages((state) => [
 					...state,
-					'Username must be less than 20 characters.',
+					'Username must be less than 50 characters.',
 				]);
 		}
 
@@ -40,7 +40,7 @@ function LogInForm() {
 			passwordRef.current?.validity.tooLong &&
 				setInputMessages((state) => [
 					...state,
-					'Password must be less than 20 characters.',
+					'Password must be less than 50 characters.',
 				]);
 		}
 
@@ -125,7 +125,7 @@ function LogInForm() {
 				onChange={handleChange}
 				ref={usernameRef}
 				required
-				maxLength={20}
+				maxLength={50}
 			/>
 			<input
 				id="password"
@@ -134,7 +134,7 @@ function LogInForm() {
 				onChange={handleChange}
 				ref={passwordRef}
 				required
-				maxLength={20}
+				maxLength={50}
 			/>
 			<InputMessages
 				messages={inputMessages}

@@ -7,7 +7,6 @@ import asyncHandler from 'express-async-handler';
 import { Request, Response, NextFunction } from 'express';
 import jwt from 'jsonwebtoken';
 import client from '../utils/redis';
-import querystring from 'node:querystring';
 import passport from 'passport';
 
 // Validate and sanitize fields to create user on sign up.
@@ -17,8 +16,8 @@ export const validateUserSignUp = [
 		.escape()
 		.notEmpty()
 		.withMessage('Username must not be empty.')
-		.isLength({ max: 20 })
-		.withMessage('Username must be less than 20 characters.')
+		.isLength({ max: 50 })
+		.withMessage('Username must be less than 50 characters.')
 		.custom(async (username: string) => {
 			const user = await User.findOne({ username: username });
 			if (user) {
@@ -31,8 +30,8 @@ export const validateUserSignUp = [
 		.escape()
 		.notEmpty()
 		.withMessage('Password must not be empty.')
-		.isLength({ max: 20 })
-		.withMessage('Password must be less than 20 characters.'),
+		.isLength({ max: 50 })
+		.withMessage('Password must be less than 50 characters.'),
 	body('confirmPassword')
 		.trim()
 		.escape()
@@ -43,8 +42,8 @@ export const validateUserSignUp = [
 			return confirmPassword === req.body.password;
 		})
 		.withMessage('Passwords do not match.')
-		.isLength({ max: 20 })
-		.withMessage('Confirmation password must be less than 20 characters.'),
+		.isLength({ max: 50 })
+		.withMessage('Confirmation password must be less than 50 characters.'),
 ];
 
 // Store user in the database.
@@ -100,22 +99,19 @@ export const validateUserLogIn = [
 		.escape()
 		.notEmpty()
 		.withMessage('Username must not be empty.')
-		.isLength({ max: 20 })
-		.withMessage('Username must be less than 20 characters.'),
+		.isLength({ max: 50 })
+		.withMessage('Username must be less than 50 characters.'),
 	body('password')
 		.trim()
 		.escape()
 		.notEmpty()
 		.withMessage('Password must not be empty.')
-		.isLength({ max: 20 })
-		.withMessage('Password must be less than 20 characters.'),
+		.isLength({ max: 50 })
+		.withMessage('Password must be less than 50 characters.'),
 ];
 
 // Create an access and refresh token and store in Redis for future authentication.
-const generateAndStoreToken = async (
-	user: HydratedDocument<IUser>,
-	res: Response
-) => {
+const generateAndStoreToken = async (user: HydratedDocument<IUser>) => {
 	// Create an access token for the user.
 	const accessToken = jwt.sign(
 		user.toJSON(),
@@ -133,12 +129,6 @@ const generateAndStoreToken = async (
 	// Store the tokens in Redis.
 	await client.set('accessToken', accessToken);
 	await client.set('refreshToken', refreshToken);
-
-	// Return user info.
-	res.status(200).json({
-		username: user.username,
-		profilePic: user.profilePic,
-	});
 };
 
 // Checks input credentials against stored credentials to log user in.
@@ -178,17 +168,22 @@ export const userLogInPost = asyncHandler(async (req, res, next) => {
 
 		// Anything below here is reached from a successful log in.
 
-		generateAndStoreToken(user, res);
+		generateAndStoreToken(user);
+
+		// Return user info.
+		res.status(200).json({
+			username: username,
+		});
 	}
 });
 
 export const getGoogleAccountInfo = passport.authenticate('google', {
-	scope: ['email', 'profile'],
+	scope: ['email'],
 });
 
 export const getGoogleCallback = passport.authenticate('google', {
-	successRedirect: '/protected',
-	failureRedirect: '/auth/failure',
+	successRedirect: '/api/user/profile',
+	failureRedirect: '/log-in',
+	successFlash: 'Successful log in!',
+	failureFlash: true,
 });
-
-// res.send('made it past authentication');

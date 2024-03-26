@@ -20,8 +20,8 @@ router.get('/auth/google', userController.getGoogleAccountInfo);
 
 router.get('/auth/google/callback', userController.getGoogleCallback);
 
-router.get('/protected', (req, res, next) => {
-	res.send('Protected');
+router.get('/profile', (req, res, next) => {
+	res.send(`${req.user}`);
 });
 
 router.get('/auth/failure', (req, res, next) => {

@@ -1,6 +1,7 @@
-import passportGoogleOAth2 from 'passport-google-oauth2';
+import passportGoogleOAth2, { VerifyCallback } from 'passport-google-oauth2';
 import passport from 'passport';
 import User from '../models/user';
+import { Request } from 'express';
 
 const GoogleStrategy = passportGoogleOAth2.Strategy;
 
@@ -16,15 +17,27 @@ passport.use(
 			callbackURL: callbackURL,
 			passReqToCallback: true,
 		},
-		function (
-			request: any,
-			accessToken: any,
-			refreshToken: any,
-			profile: { id: any },
-			done: (arg0: any, arg1: any) => any
-		) {
-			console.log('google strategy');
-			return done(null, profile);
+		async (
+			req: Request,
+			accessToken: string,
+			refreshToken: string,
+			profile: any,
+			done: VerifyCallback
+		) => {
+			const { email } = profile;
+
+			const user = await User.findOne({ username: email });
+			if (!user) {
+				const newUser = new User({
+					username: email,
+				});
+
+				await newUser.save();
+
+				return done(null, newUser);
+			} else {
+				return done(null, user);
+			}
 		}
 	)
 );
@@ -34,7 +47,7 @@ passport.serializeUser(function (user, done) {
 });
 
 passport.deserializeUser(function (user: any, done) {
-	User.findById(user._id, function (err: any, user: any) {
-		done(err, user);
-	});
+	console.log(`deserialize: ${user}`);
+
+	done(null, user);
 });

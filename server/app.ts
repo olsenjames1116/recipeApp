@@ -7,6 +7,9 @@ import path from 'path';
 import cookieParser from 'cookie-parser';
 import logger from 'morgan';
 import cors from 'cors';
+import flash from 'express-flash';
+import session from 'express-session';
+// import passport from 'passport';
 
 import userRouter from './routes/user';
 
@@ -14,6 +17,14 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 // Middleware for all routes.
+app.use(
+	session({
+		secret: 'secret',
+		resave: false,
+		saveUninitialized: true,
+	})
+);
+app.use(flash());
 app.use(cors());
 app.use(logger('dev'));
 app.use(express.json());
