@@ -5,5 +5,6 @@ This project highlights:
 - Redux
 - Google OAuth
 - Passport
+- SPAs
 - MVC architecture
 - CRUD operations
