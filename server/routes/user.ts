@@ -23,10 +23,13 @@ router.get('/auth/google', userController.getGoogleAccountInfo);
 // GET callback function after Google user is authenticated.
 router.get('/auth/google/callback', userController.getGoogleCallback);
 
+// GET authentication to ensure logged in user can access page.
 router.get('/authenticate', userController.isLoggedIn);
 
+// GET authentication to ensure a logged in user cannot access page.
 router.get('/logged-out', userController.isNotLoggedIn);
 
+// DELETE the authentication details from request to log user out.
 router.delete('/log-out', userController.logOutUser);
 
 export default router;

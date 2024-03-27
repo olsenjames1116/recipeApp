@@ -1,10 +1,19 @@
 import LogOut from '../LogOut/LogOut';
+import { Link } from 'react-router-dom';
 
 function Header() {
 	return (
-		<ul>
-			<LogOut />
-		</ul>
+		<header>
+			<ul>
+				<li>
+					<Link to="/">Logo</Link>
+				</li>
+				<li>
+					<Link to="/recipes">Saved Recipes</Link>
+				</li>
+				<LogOut />
+			</ul>
+		</header>
 	);
 }
 

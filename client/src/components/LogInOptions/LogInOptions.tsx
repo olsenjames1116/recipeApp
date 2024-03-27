@@ -1,10 +1,11 @@
+import { Link } from 'react-router-dom';
 import DemoAccountLogIn from '../DemoAccountLogIn/DemoAccountLogIn';
 
 function LogInOptions() {
 	return (
 		<ul>
 			<li>
-				Don't have an account? <a href="/sign-up">Create One</a>
+				Don't have an account? <Link to="/sign-up">Create One</Link>
 			</li>
 			<DemoAccountLogIn />
 		</ul>

@@ -4,11 +4,15 @@ import Header from '../Header/Header';
 import { useNavigate } from 'react-router-dom';
 import { AxiosError } from 'axios';
 import HomeContent from '../HomeContent/HomeContent';
+import { useDispatch } from 'react-redux';
+import { removeRandomRecipe } from '../../redux/state/randomRecipeSlice';
 
 function HomePage() {
 	const navigate = useNavigate();
+	const dispatch = useDispatch();
 
 	useEffect(() => {
+		// Check if a user is authenticated and should have access.
 		const authenticateUser = async () => {
 			try {
 				await api.get('/user/authenticate');
@@ -26,6 +30,9 @@ function HomePage() {
 		};
 
 		authenticateUser();
+
+		// Remove recipe stored in state when home page is navigated to.
+		dispatch(removeRandomRecipe());
 	});
 
 	return (
