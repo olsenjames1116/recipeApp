@@ -2,9 +2,8 @@ This project highlights:
 
 - TypeScript
 - Cloudinary
-- Redis
+- Redux
 - Google OAuth
-- JWT
 - Passport
 - MVC architecture
 - CRUD operations

@@ -1,12 +1,31 @@
-import axios from 'axios';
+import axios, { AxiosResponse } from 'axios';
+import { useDispatch } from 'react-redux';
+import { addRandomRecipe } from '../../redux/state/randomRecipeSlice';
+import { IRecipe } from '../../types';
 
+// Represents the element that generates a random recipe.
 function RandomRecipe() {
-	const handleClick = async (
+	const dispatch = useDispatch();
+
+	// Reached from a successful call to Spoonacular api.
+	const handleSuccess = (response: AxiosResponse) => {
+		// Destructure response with recipe and store in state.
+		const { title, image, sourceUrl } = response.data.recipes[0];
+
+		const recipe: IRecipe = {
+			title: title,
+			image: image,
+			url: sourceUrl,
+		};
+
+		dispatch(addRandomRecipe(recipe));
+	};
+
+	// Generate a random recipe from the Spoonacular api.
+	const generateRecipe = async (
 		event: React.MouseEvent<HTMLButtonElement, MouseEvent>
 	) => {
 		event.preventDefault();
-
-		console.log(import.meta.env.VITE_SPOONACULAR_API_KEY);
 
 		try {
 			const response = await axios.get(
@@ -15,13 +34,14 @@ function RandomRecipe() {
 				}`
 			);
 
-			console.log(response);
+			// Anything below here is reached after a successful call to the Spoonacular api.
+			handleSuccess(response);
 		} catch (error) {
 			console.log(error);
 		}
 	};
 
-	return <button onClick={handleClick}>Surprise Me</button>;
+	return <button onClick={generateRecipe}>Surprise Me</button>;
 }
 
 export default RandomRecipe;
