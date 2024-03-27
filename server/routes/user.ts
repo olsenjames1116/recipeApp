@@ -17,16 +17,12 @@ router.post(
 	userController.authenticateUserLocal
 );
 
+// GET account info from Google OAuth.
 router.get('/auth/google', userController.getGoogleAccountInfo);
 
+// GET callback function after Google user is authenticated.
 router.get('/auth/google/callback', userController.getGoogleCallback);
 
-router.get('/profile', (req, res, next) => {
-	res.send(`${req.user}`);
-});
-
-router.get('/auth/failure', (req, res, next) => {
-	res.send('failure');
-});
+router.get('/authenticate', userController.isLoggedIn);
 
 export default router;

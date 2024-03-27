@@ -53,12 +53,16 @@ function LogInForm() {
 	// Send input to the backend.
 	const logIn = async () => {
 		try {
-			await api.post('/user/log-in', {
+			const response = await api.post('/user/log-in', {
 				username: username,
 				password: password,
 			});
 
+			console.log(response);
+
 			// Reached if backend validation and user was found in database.
+
+			// Navigate user to home page.
 			navigate('/');
 		} catch (error) {
 			// Anything that reaches here is due to an error.

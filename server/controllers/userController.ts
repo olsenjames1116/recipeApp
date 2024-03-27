@@ -132,25 +132,23 @@ export const authenticateUserLocal = (
 	req: Request,
 	res: Response,
 	next: NextFunction
-) => {
-	passport.authenticate('local', (err: any, user: any, info: any) => {
+) =>
+	passport.authenticate('local', function (err: any, user: any, info: any) {
 		// If there is an error, pass on to next middleware.
-		if (err) {
-			return next(err);
-		}
+		if (err) return next(err);
 
-		// There is not a user, an error has occurred in authentication.
-		if (!user) {
-			// Return an error message to display to user for clarity.
-			return res.status(401).json({
-				message: [info.message],
-			});
-		}
+		/* There is not a user, an error has occurred in authentication. Return an error 
+		message to the user for clarity. */
+		if (!user) return res.status(401).json({ message: [info.message] });
 
-		// No errors. Send response back to front end.
-		res.sendStatus(200);
+		// Store the user in session manually.
+		req.logIn(user, function (err) {
+			if (err) return next(err);
+
+			// No errors. Send response back to front end.
+			return res.status(200).json(req.user);
+		});
 	})(req, res, next);
-};
 
 // Get a Google user's account info and pass through passport authentication.
 export const getGoogleAccountInfo = passport.authenticate('google', {
@@ -164,3 +162,12 @@ export const getGoogleCallback = passport.authenticate('google', {
 		`${process.env.CLIENT_URI}/log-in` || 'http://localhost:5173/log-in',
 	failureFlash: true,
 });
+
+// Determine if the user has been authenticated and should be allowed access.
+export const isLoggedIn = (req: Request, res: Response, next: NextFunction) => {
+	console.log(req);
+	console.log(req.user);
+	console.log(req.isAuthenticated());
+
+	req.user ? res.send('authenticated') : res.send('forbidden');
+};

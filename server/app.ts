@@ -28,7 +28,17 @@ app.use(
 app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(cors());
+app.use(
+	cors({
+		origin: [
+			'http://localhost:5173',
+			'http://localhost:3000',
+			process.env.CLIENT_URI!,
+			process.env.SERVER_URI!,
+		],
+		credentials: true,
+	})
+);
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));

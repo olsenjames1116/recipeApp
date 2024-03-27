@@ -15,6 +15,7 @@ passport.use(
 			return done(null, false, {
 				message: `Username "${username}" does not exist.`,
 			});
+			// return done(new Error(`Username "${username}" does not exist.`));
 		}
 
 		try {
@@ -36,9 +37,10 @@ passport.serializeUser((user, done) => {
 	done(null, user);
 });
 
-passport.deserializeUser(async ({ _id }, done) => {
+passport.deserializeUser(async (user: any, done) => {
+	console.log('deserialized');
 	// Retrieve user from db.
-	const user = await User.findOne({ _id: _id });
+	const currentUser = await User.findOne({ username: user.username });
 
-	done(null, user);
+	done(null, currentUser);
 });
