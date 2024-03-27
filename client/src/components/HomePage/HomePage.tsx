@@ -3,6 +3,7 @@ import api from '../../axiosConfig';
 import Header from '../Header/Header';
 import { useNavigate } from 'react-router-dom';
 import { AxiosError } from 'axios';
+import HomeContent from '../HomeContent/HomeContent';
 
 function HomePage() {
 	const navigate = useNavigate();
@@ -30,7 +31,7 @@ function HomePage() {
 	return (
 		<div>
 			<Header />
-			HomePage
+			<HomeContent />
 		</div>
 	);
 }
