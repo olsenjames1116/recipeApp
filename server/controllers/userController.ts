@@ -177,9 +177,10 @@ export const isNotLoggedIn = (
 	req.isAuthenticated() ? res.sendStatus(403) : res.sendStatus(200);
 };
 
+// Remove user's credentials from request object to log user out.
 export const logOutUser = (req: Request, res: Response, next: NextFunction) => {
 	req.logOut((err) => {
 		if (err) return next(err);
-		res.send('logged out');
+		res.sendStatus(200);
 	});
 };

@@ -7,6 +7,7 @@ import api from '../../axiosConfig';
 import { AxiosError } from 'axios';
 import { useNavigate } from 'react-router-dom';
 
+// Represents the log in page to authenticate users.
 function LogInPage() {
 	const navigate = useNavigate();
 

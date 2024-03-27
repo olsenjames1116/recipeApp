@@ -6,6 +6,7 @@ import api from '../../axiosConfig';
 import { AxiosError } from 'axios';
 import { useNavigate } from 'react-router-dom';
 
+// Represents the sign up page to create new users.
 function SignUpPage() {
 	const navigate = useNavigate();
 
