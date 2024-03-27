@@ -8,8 +8,6 @@ function HomeContent() {
 		(state: IRootState) => state.randomRecipe.value
 	);
 
-	console.log(Object.keys(randomRecipe));
-
 	return (
 		<main>
 			{Object.keys(randomRecipe).length === 0 ? (
