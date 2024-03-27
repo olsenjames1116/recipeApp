@@ -168,6 +168,15 @@ export const isLoggedIn = (req: Request, res: Response, next: NextFunction) => {
 	req.isAuthenticated() ? res.sendStatus(200) : res.sendStatus(403);
 };
 
+// Determine is the has not been authenticated and should be allowed access.
+export const isNotLoggedIn = (
+	req: Request,
+	res: Response,
+	next: NextFunction
+) => {
+	req.isAuthenticated() ? res.sendStatus(403) : res.sendStatus(200);
+};
+
 export const logOutUser = (req: Request, res: Response, next: NextFunction) => {
 	req.logOut((err) => {
 		if (err) return next(err);

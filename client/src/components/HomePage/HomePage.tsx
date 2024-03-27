@@ -10,8 +10,7 @@ function HomePage() {
 	useEffect(() => {
 		const authenticateUser = async () => {
 			try {
-				const response = await api.get('/user/authenticate');
-				console.log(response);
+				await api.get('/user/authenticate');
 			} catch (error) {
 				// Anything that reaches here is due to an error.
 				if (error instanceof AxiosError && error.response?.status === 403) {
