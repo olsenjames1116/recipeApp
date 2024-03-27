@@ -1,6 +1,8 @@
 import { useSelector } from 'react-redux';
 import { IRootState } from '../../redux/store';
 import { IRecipe } from '../../types';
+import NextRecipe from '../NextRecipe/NextRecipe';
+import SaveRecipe from '../SaveRecipe/SaveRecipe';
 
 function GeneratedRecipe() {
 	const randomRecipe: IRecipe = useSelector(
@@ -13,6 +15,8 @@ function GeneratedRecipe() {
 				<img src={randomRecipe.image} />
 				<span>{randomRecipe.title}</span>
 			</a>
+			<NextRecipe />
+			<SaveRecipe />
 		</div>
 	);
 }
