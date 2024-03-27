@@ -13,12 +13,13 @@ function LogInPage() {
 	useEffect(() => {
 		document.title = 'Log In';
 
+		// Call to api to determine if user has been authenticated.
 		const denyAuthenticatedUser = async () => {
 			try {
 				await api.get('/user/logged-out');
 			} catch (error) {
 				// Anything that reaches here is due to an error.
-				if (error instanceof AxiosError && error.response?.status) {
+				if (error instanceof AxiosError && error.response?.status === 403) {
 					/* 403 error is sent from backend if user has been authenticated. 
 					Navigate user back to home page. */
 					navigate('/');
