@@ -2,6 +2,7 @@ import axios, { AxiosResponse } from 'axios';
 import { useDispatch } from 'react-redux';
 import { addRandomRecipe } from '../../redux/state/randomRecipeSlice';
 import { IRecipe } from '../../types';
+import { addRecipeType } from '../../redux/state/recipeTypeSlice';
 
 // Represents the element that generates a random recipe.
 function RandomRecipe() {
@@ -9,6 +10,9 @@ function RandomRecipe() {
 
 	// Reached from a successful call to Spoonacular api.
 	const handleSuccess = (response: AxiosResponse) => {
+		// Set the recipe type to random to represent a completely random generated recipe.
+		dispatch(addRecipeType('random'));
+
 		// Destructure response with recipe and store in state.
 		const { title, image, sourceUrl } = response.data.recipes[0];
 

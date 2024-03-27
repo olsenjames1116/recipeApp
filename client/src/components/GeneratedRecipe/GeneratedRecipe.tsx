@@ -4,6 +4,7 @@ import { IRecipe } from '../../types';
 import NextRecipe from '../NextRecipe/NextRecipe';
 import SaveRecipe from '../SaveRecipe/SaveRecipe';
 
+// Represents a recipe generated from Spoonacular api.
 function GeneratedRecipe() {
 	const randomRecipe: IRecipe = useSelector(
 		(state: IRootState) => state.randomRecipe.value
