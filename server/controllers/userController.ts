@@ -171,3 +171,11 @@ export const isLoggedIn = (req: Request, res: Response, next: NextFunction) => {
 
 	req.user ? res.send('authenticated') : res.send('forbidden');
 };
+
+export const logOutUser = (req: Request, res: Response, next: NextFunction) => {
+	req.logOut((err) => {
+		if (err) return next(err);
+		console.log('logged out');
+		res.send('logged out');
+	});
+};

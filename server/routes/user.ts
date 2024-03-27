@@ -25,4 +25,6 @@ router.get('/auth/google/callback', userController.getGoogleCallback);
 
 router.get('/authenticate', userController.isLoggedIn);
 
+router.delete('/log-out', userController.logOutUser);
+
 export default router;

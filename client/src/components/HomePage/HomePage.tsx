@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import api from '../../axiosConfig';
+import Header from '../Header/Header';
 
 function HomePage() {
 	useEffect(() => {
@@ -10,7 +11,12 @@ function HomePage() {
 		authenticateUser();
 	});
 
-	return <div>HomePage</div>;
+	return (
+		<div>
+			<Header />
+			HomePage
+		</div>
+	);
 }
 
 export default HomePage;
