@@ -27,7 +27,7 @@ passport.use(
 				return done(null, false, { message: 'Invalid password.' });
 			}
 		} catch (error) {
-			// A catch all for errors with bcrypt.
+			// A  for errors with bcrypt.
 			return done(error);
 		}
 	})

@@ -53,12 +53,10 @@ function LogInForm() {
 	// Send input to the backend.
 	const logIn = async () => {
 		try {
-			const response = await api.post('/user/log-in', {
+			await api.post('/user/log-in', {
 				username: username,
 				password: password,
 			});
-
-			console.log(response);
 
 			// Reached if backend validation and user was found in database.
 
@@ -78,6 +76,7 @@ function LogInForm() {
 				// Display message from backend.
 				setInputMessages([...message]);
 			} else {
+				// A catch all for errors produced from api call.
 				console.log(error);
 			}
 		}

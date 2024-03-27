@@ -165,17 +165,12 @@ export const getGoogleCallback = passport.authenticate('google', {
 
 // Determine if the user has been authenticated and should be allowed access.
 export const isLoggedIn = (req: Request, res: Response, next: NextFunction) => {
-	console.log(req);
-	console.log(req.user);
-	console.log(req.isAuthenticated());
-
-	req.user ? res.send('authenticated') : res.send('forbidden');
+	req.isAuthenticated() ? res.sendStatus(200) : res.sendStatus(403);
 };
 
 export const logOutUser = (req: Request, res: Response, next: NextFunction) => {
 	req.logOut((err) => {
 		if (err) return next(err);
-		console.log('logged out');
 		res.send('logged out');
 	});
 };
