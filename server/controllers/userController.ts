@@ -2,7 +2,7 @@ import User from '../models/user';
 import { body, validationResult } from 'express-validator';
 import { IUser } from '../utils/types';
 import bcrypt from 'bcrypt';
-import { HydratedDocument } from 'mongoose';
+import { HydratedDocument, Types } from 'mongoose';
 import asyncHandler from 'express-async-handler';
 import { Request, Response, NextFunction } from 'express';
 import passport from 'passport';
@@ -163,9 +163,18 @@ export const getGoogleCallback = passport.authenticate('google', {
 	failureFlash: true,
 });
 
-// Determine if the user has been authenticated and should be allowed access.
+// Determine if the user has been authenticated and send response.
 export const isLoggedIn = (req: Request, res: Response, next: NextFunction) => {
 	req.isAuthenticated() ? res.sendStatus(200) : res.sendStatus(403);
+};
+
+// Determine if the user has been authenticated and should be passed on to next middleware.
+export const authenticateAndPass = (
+	req: Request,
+	res: Response,
+	next: NextFunction
+) => {
+	req.isAuthenticated() ? next() : res.sendStatus(403);
 };
 
 // Determine is the has not been authenticated and should be allowed access.
@@ -184,3 +193,20 @@ export const logOutUser = (req: Request, res: Response, next: NextFunction) => {
 		res.sendStatus(200);
 	});
 };
+
+// Save a recipe from a user in the db.
+export const saveRecipe = asyncHandler(async (req, res, next) => {
+	const { _id }: any = req.user;
+
+	const { title, image, url } = req.body;
+
+	const recipe = {
+		title: title,
+		image: image,
+		url: url,
+	};
+
+	await User.findOneAndUpdate({ _id: _id }, { $push: { recipes: recipe } });
+
+	res.sendStatus(200);
+});

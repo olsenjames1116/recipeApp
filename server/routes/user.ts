@@ -32,4 +32,10 @@ router.get('/logged-out', userController.isNotLoggedIn);
 // DELETE the authentication details from request to log user out.
 router.delete('/log-out', userController.logOutUser);
 
+router.post(
+	'/save-recipe',
+	userController.authenticateAndPass,
+	userController.saveRecipe
+);
+
 export default router;
