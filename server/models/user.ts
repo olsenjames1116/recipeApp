@@ -15,6 +15,7 @@ const UserSchema = new Schema<IUser, UserModel>({
 		},
 	],
 	ingredients: [{ type: Types.ObjectId, ref: 'Ingredient' }],
+	_id: { type: Types.ObjectId },
 });
 
 const User = model<IUser, UserModel>('User', UserSchema);

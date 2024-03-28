@@ -14,7 +14,7 @@ function RecipesPage() {
 			try {
 				await api.get('/user/authenticate');
 			} catch (error) {
-				// Anything that reaches here is due to an error.
+				// thing that reaches here is due to an error.
 				if (error instanceof AxiosError && error.response?.status === 403) {
 					/* 403 error code is sent from backend if user has not been authenticated. 
 					Navigate user back to log in page to authenticate. */

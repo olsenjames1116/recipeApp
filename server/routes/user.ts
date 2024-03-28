@@ -43,7 +43,14 @@ router.post(
 router.get(
 	'/recipes',
 	userController.authenticateAndPass,
-	userController.getSavedRecipes
+	userController.getRecipes
+);
+
+// DELETE stored recipe from a user.
+router.delete(
+	'/recipe/:id',
+	userController.authenticateAndPass,
+	userController.deleteRecipe
 );
 
 export default router;

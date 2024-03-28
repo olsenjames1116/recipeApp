@@ -3,3 +3,7 @@ export interface IRecipe {
 	image?: string;
 	url?: string;
 }
+
+export interface IRecipeWithId extends IRecipe {
+	_id: string;
+}

@@ -11,4 +11,5 @@ export interface IUser {
 	password: string;
 	recipes: IRecipe[];
 	ingredients: Types.ObjectId[];
+	_id?: Types.ObjectId;
 }

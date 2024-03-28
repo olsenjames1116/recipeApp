@@ -212,10 +212,23 @@ export const saveRecipe = asyncHandler(async (req, res, next) => {
 });
 
 // Return stored recipes from a user in the db.
-export const getSavedRecipes = asyncHandler(async (req, res, next) => {
+export const getRecipes = asyncHandler(async (req, res, next) => {
 	const { recipes }: any = req.user;
 
 	res.json({
 		recipes: recipes,
 	});
+});
+
+// Delete the stored recipe from the db.
+export const deleteRecipe = asyncHandler(async (req, res, next) => {
+	const { _id }: any = req.user;
+	const recipeId = req.params.id;
+
+	await User.findOneAndUpdate(
+		{ _id: _id },
+		{ $pull: { recipes: { _id: recipeId } } }
+	);
+
+	res.sendStatus(200);
 });
