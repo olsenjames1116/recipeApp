@@ -10,7 +10,7 @@ function FoodJoke() {
 		const getFoodJoke = async () => {
 			try {
 				const response = await axios.get(
-					`https://api.spoonacular.com/food/trivia/random?apiKey=${
+					`https://api.spoonacular.com/food/jokes/random?apiKey=${
 						import.meta.env.VITE_SPOONACULAR_API_KEY
 					}`
 				);
