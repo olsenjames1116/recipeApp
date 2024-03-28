@@ -1,5 +1,11 @@
+import IngredientsForm from '../IngredientsForm/IngredientsForm';
+
 function IngredientsContent() {
-	return <div>IngredientsContent</div>;
+	return (
+		<div>
+			<IngredientsForm />
+		</div>
+	);
 }
 
 export default IngredientsContent;

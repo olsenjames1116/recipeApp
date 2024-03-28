@@ -13,3 +13,7 @@ export interface IUser {
 	ingredients: Types.ObjectId[];
 	_id?: Types.ObjectId;
 }
+
+export interface IIngredient {
+	name: string;
+}

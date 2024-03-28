@@ -2,7 +2,7 @@ import User from '../models/user';
 import { body, validationResult } from 'express-validator';
 import { IUser } from '../utils/types';
 import bcrypt from 'bcrypt';
-import { HydratedDocument, Types } from 'mongoose';
+import { HydratedDocument } from 'mongoose';
 import asyncHandler from 'express-async-handler';
 import { Request, Response, NextFunction } from 'express';
 import passport from 'passport';

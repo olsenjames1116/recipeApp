@@ -1,20 +1,8 @@
-import { useNavigate } from 'react-router-dom';
 import Header from '../Header/Header';
 import IngredientsContent from '../IngredientsContent/IngredientsContent';
-import { useEffect } from 'react';
 
+// Represents the page where users can view their saved ingredients.
 function IngredientsPage() {
-	const navigate = useNavigate();
-
-	useEffect(() => {
-		const authenticateUser = async () => {
-			try {
-			} catch (error) {
-				console.log(error);
-			}
-		};
-	});
-
 	return (
 		<div>
 			<Header />

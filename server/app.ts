@@ -13,6 +13,7 @@ import session from 'express-session';
 import passport from 'passport';
 
 import userRouter from './routes/user';
+import ingredientsRouter from './routes/ingredients';
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -47,6 +48,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Direct to route files.
 app.use('/api/user', userRouter);
+app.use('/api/ingredients', ingredientsRouter);
 
 // Generic error handler.
 app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
