@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import api from '../../axiosConfig';
+import { AxiosError } from 'axios';
 import { IRecipeWithId } from '../../types';
 import { Link, useNavigate } from 'react-router-dom';
 import { trashIcon } from '../../assets/images';
@@ -19,8 +20,14 @@ function RecipeList() {
 				// Store user's recipes in state.
 				setRecipeList(response.data.recipes);
 			} catch (error) {
-				// A catch all for errors produced from api call.
-				console.log(error);
+				if (error instanceof AxiosError && error.response?.status === 403) {
+					/* 403 error code is sent from backend if user has not been authenticated.
+	// 				Navigate user back to log in page to authenticate. */
+					navigate('/log-in');
+				} else {
+					// A catch all for errors produced from api call.
+					console.log(error);
+				}
 			}
 		};
 
