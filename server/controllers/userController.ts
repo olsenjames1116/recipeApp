@@ -210,3 +210,12 @@ export const saveRecipe = asyncHandler(async (req, res, next) => {
 
 	res.sendStatus(200);
 });
+
+// Return stored recipes from a user in the db.
+export const getSavedRecipes = asyncHandler(async (req, res, next) => {
+	const { recipes }: any = req.user;
+
+	res.json({
+		recipes: recipes,
+	});
+});

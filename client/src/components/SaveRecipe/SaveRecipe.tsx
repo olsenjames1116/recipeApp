@@ -5,6 +5,7 @@ import { IRootState } from '../../redux/store';
 import { IRecipe } from '../../types';
 import { useNavigate } from 'react-router-dom';
 
+// Represents the icon that stores a recipe from the currently generated recipe.
 function SaveRecipe() {
 	const randomRecipe: IRecipe = useSelector(
 		(state: IRootState) => state.randomRecipe.value
@@ -12,6 +13,7 @@ function SaveRecipe() {
 
 	const navigate = useNavigate();
 
+	// Store recipe in database.
 	const saveRecipe = async () => {
 		try {
 			await api.post('/user/save-recipe', {
