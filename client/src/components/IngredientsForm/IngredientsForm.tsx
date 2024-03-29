@@ -63,20 +63,24 @@ function IngredientsForm() {
 		getIngredients();
 	}, []);
 
-	// Reached after the cancel button is pressed. Cancels changes to the form.
+	/* Reached after the cancel button is pressed. Cancels changes to the form
+	and navigates back to the home page. */
 	const cancelChanges = (event: React.MouseEvent<HTMLButtonElement>) => {
 		event.preventDefault();
 
 		if (saveButtonRef.current) saveButtonRef.current.disabled = true;
 
-		console.log('cancel');
+		navigate('/');
 	};
 
+	// Store ingredients that were checked on the form.
 	const storeCheckedIngredients = async (checkedIngredients: string[]) => {
 		try {
-			await api.post('/user/store-ingredients', {
+			const response = await api.post('/user/store-ingredients', {
 				ingredients: checkedIngredients,
 			});
+
+			dispatch(addUserIngredients(response.data.ingredients));
 		} catch (error) {
 			console.log(error);
 		}

@@ -240,5 +240,5 @@ export const storeIngredients = asyncHandler(async (req, res, next) => {
 
 	await User.findOneAndUpdate({ _id: _id }, { ingredients: ingredients });
 
-	res.sendStatus(200);
+	res.json({ ingredients: ingredients });
 });
