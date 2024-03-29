@@ -14,12 +14,13 @@ function RandomRecipe() {
 		dispatch(addRecipeType('random'));
 
 		// Destructure response with recipe and store in state.
-		const { title, image, sourceUrl } = response.data.recipes[0];
+		const { title, image, sourceUrl, id } = response.data.recipes[0];
 
 		const recipe: IRecipe = {
 			title: title,
 			image: image,
 			url: sourceUrl,
+			id: id,
 		};
 
 		dispatch(addRandomRecipe(recipe));

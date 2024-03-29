@@ -1,6 +1,6 @@
 import User from '../models/user';
 import { body, validationResult } from 'express-validator';
-import { IUser } from '../utils/types';
+import { IRecipe, IUser } from '../utils/types';
 import bcrypt from 'bcrypt';
 import { HydratedDocument } from 'mongoose';
 import asyncHandler from 'express-async-handler';
@@ -196,19 +196,26 @@ export const logOutUser = (req: Request, res: Response, next: NextFunction) => {
 
 // Save a recipe from a user in the db.
 export const saveRecipe = asyncHandler(async (req, res, next) => {
-	const { _id }: any = req.user;
+	const { _id, recipes }: any = req.user;
 
-	const { title, image, url } = req.body;
+	const { title, image, url, id } = req.body;
 
-	const recipe = {
-		title: title,
-		image: image,
-		url: url,
-	};
+	/* If the user already has a stored recipe with a matching id, it is a duplicate.
+	Do not store this recipe if it is a duplicate. */
+	if (recipes.find((recipe: IRecipe) => recipe.id === id)) {
+		res.status(409).send("Recipe already exists in user's stored recipes.");
+	} else {
+		const recipe = {
+			title: title,
+			image: image,
+			url: url,
+			id: id,
+		};
 
-	await User.findOneAndUpdate({ _id: _id }, { $push: { recipes: recipe } });
+		await User.findOneAndUpdate({ _id: _id }, { $push: { recipes: recipe } });
 
-	res.sendStatus(200);
+		res.sendStatus(200);
+	}
 });
 
 // Return stored recipes from a user in the db.

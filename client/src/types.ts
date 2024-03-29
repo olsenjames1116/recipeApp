@@ -2,6 +2,7 @@ export interface IRecipe {
 	title?: string;
 	image?: string;
 	url?: string;
+	id?: number;
 }
 
 export interface IRecipeWithId extends IRecipe {
