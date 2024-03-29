@@ -210,6 +210,7 @@ export const saveRecipe = asyncHandler(async (req, res, next) => {
 			image: image,
 			url: url,
 			id: id,
+			timestamp: Date.now(),
 		};
 
 		await User.findOneAndUpdate({ _id: _id }, { $push: { recipes: recipe } });
@@ -221,6 +222,14 @@ export const saveRecipe = asyncHandler(async (req, res, next) => {
 // Return stored recipes from a user in the db.
 export const getRecipes = asyncHandler(async (req, res, next) => {
 	const { recipes }: any = req.user;
+
+	recipes.sort((a: IRecipe, b: IRecipe) => {
+		if (a.timestamp > b.timestamp) {
+			return -1;
+		} else {
+			return 1;
+		}
+	});
 
 	res.json({
 		recipes: recipes,

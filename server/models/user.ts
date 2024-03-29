@@ -13,6 +13,7 @@ const UserSchema = new Schema<IUser, UserModel>({
 			image: { type: String },
 			url: { type: String },
 			id: { type: Number },
+			timestamp: { type: Date },
 		},
 	],
 	ingredients: [{ type: Types.ObjectId, ref: 'Ingredient' }],
