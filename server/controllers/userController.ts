@@ -232,3 +232,13 @@ export const deleteRecipe = asyncHandler(async (req, res, next) => {
 
 	res.sendStatus(200);
 });
+
+// Store ingredients from the user's form.
+export const storeIngredients = asyncHandler(async (req, res, next) => {
+	const { _id }: any = req.user;
+	const { ingredients } = req.body;
+
+	await User.findOneAndUpdate({ _id: _id }, { ingredients: ingredients });
+
+	res.sendStatus(200);
+});

@@ -53,4 +53,11 @@ router.delete(
 	userController.deleteRecipe
 );
 
+// POST ingredients to user's account in db.
+router.post(
+	'/store-ingredients',
+	userController.authenticateAndPass,
+	userController.storeIngredients
+);
+
 export default router;

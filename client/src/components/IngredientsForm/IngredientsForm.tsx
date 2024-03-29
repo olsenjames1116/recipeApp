@@ -7,8 +7,10 @@ import { IIngredientWithId } from '../../types';
 // Represents the form for users to add and remove ingredients.
 function IngredientsForm() {
 	const [allIngredients, setAllIngredients] = useState([]);
+	// const [userIngredients, setUserIngredients] = useState([]);
 
 	const saveButtonRef = useRef<HTMLButtonElement>(null);
+	const formRef = useRef<HTMLFormElement>(null);
 
 	const navigate = useNavigate();
 
@@ -50,11 +52,43 @@ function IngredientsForm() {
 		console.log('cancel');
 	};
 
+	const storeCheckedIngredients = async (checkedIngredients: string[]) => {
+		try {
+			await api.post('/user/store-ingredients', {
+				ingredients: checkedIngredients,
+			});
+		} catch (error) {
+			console.log(error);
+		}
+	};
+
 	// Reached after the save button is pressed. Stores changes made in the form.
 	const saveIngredients = (event: React.FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
 
-		console.log('save');
+		let formArray;
+
+		if (formRef.current) {
+			// Convert NodeList to an array.
+			formArray = Array.from(formRef.current) as
+				| HTMLInputElement[]
+				| HTMLButtonElement[];
+		}
+
+		// Creates an array of value strings from checked boxes.
+		const checkedElementsArray = formArray
+			?.filter((child) => {
+				if (child instanceof HTMLInputElement && child.checked === true) {
+					return child.value;
+				}
+			})
+			.map((element) => element.id);
+
+		console.log(checkedElementsArray);
+
+		checkedElementsArray && storeCheckedIngredients(checkedElementsArray);
+
+		if (saveButtonRef.current) saveButtonRef.current.disabled = true;
 	};
 
 	// Enables the save button to be pressed after a change has been made to the form.
@@ -63,20 +97,22 @@ function IngredientsForm() {
 	};
 
 	return (
-		<form onSubmit={saveIngredients}>
-			{allIngredients.map((ingredient: IIngredientWithId) => {
-				return (
-					<div>
-						<input
-							type="checkbox"
-							id={ingredient._id}
-							value={ingredient.name}
-							onChange={enableSave}
-						/>
-						<label htmlFor={ingredient._id}>{ingredient.name}</label>
-					</div>
-				);
-			})}
+		<form ref={formRef} onSubmit={saveIngredients}>
+			<ul>
+				{allIngredients.map((ingredient: IIngredientWithId) => {
+					return (
+						<li key={ingredient._id}>
+							<input
+								type="checkbox"
+								id={ingredient._id}
+								value={ingredient.name}
+								onChange={enableSave}
+							/>
+							<label htmlFor={ingredient._id}>{ingredient.name}</label>
+						</li>
+					);
+				})}
+			</ul>
 			<button onClick={cancelChanges}>Cancel</button>
 			<button ref={saveButtonRef} disabled>
 				Save

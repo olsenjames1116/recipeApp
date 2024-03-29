@@ -1,6 +1,7 @@
 import asyncHandler from 'express-async-handler';
 import Ingredient from '../models/ingredient';
 
+// Get all ingredients stored in the ingredients collection.
 export const getIngredients = asyncHandler(async (req, res, next) => {
 	const { ingredients }: any = req.user;
 
