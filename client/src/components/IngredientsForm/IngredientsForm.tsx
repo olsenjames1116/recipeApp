@@ -1,18 +1,26 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import api from '../../axiosConfig';
 import { AxiosError, AxiosResponse } from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { IIngredientWithId } from '../../types';
 import { useDispatch, useSelector } from 'react-redux';
 import { IRootState } from '../../redux/store';
-import { addAllIngredients } from '../../redux/state/allIngredientsSlice';
+import {
+	addAllIngredients,
+	removeAllIngredients,
+} from '../../redux/state/allIngredientsSlice';
+import {
+	addUserIngredients,
+	removeUserIngredients,
+} from '../../redux/state/userIngredientsSlice';
 
 // Represents the form for users to add and remove ingredients.
 function IngredientsForm() {
-	const [userIngredients, setUserIngredients] = useState(['']);
-
 	const allIngredients = useSelector(
 		(state: IRootState) => state.allIngredients.value
+	);
+	const userIngredients = useSelector(
+		(state: IRootState) => state.userIngredients.value
 	);
 
 	const saveButtonRef = useRef<HTMLButtonElement>(null);
@@ -28,7 +36,7 @@ function IngredientsForm() {
 		const { userIngredients } = response.data;
 		const { allStoredIngredients } = response.data;
 
-		setUserIngredients(userIngredients);
+		dispatch(addUserIngredients(userIngredients));
 		dispatch(addAllIngredients(allStoredIngredients));
 	};
 
@@ -50,6 +58,8 @@ function IngredientsForm() {
 			}
 		};
 
+		dispatch(removeUserIngredients());
+		dispatch(removeAllIngredients());
 		getIngredients();
 	}, []);
 
