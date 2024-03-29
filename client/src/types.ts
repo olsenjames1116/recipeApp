@@ -9,6 +9,6 @@ export interface IRecipeWithId extends IRecipe {
 }
 
 export interface IIngredientWithId {
-	_id?: string;
+	_id: string;
 	name: string;
 }

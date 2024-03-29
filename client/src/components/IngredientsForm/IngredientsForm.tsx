@@ -7,7 +7,7 @@ import { IIngredientWithId } from '../../types';
 // Represents the form for users to add and remove ingredients.
 function IngredientsForm() {
 	const [allIngredients, setAllIngredients] = useState([]);
-	// const [userIngredients, setUserIngredients] = useState([]);
+	const [userIngredients, setUserIngredients] = useState(['']);
 
 	const saveButtonRef = useRef<HTMLButtonElement>(null);
 	const formRef = useRef<HTMLFormElement>(null);
@@ -17,8 +17,10 @@ function IngredientsForm() {
 	/* Reached after a successful call to retrieve ingredients from the backend.
 	 The ingredients will be stored in state. */
 	const storeIngredientsInState = (response: AxiosResponse) => {
+		const { userIngredients } = response.data;
 		const { allStoredIngredients } = response.data;
 
+		setUserIngredients(userIngredients);
 		setAllIngredients(allStoredIngredients);
 	};
 
@@ -100,6 +102,10 @@ function IngredientsForm() {
 		<form ref={formRef} onSubmit={saveIngredients}>
 			<ul>
 				{allIngredients.map((ingredient: IIngredientWithId) => {
+					const checked = userIngredients.includes(ingredient._id)
+						? true
+						: false;
+
 					return (
 						<li key={ingredient._id}>
 							<input
@@ -107,6 +113,7 @@ function IngredientsForm() {
 								id={ingredient._id}
 								value={ingredient.name}
 								onChange={enableSave}
+								defaultChecked={checked}
 							/>
 							<label htmlFor={ingredient._id}>{ingredient.name}</label>
 						</li>
