@@ -11,6 +11,7 @@ import InputMessages from '../InputMessages/InputMessages';
 import axios from 'axios';
 import { addRecipeType } from '../../redux/state/recipeTypeSlice';
 import { addRandomRecipe } from '../../redux/state/randomRecipeSlice';
+import { addSearchIngredients } from '../../redux/state/searchIngredientsSlice';
 
 // Represents the form to search for recipes with ingredients.
 function IngredientSearchForm() {
@@ -19,6 +20,9 @@ function IngredientSearchForm() {
 	);
 	const userIngredients = useSelector(
 		(state: IRootState) => state.userIngredients.value
+	);
+	const searchIngredients = useSelector(
+		(state: IRootState) => state.searchIngredients.value
 	);
 
 	const [inputMessages, setInputMessages] = useState<string[]>([]);
@@ -82,13 +86,13 @@ function IngredientSearchForm() {
 	};
 
 	// Generate a recipe using the user's ingredients from the Spoonacular api.
-	const generateRecipe = async (checkedElementsString: string) => {
+	const generateRecipe = async () => {
 		try {
 			// Generate the random recipe using ingredients.
 			const randomRecipe = await axios.get(
 				`https://api.spoonacular.com/recipes/complexSearch?apiKey=${
 					import.meta.env.VITE_SPOONACULAR_API_KEY
-				}&includeIngredients=${checkedElementsString}&sort=random&number=1`
+				}&includeIngredients=${searchIngredients}&sort=random&number=1`
 			);
 
 			const { id } = randomRecipe.data.results[0];
@@ -144,7 +148,9 @@ function IngredientSearchForm() {
 		} else {
 			const checkedElementsString = checkedElementsArray?.join(',+');
 
-			checkedElementsString && generateRecipe(checkedElementsString);
+			dispatch(addSearchIngredients(checkedElementsString));
+
+			generateRecipe();
 		}
 	};
 
