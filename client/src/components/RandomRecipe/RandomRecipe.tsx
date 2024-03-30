@@ -39,7 +39,6 @@ function RandomRecipe() {
 				}`
 			);
 
-			// Anything below here is reached after a successful call to the Spoonacular api.
 			handleSuccess(response);
 		} catch (error) {
 			console.log(error);

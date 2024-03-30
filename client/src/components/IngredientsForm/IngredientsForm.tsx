@@ -30,7 +30,7 @@ function IngredientsForm() {
 	const navigate = useNavigate();
 
 	/* Reached after a successful call to retrieve ingredients from the backend.
-	 The ingredients will be stored in state. */
+	The ingredients will be stored in state. */
 	const storeIngredientsInState = (response: AxiosResponse) => {
 		const { userIngredients } = response.data;
 		const { allStoredIngredients } = response.data;
@@ -105,7 +105,7 @@ function IngredientsForm() {
 				| HTMLButtonElement[];
 		}
 
-		// Creates an array of value strings from checked boxes.
+		// Creates an array of id strings from checked boxes.
 		const checkedElementsArray = formArray
 			?.filter((child) => {
 				if (child instanceof HTMLInputElement && child.checked === true) {
@@ -113,8 +113,6 @@ function IngredientsForm() {
 				}
 			})
 			.map((element) => element.id);
-
-		console.log(checkedElementsArray);
 
 		checkedElementsArray && storeCheckedIngredients(checkedElementsArray);
 
