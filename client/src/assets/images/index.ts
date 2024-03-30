@@ -1,5 +1,6 @@
-import closeIcon from './close.png';
+import closeRedIcon from './closeRed.png';
 import saveIcon from './save.png';
 import trashIcon from './trash.png';
+import closeBlackIcon from './closeBlack.png';
 
-export { closeIcon, saveIcon, trashIcon };
+export { closeRedIcon, saveIcon, trashIcon, closeBlackIcon };

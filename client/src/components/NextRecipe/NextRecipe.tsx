@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { closeIcon } from '../../assets/images';
+import { closeRedIcon } from '../../assets/images';
 import { IRootState } from '../../redux/store';
 import axios, { AxiosResponse } from 'axios';
 import { IRecipe } from '../../types';
@@ -49,7 +49,7 @@ function NextRecipe() {
 		}
 	};
 
-	return <img src={closeIcon} alt="" onClick={generateRecipe} />;
+	return <img src={closeRedIcon} alt="" onClick={generateRecipe} />;
 }
 
 export default NextRecipe;

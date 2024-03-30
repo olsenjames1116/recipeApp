@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react';
+import { closeBlackIcon } from '../../assets/images';
 
 interface IngredientSearchMenuProps {
 	displayMenu: boolean;
@@ -26,7 +27,11 @@ function IngredientSearchMenu({
 		});
 	});
 
-	return <div ref={menuRef}>IngredientSearchMenu</div>;
+	return (
+		<div ref={menuRef}>
+			<img src={closeBlackIcon} onClick={() => setDisplayMenu(false)} />
+		</div>
+	);
 }
 
 export default IngredientSearchMenu;
