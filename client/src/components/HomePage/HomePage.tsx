@@ -7,6 +7,7 @@ import HomeContent from '../HomeContent/HomeContent';
 import { useDispatch } from 'react-redux';
 import { removeRandomRecipe } from '../../redux/state/randomRecipeSlice';
 
+// Represents the home page.
 function HomePage() {
 	const navigate = useNavigate();
 	const dispatch = useDispatch();

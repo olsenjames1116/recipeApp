@@ -19,7 +19,6 @@ function IngredientSearchForm() {
 	const submitButtonRef = useRef<HTMLButtonElement>(null);
 
 	const dispatch = useDispatch();
-
 	const navigate = useNavigate();
 
 	const storeIngredientsInState = (response: AxiosResponse) => {
@@ -82,7 +81,9 @@ function IngredientSearchForm() {
 					);
 				})}
 			</ul>
-			<button disabled>Submit</button>
+			<button ref={submitButtonRef} disabled>
+				Submit
+			</button>
 		</form>
 	);
 }

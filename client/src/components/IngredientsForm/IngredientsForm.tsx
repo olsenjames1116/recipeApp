@@ -27,7 +27,6 @@ function IngredientsForm() {
 	const formRef = useRef<HTMLFormElement>(null);
 
 	const dispatch = useDispatch();
-
 	const navigate = useNavigate();
 
 	/* Reached after a successful call to retrieve ingredients from the backend.
@@ -82,7 +81,14 @@ function IngredientsForm() {
 
 			dispatch(addUserIngredients(response.data.ingredients));
 		} catch (error) {
-			console.log(error);
+			if (error instanceof AxiosError && error.response?.status === 403) {
+				/* 403 error code is sent from backend if user has not been authenticated. 
+					Navigate user back to log in page to authenticate. */
+				navigate('/log-in');
+			} else {
+				// A catch all for errors produced from api call.
+				console.log(error);
+			}
 		}
 	};
 
