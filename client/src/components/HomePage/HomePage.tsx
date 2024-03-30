@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import api from '../../axiosConfig';
 import Header from '../Header/Header';
 import { useNavigate } from 'react-router-dom';
@@ -10,6 +10,8 @@ import { removeRandomRecipe } from '../../redux/state/randomRecipeSlice';
 function HomePage() {
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
+
+	const menuRef = useRef<HTMLDivElement>(null);
 
 	useEffect(() => {
 		// Check if a user is authenticated and should have access.
@@ -37,7 +39,7 @@ function HomePage() {
 	return (
 		<div>
 			<Header />
-			<HomeContent />
+			<HomeContent menuRef={menuRef} />
 		</div>
 	);
 }

@@ -5,8 +5,12 @@ import GeneratedRecipe from '../GeneratedRecipe/GeneratedRecipe';
 import { useState } from 'react';
 import IngredientSearchMenu from '../IngredientSearchMenu/IngredientSearchMenu';
 
+interface HomeContentProps {
+	menuRef: React.RefObject<HTMLDivElement>;
+}
+
 // Represents the content displayed on the home page.
-function HomeContent() {
+function HomeContent({ menuRef }: HomeContentProps) {
 	const randomRecipe = useSelector(
 		(state: IRootState) => state.randomRecipe.value
 	);
@@ -22,6 +26,7 @@ function HomeContent() {
 			)}
 			{displayMenu && (
 				<IngredientSearchMenu
+					menuRef={menuRef}
 					displayMenu={displayMenu}
 					setDisplayMenu={setDisplayMenu}
 				/>
