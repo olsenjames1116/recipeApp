@@ -2,9 +2,14 @@ import FoodJoke from '../FoodJoke/FoodJoke';
 import RandomRecipe from '../RandomRecipe/RandomRecipe';
 import FoodFact from '../FoodFact/FoodFact';
 import { useEffect, useState } from 'react';
+import RandomRecipeWithIngredients from '../RandomRecipeWithIngredients/RandomRecipeWithIngredients';
+
+interface GenerateRecipesProps {
+	setDisplayMenu: React.Dispatch<React.SetStateAction<boolean>>;
+}
 
 // Represents the recipe generator for the Spoonacular api.
-function GenerateRecipes() {
+function GenerateRecipes({ setDisplayMenu }: GenerateRecipesProps) {
 	const [randomChoice, setRandomChoice] = useState(0);
 
 	useEffect(() => {
@@ -15,7 +20,8 @@ function GenerateRecipes() {
 	return (
 		<div>
 			{randomChoice > 0.5 ? <FoodJoke /> : <FoodFact />}
-			Select an option below to generate recipes <RandomRecipe />
+			Select an option below to generate recipes <RandomRecipe /> or{' '}
+			<RandomRecipeWithIngredients setDisplayMenu={setDisplayMenu} />
 		</div>
 	);
 }

@@ -223,6 +223,7 @@ export const saveRecipe = asyncHandler(async (req, res, next) => {
 export const getRecipes = asyncHandler(async (req, res, next) => {
 	const { recipes }: any = req.user;
 
+	// Sort recipes in order they were saved.
 	recipes.sort((a: IRecipe, b: IRecipe) => {
 		if (a.timestamp > b.timestamp) {
 			return -1;
