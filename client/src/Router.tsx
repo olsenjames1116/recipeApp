@@ -4,6 +4,7 @@ import LogInPage from './components/LogInPage/LogInPage';
 import SignUpPage from './components/SignUpPage/SignUpPage';
 import IngredientsPage from './components/IngredientsPage/IngredientsPage';
 import RecipesPage from './components/RecipesPage/RecipesPage';
+import MealPlannerPage from './components/MealPlannerPage/MealPlannerPage';
 
 function Router() {
 	return (
@@ -13,6 +14,7 @@ function Router() {
 			<Route path="/sign-up" element={<SignUpPage />} />
 			<Route path="/ingredients" element={<IngredientsPage />} />
 			<Route path="/recipes" element={<RecipesPage />} />
+			<Route path="/meal-planner" element={<MealPlannerPage />} />
 		</Routes>
 	);
 }

@@ -14,6 +14,9 @@ function Header() {
 				<li>
 					<Link to="/ingredients">Pantry</Link>
 				</li>
+				<li>
+					<Link to="/meal-planner">Meal Planner</Link>
+				</li>
 				<LogOut />
 			</ul>
 		</header>
