@@ -3,7 +3,8 @@ import randomRecipeReducer from './state/randomRecipeSlice';
 import recipeTypeReducer from './state/recipeTypeSlice';
 import allIngredientsReducer from './state/allIngredientsSlice';
 import userIngredientsReducer from './state/userIngredientsSlice';
-import searchIngredientsSliceReducer from './state/searchIngredientsSlice';
+import searchIngredientsReducer from './state/searchIngredientsSlice';
+import recipeListReducer from './state/recipeListSlice';
 
 export const store = configureStore({
 	reducer: {
@@ -11,7 +12,8 @@ export const store = configureStore({
 		recipeType: recipeTypeReducer,
 		allIngredients: allIngredientsReducer,
 		userIngredients: userIngredientsReducer,
-		searchIngredients: searchIngredientsSliceReducer,
+		searchIngredients: searchIngredientsReducer,
+		recipeList: recipeListReducer,
 	},
 });
 

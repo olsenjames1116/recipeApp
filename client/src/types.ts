@@ -3,6 +3,7 @@ export interface IRecipe {
 	image?: string;
 	url?: string;
 	id?: number;
+	timestamp?: Date;
 }
 
 export interface IRecipeWithId extends IRecipe {

@@ -3,6 +3,7 @@ import { AxiosError } from 'axios';
 import { useNavigate } from 'react-router-dom';
 import api from '../../axiosConfig';
 import Header from '../Header/Header';
+import MealPlannerContent from '../MealPlannerContent/MealPlannerContent';
 
 // Represents the meal planner page.
 function MealPlannerPage() {
@@ -31,7 +32,7 @@ function MealPlannerPage() {
 	return (
 		<div>
 			<Header />
-			Meal Planner
+			<MealPlannerContent />
 		</div>
 	);
 }
