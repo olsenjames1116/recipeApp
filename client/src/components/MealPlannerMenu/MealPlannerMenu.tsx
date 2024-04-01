@@ -1,4 +1,9 @@
 import { useEffect } from 'react';
+import { closeBlackIcon } from '../../assets/images';
+import { useSelector } from 'react-redux';
+import { IRootState } from '../../redux/store';
+import MealPlannerForm from '../MealPlannerForm/MealPlannerForm';
+import MealPlannerRecipes from '../MealPlannerRecipes/MealPlannerRecipes';
 
 interface MealPlannerMenuProps {
 	menuRef: React.RefObject<HTMLDivElement>;
@@ -12,6 +17,10 @@ function MealPlannerMenu({
 	displayMenu,
 	setDisplayMenu,
 }: MealPlannerMenuProps) {
+	const selectedDay = useSelector(
+		(state: IRootState) => state.selectedDay.value
+	);
+
 	useEffect(() => {
 		// Adds an event listener to hide the ingredient search menu.
 		document.addEventListener('mousedown', (event: MouseEvent) => {
@@ -22,7 +31,18 @@ function MealPlannerMenu({
 		});
 	}, []);
 
-	return <div ref={menuRef}>MealPlannerMenu</div>;
+	const closeMenu = () => {
+		setDisplayMenu(false);
+	};
+
+	return (
+		<div ref={menuRef}>
+			<img src={closeBlackIcon} onClick={closeMenu} />
+			<span>{selectedDay}</span>
+			<MealPlannerForm />
+			<MealPlannerRecipes />
+		</div>
+	);
 }
 
 export default MealPlannerMenu;

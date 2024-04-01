@@ -1,3 +1,6 @@
+import { useDispatch } from 'react-redux';
+import { addSelectedDay } from '../../redux/state/selectedDaySlice';
+
 interface MealPlannerProps {
 	setDisplayMenu: React.Dispatch<React.SetStateAction<boolean>>;
 }
@@ -6,6 +9,8 @@ interface MealPlannerProps {
 function MealPlanner({ setDisplayMenu }: MealPlannerProps) {
 	const height = '200px';
 	const width = '200px';
+
+	const dispatch = useDispatch();
 
 	// Clears the planner of all meals.
 	const clearPlanner = (
@@ -20,10 +25,12 @@ function MealPlanner({ setDisplayMenu }: MealPlannerProps) {
 	const displayMealPlannerMenu = (
 		event: React.MouseEvent<HTMLLIElement, MouseEvent>
 	) => {
-		console.log(
-			`${(event.target as HTMLLIElement).id[0].toUpperCase()}${(
-				event.target as HTMLLIElement
-			).id.substring(1)}`
+		dispatch(
+			addSelectedDay(
+				`${(event.target as HTMLLIElement).id[0].toUpperCase()}${(
+					event.target as HTMLLIElement
+				).id.substring(1)}`
+			)
 		);
 
 		setDisplayMenu(true);

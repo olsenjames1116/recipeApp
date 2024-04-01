@@ -1,14 +1,14 @@
 import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { IRootState } from '../../redux/store';
-import { IRecipeWithId } from '../../types';
 import { AxiosError } from 'axios';
 import { useNavigate, Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { IRootState } from '../../redux/store';
 import api from '../../axiosConfig';
 import { addRecipeList } from '../../redux/state/recipeListSlice';
+import { IRecipeWithId } from '../../types';
 
-// Represents the sidebar to display a user's recipe.
-function RecipesSidebar() {
+// Represents the recipes stored by the user.
+function MealPlannerRecipes() {
 	const recipeList = useSelector((state: IRootState) => state.recipeList.value);
 
 	const navigate = useNavigate();
@@ -34,6 +34,7 @@ function RecipesSidebar() {
 			}
 		};
 
+		// Determine if the recipe list is already stored in state.
 		if (recipeList.length === 0) {
 			getRecipeList();
 		}
@@ -48,18 +49,11 @@ function RecipesSidebar() {
 				</li>
 			) : (
 				recipeList.map((recipe: IRecipeWithId) => {
-					return (
-						<li key={recipe._id}>
-							<a href={recipe.url} target="_blank">
-								<img src={recipe.image} />
-								<span>{recipe.title}</span>
-							</a>
-						</li>
-					);
+					return <li key={recipe._id}>{recipe.title}</li>;
 				})
 			)}
 		</ul>
 	);
 }
 
-export default RecipesSidebar;
+export default MealPlannerRecipes;
