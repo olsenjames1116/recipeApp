@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import { IRootState } from '../../redux/store';
 import MealPlannerForm from '../MealPlannerForm/MealPlannerForm';
 import MealPlannerRecipes from '../MealPlannerRecipes/MealPlannerRecipes';
+import MealPlannerSearchResults from '../MealPlannerSearchResults/MealPlannerSearchResults';
 
 interface MealPlannerMenuProps {
 	menuRef: React.RefObject<HTMLDivElement>;
@@ -19,6 +20,9 @@ function MealPlannerMenu({
 }: MealPlannerMenuProps) {
 	const selectedDay = useSelector(
 		(state: IRootState) => state.selectedDay.value
+	);
+	const recipesQuery = useSelector(
+		(state: IRootState) => state.recipesQuery.value
 	);
 
 	useEffect(() => {
@@ -40,7 +44,11 @@ function MealPlannerMenu({
 			<img src={closeBlackIcon} onClick={closeMenu} />
 			<span>{selectedDay}</span>
 			<MealPlannerForm />
-			<MealPlannerRecipes setDisplayMenu={setDisplayMenu} />
+			{recipesQuery.length === 0 ? (
+				<MealPlannerRecipes setDisplayMenu={setDisplayMenu} />
+			) : (
+				<MealPlannerSearchResults setDisplayMenu={setDisplayMenu} />
+			)}
 		</div>
 	);
 }
