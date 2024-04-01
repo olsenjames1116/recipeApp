@@ -1,6 +1,10 @@
 // Represents the form to search stored recipes to add to planner.
 function MealPlannerForm() {
-	const searchForRecipe = () => {
+	const searchForRecipe = (
+		event: React.MouseEvent<HTMLButtonElement, MouseEvent>
+	) => {
+		event.preventDefault();
+
 		console.log('search recipe');
 	};
 

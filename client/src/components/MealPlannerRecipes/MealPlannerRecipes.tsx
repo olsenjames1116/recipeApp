@@ -6,9 +6,14 @@ import { IRootState } from '../../redux/store';
 import api from '../../axiosConfig';
 import { addRecipeList } from '../../redux/state/recipeListSlice';
 import { IRecipeWithId } from '../../types';
+import AddMealToPlannerButton from '../AddMealToPlannerButton/AddMealToPlannerButton';
+
+interface MealPlannerRecipesProps {
+	setDisplayMenu: React.Dispatch<React.SetStateAction<boolean>>;
+}
 
 // Represents the recipes stored by the user.
-function MealPlannerRecipes() {
+function MealPlannerRecipes({ setDisplayMenu }: MealPlannerRecipesProps) {
 	const recipeList = useSelector((state: IRootState) => state.recipeList.value);
 
 	const navigate = useNavigate();
@@ -49,7 +54,12 @@ function MealPlannerRecipes() {
 				</li>
 			) : (
 				recipeList.map((recipe: IRecipeWithId) => {
-					return <li key={recipe._id}>{recipe.title}</li>;
+					return (
+						<li key={recipe._id}>
+							<span>{recipe.title}</span>
+							<AddMealToPlannerButton setDisplayMenu={setDisplayMenu} />
+						</li>
+					);
 				})
 			)}
 		</ul>

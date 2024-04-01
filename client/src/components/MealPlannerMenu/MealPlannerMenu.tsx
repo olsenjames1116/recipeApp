@@ -40,7 +40,7 @@ function MealPlannerMenu({
 			<img src={closeBlackIcon} onClick={closeMenu} />
 			<span>{selectedDay}</span>
 			<MealPlannerForm />
-			<MealPlannerRecipes />
+			<MealPlannerRecipes setDisplayMenu={setDisplayMenu} />
 		</div>
 	);
 }
