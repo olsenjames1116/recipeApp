@@ -15,6 +15,8 @@ function HomePage() {
 	const menuRef = useRef<HTMLDivElement>(null);
 
 	useEffect(() => {
+		document.title = 'Home';
+
 		// Check if a user is authenticated and should have access.
 		const authenticateUser = async () => {
 			try {
