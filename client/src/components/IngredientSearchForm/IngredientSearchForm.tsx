@@ -13,8 +13,12 @@ import { addRecipeType } from '../../redux/state/recipeTypeSlice';
 import { addRandomRecipe } from '../../redux/state/randomRecipeSlice';
 import { addSearchIngredients } from '../../redux/state/searchIngredientsSlice';
 
+interface IngredientSearchFormProps {
+	setDisplayMenu: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
 // Represents the form to search for recipes with ingredients.
-function IngredientSearchForm() {
+function IngredientSearchForm({ setDisplayMenu }: IngredientSearchFormProps) {
 	const allIngredients = useSelector(
 		(state: IRootState) => state.allIngredients.value
 	);
@@ -146,6 +150,8 @@ function IngredientSearchForm() {
 
 			setInputMessages(['Select ingredients to search for recipes.']);
 		} else {
+			setDisplayMenu(false);
+
 			const checkedElementsString = checkedElementsArray?.join(',+');
 
 			dispatch(addSearchIngredients(checkedElementsString));

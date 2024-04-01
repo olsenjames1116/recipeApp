@@ -32,7 +32,7 @@ function IngredientSearchMenu({
 				Ingredients in your pantry are marked in green. Select one or many to
 				search for recipes that contain those ingredients.
 			</span>
-			<IngredientSearchForm />
+			<IngredientSearchForm setDisplayMenu={setDisplayMenu} />
 		</div>
 	);
 }
