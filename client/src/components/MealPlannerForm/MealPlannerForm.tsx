@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { IRootState } from '../../redux/store';
 import { addRecipesQuery } from '../../redux/state/recipesQuerySlice';
+import { addRecipeSearchResults } from '../../redux/state/recipeSearchResultsSlice';
 
 // Represents the form to search stored recipes to add to planner.
 function MealPlannerForm() {
@@ -18,7 +19,7 @@ function MealPlannerForm() {
 			recipe.title?.toLowerCase().includes(query.toLowerCase())
 		);
 
-		console.log(recipeSearchResults);
+		dispatch(addRecipeSearchResults(recipeSearchResults));
 	};
 
 	return (
