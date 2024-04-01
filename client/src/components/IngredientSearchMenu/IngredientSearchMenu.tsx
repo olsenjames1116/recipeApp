@@ -23,7 +23,7 @@ function IngredientSearchMenu({
 				setDisplayMenu(false);
 			}
 		});
-	});
+	}, []);
 
 	return (
 		<div ref={menuRef}>

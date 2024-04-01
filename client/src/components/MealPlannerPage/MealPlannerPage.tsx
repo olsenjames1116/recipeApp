@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { AxiosError } from 'axios';
 import { useNavigate } from 'react-router-dom';
 import api from '../../axiosConfig';
@@ -8,6 +8,8 @@ import MealPlannerContent from '../MealPlannerContent/MealPlannerContent';
 // Represents the meal planner page.
 function MealPlannerPage() {
 	const navigate = useNavigate();
+
+	const menuRef = useRef<HTMLDivElement>(null);
 
 	useEffect(() => {
 		// Check if a user is authenticated and should have access.
@@ -32,7 +34,7 @@ function MealPlannerPage() {
 	return (
 		<div>
 			<Header />
-			<MealPlannerContent />
+			<MealPlannerContent menuRef={menuRef} />
 		</div>
 	);
 }
