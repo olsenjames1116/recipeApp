@@ -7,8 +7,15 @@ interface MealPlannerProps {
 
 // Represents the days of the week to plan meals.
 function MealPlanner({ setDisplayMenu }: MealPlannerProps) {
-	const height = '200px';
-	const width = '200px';
+	const daysOfTheWeek = [
+		'monday',
+		'tuesday',
+		'wednesday',
+		'thursday',
+		'friday',
+		'saturday',
+		'sunday',
+	];
 
 	const dispatch = useDispatch();
 
@@ -41,55 +48,23 @@ function MealPlanner({ setDisplayMenu }: MealPlannerProps) {
 			<li>
 				<button onClick={clearPlanner}>Clear All</button>
 			</li>
-			<li
-				id="monday"
-				style={{ height: height, width: width, border: '1px solid black' }}
-				onClick={displayMealPlannerMenu}
-			>
-				Monday
-			</li>
-			<li
-				id="tuesday"
-				style={{ height: height, width: width, border: '1px solid black' }}
-				onClick={displayMealPlannerMenu}
-			>
-				Tuesday
-			</li>
-			<li
-				id="wednesday"
-				style={{ height: height, width: width, border: '1px solid black' }}
-				onClick={displayMealPlannerMenu}
-			>
-				Wednesday
-			</li>
-			<li
-				id="thursday"
-				style={{ height: height, width: width, border: '1px solid black' }}
-				onClick={displayMealPlannerMenu}
-			>
-				Thursday
-			</li>
-			<li
-				id="friday"
-				style={{ height: height, width: width, border: '1px solid black' }}
-				onClick={displayMealPlannerMenu}
-			>
-				Friday
-			</li>
-			<li
-				id="saturday"
-				style={{ height: height, width: width, border: '1px solid black' }}
-				onClick={displayMealPlannerMenu}
-			>
-				Saturday
-			</li>
-			<li
-				id="sunday"
-				style={{ height: height, width: width, border: '1px solid black' }}
-				onClick={displayMealPlannerMenu}
-			>
-				Sunday
-			</li>
+			{daysOfTheWeek.map((dayOfTheWeek) => {
+				return (
+					<li
+						id={dayOfTheWeek}
+						style={{
+							height: '200px',
+							width: '200px',
+							border: '1px solid black',
+						}}
+						onClick={displayMealPlannerMenu}
+					>
+						<span>{`${dayOfTheWeek[0].toUpperCase()}${dayOfTheWeek.substring(
+							1
+						)}`}</span>
+					</li>
+				);
+			})}
 		</ul>
 	);
 }
