@@ -7,6 +7,8 @@ import { IRootState } from '../../redux/store';
 import { addUserIngredients } from '../../redux/state/userIngredientsSlice';
 import IngredientsList from '../IngredientsList/IngredientsList';
 
+/* Represents the container for ingredients the user has stored 
+to be displayed on the groceries page. */
 function IngredientsOnHand() {
 	const userIngredients = useSelector(
 		(state: IRootState) => state.userIngredients.value
@@ -33,6 +35,8 @@ function IngredientsOnHand() {
 			}
 		};
 
+		/* If the user's ingredients are already stored in state, do not make
+        a call to the backend. */
 		if (userIngredients.length === 0) {
 			getUserIngredients();
 		}

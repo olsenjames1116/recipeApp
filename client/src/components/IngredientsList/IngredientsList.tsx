@@ -2,6 +2,8 @@ import { useSelector } from 'react-redux';
 import { IRootState } from '../../redux/store';
 import { Link } from 'react-router-dom';
 
+/* Represents the list of ingredients the user has stored to be 
+displayed on the groceries page. */
 function IngredientsList() {
 	const userIngredients = useSelector(
 		(state: IRootState) => state.userIngredients.value
