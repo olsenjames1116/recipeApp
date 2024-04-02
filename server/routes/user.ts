@@ -81,4 +81,11 @@ router.delete(
 	userController.deleteRecipeFromPlanner
 );
 
+// DELETE all recipes from a user's planner.
+router.delete(
+	'/clear-planner',
+	userController.authenticateAndPass,
+	userController.clearPlanner
+);
+
 export default router;

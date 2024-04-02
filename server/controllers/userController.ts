@@ -311,3 +311,16 @@ export const deleteRecipeFromPlanner = asyncHandler(async (req, res, next) => {
 
 	res.json({ planner: user?.planner });
 });
+
+// Clear planner of all recipes.
+export const clearPlanner = asyncHandler(async (req, res, next) => {
+	const { _id }: any = req.user;
+
+	const user = await User.findOneAndUpdate(
+		{ _id: _id },
+		{ planner: [] },
+		{ returnDocument: 'after' }
+	);
+
+	res.json({ planner: user?.planner });
+});

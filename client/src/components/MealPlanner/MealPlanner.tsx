@@ -8,6 +8,7 @@ import { IPlanner } from '../../types';
 import Meal from '../Meal/Meal';
 import { addPlanner } from '../../redux/state/plannerSlice';
 import { IRootState } from '../../redux/store';
+import ClearPlannerButton from '../ClearPlannerButton/ClearPlannerButton';
 
 interface MealPlannerProps {
 	setDisplayMenu: React.Dispatch<React.SetStateAction<boolean>>;
@@ -51,15 +52,6 @@ function MealPlanner({ setDisplayMenu }: MealPlannerProps) {
 		getPlanner();
 	}, []);
 
-	// Clears the planner of all meals.
-	const clearPlanner = (
-		event: React.MouseEvent<HTMLButtonElement, MouseEvent>
-	) => {
-		event.preventDefault();
-
-		console.log('clear planner');
-	};
-
 	// Displays the menu to add meals to the planner.
 	const displayMealPlannerMenu = (
 		event: React.MouseEvent<HTMLLIElement, MouseEvent>
@@ -82,7 +74,7 @@ function MealPlanner({ setDisplayMenu }: MealPlannerProps) {
 	return (
 		<ul>
 			<li>
-				<button onClick={clearPlanner}>Clear All</button>
+				<ClearPlannerButton />
 			</li>
 			{daysOfTheWeek.map((dayOfTheWeek, index) => {
 				return (
