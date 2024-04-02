@@ -256,9 +256,22 @@ export const storeIngredients = asyncHandler(async (req, res, next) => {
 	const { _id }: any = req.user;
 	const { ingredients } = req.body;
 
-	await User.findOneAndUpdate({ _id: _id }, { ingredients: ingredients });
+	const user = await User.findOneAndUpdate(
+		{ _id: _id },
+		{ ingredients: ingredients },
+		{ returnDocument: 'after' }
+	).populate('ingredients');
 
-	res.json({ ingredients: ingredients });
+	res.json({ ingredients: user?.ingredients });
+});
+
+// Retrieve ingredients the user has stored.
+export const getUserIngredients = asyncHandler(async (req, res, next) => {
+	const { _id }: any = req.user;
+
+	const user = await User.findOne({ _id: _id }).populate('ingredients');
+
+	res.json({ ingredients: user?.ingredients });
 });
 
 // Return the stored planner for a user from the db.

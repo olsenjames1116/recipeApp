@@ -13,7 +13,6 @@ function MealPlannerContent({ menuRef }: MealPlannerContentProps) {
 
 	return (
 		<main>
-			{/* <RecipesSidebar /> */}
 			<MealPlanner setDisplayMenu={setDisplayMenu} />
 			{displayMenu && (
 				<MealPlannerMenu

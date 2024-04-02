@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { IIngredientWithId } from '../../types';
 
-const initialState: { value: string[] } = {
+const initialState: { value: IIngredientWithId[] } = {
 	value: [],
 };
 

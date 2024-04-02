@@ -128,9 +128,9 @@ function IngredientsForm() {
 		<form ref={formRef} onSubmit={saveIngredients}>
 			<ul>
 				{allIngredients.map((ingredient: IIngredientWithId) => {
-					const checked = userIngredients.includes(ingredient._id)
-						? true
-						: false;
+					const checked = userIngredients.some(
+						({ _id }) => _id === ingredient._id
+					);
 
 					return (
 						<li key={ingredient._id}>

@@ -33,6 +33,7 @@ function MealPlanner({ setDisplayMenu }: MealPlannerProps) {
 	const navigate = useNavigate();
 
 	useEffect(() => {
+		// Get the user's planner information stored in the db.
 		const getPlanner = async () => {
 			try {
 				const response = await api.get('/user/planner');

@@ -60,6 +60,13 @@ router.post(
 	userController.storeIngredients
 );
 
+// GET a user's stored ingredients.
+router.get(
+	'/saved-ingredients',
+	userController.authenticateAndPass,
+	userController.getUserIngredients
+);
+
 // POST a recipe to a user's planner.
 router.post(
 	'/store-in-planner/:day/:id',
