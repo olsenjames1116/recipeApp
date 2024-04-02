@@ -8,6 +8,7 @@ import recipeListReducer from './state/recipeListSlice';
 import selectedDayReducer from './state/selectedDaySlice';
 import recipesQueryReducer from './state/recipesQuerySlice';
 import recipeSearchResultsReducer from './state/recipeSearchResultsSlice';
+import plannerSliceReducer from './state/plannerSlice';
 
 export const store = configureStore({
 	reducer: {
@@ -20,6 +21,7 @@ export const store = configureStore({
 		selectedDay: selectedDayReducer,
 		recipesQuery: recipesQueryReducer,
 		recipeSearchResults: recipeSearchResultsReducer,
+		planner: plannerSliceReducer,
 	},
 });
 

@@ -1,11 +1,13 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addSelectedDay } from '../../redux/state/selectedDaySlice';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import api from '../../axiosConfig';
 import { AxiosError } from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { IPlanner } from '../../types';
 import Meal from '../Meal/Meal';
+import { addPlanner } from '../../redux/state/plannerSlice';
+import { IRootState } from '../../redux/store';
 
 interface MealPlannerProps {
 	setDisplayMenu: React.Dispatch<React.SetStateAction<boolean>>;
@@ -23,7 +25,7 @@ function MealPlanner({ setDisplayMenu }: MealPlannerProps) {
 		'sunday',
 	];
 
-	const [planner, setPlanner] = useState<IPlanner[]>([]);
+	const planner = useSelector((state: IRootState) => state.planner.value);
 
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
@@ -33,7 +35,7 @@ function MealPlanner({ setDisplayMenu }: MealPlannerProps) {
 			try {
 				const response = await api.get('/user/planner');
 
-				setPlanner([...response.data.planner]);
+				dispatch(addPlanner(response.data.planner));
 			} catch (error) {
 				if (error instanceof AxiosError && error.response?.status === 403) {
 					/* 403 error code is sent from backend if user has not been authenticated. 
@@ -98,11 +100,7 @@ function MealPlanner({ setDisplayMenu }: MealPlannerProps) {
 							1
 						)}`}</span>
 						{planner.find((meal: IPlanner) => meal.day === dayOfTheWeek) ? (
-							<Meal
-								dayOfTheWeek={dayOfTheWeek}
-								planner={planner}
-								setPlanner={setPlanner}
-							/>
+							<Meal dayOfTheWeek={dayOfTheWeek} />
 						) : null}
 					</li>
 				);

@@ -3,18 +3,22 @@ import { IPlanner } from '../../types';
 import { AxiosError } from 'axios';
 import { useNavigate } from 'react-router-dom';
 import api from '../../axiosConfig';
+import { useDispatch, useSelector } from 'react-redux';
+import { IRootState } from '../../redux/store';
+import { addPlanner } from '../../redux/state/plannerSlice';
 
 interface MealProps {
 	dayOfTheWeek: string;
-	planner: IPlanner[];
-	setPlanner: React.Dispatch<React.SetStateAction<IPlanner[]>>;
 }
 
 // Represents the meal displayed in the meal planner.
-function Meal({ dayOfTheWeek, planner, setPlanner }: MealProps) {
+function Meal({ dayOfTheWeek }: MealProps) {
+	const planner = useSelector((state: IRootState) => state.planner.value);
+
 	const [meal, setMeal] = useState({});
 
 	const navigate = useNavigate();
+	const dispatch = useDispatch();
 
 	useEffect(() => {
 		const index = planner.findIndex(
@@ -34,7 +38,7 @@ function Meal({ dayOfTheWeek, planner, setPlanner }: MealProps) {
 				`/user/planner/${(meal as IPlanner)._id}`
 			);
 
-			setPlanner([...response.data.planner]);
+			dispatch(addPlanner(response.data.planner));
 		} catch (error) {
 			if (error instanceof AxiosError && error.response?.status === 403) {
 				/* 403 error code is sent from backend if user has not been authenticated. 

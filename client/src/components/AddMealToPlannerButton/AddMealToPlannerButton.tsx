@@ -3,6 +3,7 @@ import api from '../../axiosConfig';
 import { AxiosError } from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 import { IRootState } from '../../redux/store';
+import { addPlanner } from '../../redux/state/plannerSlice';
 
 interface AddMealToPlannerProps {
 	setDisplayMenu: React.Dispatch<React.SetStateAction<boolean>>;
@@ -32,7 +33,7 @@ function AddMealToPlannerButton({ setDisplayMenu }: AddMealToPlannerProps) {
 
 			setDisplayMenu(false);
 
-			console.log(response);
+			dispatch(addPlanner(response.data.planner));
 		} catch (error) {
 			if (error instanceof AxiosError && error.response?.status === 403) {
 				/* 403 error code is sent from backend if user has not been authenticated. 
