@@ -242,12 +242,13 @@ export const deleteRecipe = asyncHandler(async (req, res, next) => {
 	const { _id }: any = req.user;
 	const recipeId = req.params.id;
 
-	await User.findOneAndUpdate(
+	const user = await User.findOneAndUpdate(
 		{ _id: _id },
-		{ $pull: { recipes: { _id: recipeId } } }
+		{ $pull: { recipes: { _id: recipeId } } },
+		{ returnDocument: 'after' }
 	);
 
-	res.sendStatus(200);
+	res.json({ recipes: user?.recipes });
 });
 
 // Store ingredients from the user's form.
