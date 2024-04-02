@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import api from '../../axiosConfig';
 import { AxiosError } from 'axios';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { IRootState } from '../../redux/store';
 
 interface AddMealToPlannerProps {
@@ -16,6 +16,7 @@ function AddMealToPlannerButton({ setDisplayMenu }: AddMealToPlannerProps) {
 	);
 
 	const navigate = useNavigate();
+	const dispatch = useDispatch();
 
 	const addMealToPlanner = async (
 		event: React.MouseEvent<HTMLButtonElement, MouseEvent>

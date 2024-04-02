@@ -74,4 +74,11 @@ router.get(
 	userController.getPlanner
 );
 
+// DELETE a recipe from the user's planner.
+router.delete(
+	'/planner/:id',
+	userController.authenticateAndPass,
+	userController.deleteRecipeFromPlanner
+);
+
 export default router;

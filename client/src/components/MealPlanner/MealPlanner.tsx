@@ -23,7 +23,7 @@ function MealPlanner({ setDisplayMenu }: MealPlannerProps) {
 		'sunday',
 	];
 
-	const [planner, setPlanner] = useState([]);
+	const [planner, setPlanner] = useState<IPlanner[]>([]);
 
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
@@ -33,7 +33,7 @@ function MealPlanner({ setDisplayMenu }: MealPlannerProps) {
 			try {
 				const response = await api.get('/user/planner');
 
-				setPlanner(response.data.planner);
+				setPlanner([...response.data.planner]);
 			} catch (error) {
 				if (error instanceof AxiosError && error.response?.status === 403) {
 					/* 403 error code is sent from backend if user has not been authenticated. 
@@ -98,7 +98,11 @@ function MealPlanner({ setDisplayMenu }: MealPlannerProps) {
 							1
 						)}`}</span>
 						{planner.find((meal: IPlanner) => meal.day === dayOfTheWeek) ? (
-							<Meal dayOfTheWeek={dayOfTheWeek} planner={planner} />
+							<Meal
+								dayOfTheWeek={dayOfTheWeek}
+								planner={planner}
+								setPlanner={setPlanner}
+							/>
 						) : null}
 					</li>
 				);

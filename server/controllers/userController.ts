@@ -287,3 +287,17 @@ export const storeRecipeInPlanner = asyncHandler(async (req, res, next) => {
 
 	res.json({ planner: user?.planner });
 });
+
+// Deletes the recipe from the user's planner.
+export const deleteRecipeFromPlanner = asyncHandler(async (req, res, next) => {
+	const { _id }: any = req.user;
+	const mealId = req.params.id;
+
+	const user = await User.findOneAndUpdate(
+		{ _id: _id },
+		{ $pull: { planner: { _id: mealId } } },
+		{ returnDocument: 'after' }
+	);
+
+	res.json({ planner: user?.planner });
+});
