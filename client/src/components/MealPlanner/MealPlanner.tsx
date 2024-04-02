@@ -17,14 +17,15 @@ interface MealPlannerProps {
 // Represents the days of the week to plan meals.
 function MealPlanner({ setDisplayMenu }: MealPlannerProps) {
 	const daysOfTheWeek = [
+		'sunday',
 		'monday',
 		'tuesday',
 		'wednesday',
 		'thursday',
 		'friday',
 		'saturday',
-		'sunday',
 	];
+	const today = new Date().getDay();
 
 	const planner = useSelector((state: IRootState) => state.planner.value);
 
@@ -84,7 +85,7 @@ function MealPlanner({ setDisplayMenu }: MealPlannerProps) {
 						style={{
 							height: '500px',
 							width: '600px',
-							border: '1px solid black',
+							border: index === today ? '5px solid blue' : '1px solid black',
 						}}
 						onClick={displayMealPlannerMenu}
 					>
