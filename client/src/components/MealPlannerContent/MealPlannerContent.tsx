@@ -1,4 +1,3 @@
-// import RecipesSidebar from '../RecipesSidebar/RecipesSidebar';
 import { useState } from 'react';
 import MealPlanner from '../MealPlanner/MealPlanner';
 import MealPlannerMenu from '../MealPlannerMenu/MealPlannerMenu';

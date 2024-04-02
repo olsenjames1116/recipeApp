@@ -1,8 +1,10 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import Header from '../Header/Header';
 import GroceriesContent from '../GroceriesContent/GroceriesContent';
 
 function GroceriesPage() {
+	const inputRef = useRef<HTMLLIElement>(null);
+
 	useEffect(() => {
 		document.title = 'Groceries';
 	}, []);
@@ -10,7 +12,7 @@ function GroceriesPage() {
 	return (
 		<div>
 			<Header />
-			<GroceriesContent />
+			<GroceriesContent inputRef={inputRef} />
 		</div>
 	);
 }
