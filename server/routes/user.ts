@@ -67,4 +67,11 @@ router.post(
 	userController.storeRecipeInPlanner
 );
 
+// GET the planner stored in the db for the user.
+router.get(
+	'/planner',
+	userController.authenticateAndPass,
+	userController.getPlanner
+);
+
 export default router;

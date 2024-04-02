@@ -260,6 +260,13 @@ export const storeIngredients = asyncHandler(async (req, res, next) => {
 	res.json({ ingredients: ingredients });
 });
 
+// Return the stored planner for a user from the db.
+export const getPlanner = asyncHandler(async (req, res, next) => {
+	const { planner }: any = req.user;
+
+	res.json({ planner: planner });
+});
+
 // Store a recipe in the user's planner.
 export const storeRecipeInPlanner = asyncHandler(async (req, res, next) => {
 	const { _id }: any = req.user;

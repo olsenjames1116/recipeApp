@@ -14,3 +14,8 @@ export interface IIngredientWithId {
 	_id: string;
 	name: string;
 }
+
+export interface IPlanner {
+	day: string;
+	recipe: IRecipe;
+}
