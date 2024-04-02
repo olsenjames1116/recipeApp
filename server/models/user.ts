@@ -17,7 +17,18 @@ const UserSchema = new Schema<IUser, UserModel>({
 		},
 	],
 	ingredients: [{ type: Types.ObjectId, ref: 'Ingredient' }],
-	_id: { type: Types.ObjectId },
+	planner: [
+		{
+			day: { type: String },
+			recipe: {
+				title: { type: String },
+				image: { type: String },
+				url: { type: String },
+				id: { type: Number },
+				timestamp: { type: Date },
+			},
+		},
+	],
 });
 
 const User = model<IUser, UserModel>('User', UserSchema);

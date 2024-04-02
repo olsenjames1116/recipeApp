@@ -6,6 +6,12 @@ export interface IRecipe {
 	url: string;
 	id: number;
 	timestamp: Date;
+	_id?: Types.ObjectId;
+}
+
+export interface IPlanner {
+	day: string;
+	recipe: IRecipe;
 }
 
 export interface IUser {
@@ -14,6 +20,7 @@ export interface IUser {
 	recipes: IRecipe[];
 	ingredients: Types.ObjectId[];
 	_id?: Types.ObjectId;
+	planner: IPlanner[];
 }
 
 export interface IIngredient {

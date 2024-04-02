@@ -24,7 +24,7 @@ function MealPlannerSearchResults({
 			) : (
 				recipeSearchResults.map((recipe) => {
 					return (
-						<li>
+						<li key={recipe._id} id={recipe._id}>
 							<span>{recipe.title}</span>
 							<AddMealToPlannerButton setDisplayMenu={setDisplayMenu} />
 						</li>

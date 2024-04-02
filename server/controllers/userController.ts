@@ -1,6 +1,6 @@
 import User from '../models/user';
 import { body, validationResult } from 'express-validator';
-import { IRecipe, IUser } from '../utils/types';
+import { IPlanner, IRecipe, IUser } from '../utils/types';
 import bcrypt from 'bcrypt';
 import { HydratedDocument } from 'mongoose';
 import asyncHandler from 'express-async-handler';
@@ -258,4 +258,25 @@ export const storeIngredients = asyncHandler(async (req, res, next) => {
 	await User.findOneAndUpdate({ _id: _id }, { ingredients: ingredients });
 
 	res.json({ ingredients: ingredients });
+});
+
+// Store a recipe in the user's planner.
+export const storeRecipeInPlanner = asyncHandler(async (req, res, next) => {
+	const { _id }: any = req.user;
+	const { recipes }: any = req.user;
+	const recipeId = req.params.id;
+	const day = req.params.day.toLowerCase();
+
+	// Find the recipe information from the stored recipes from the user.
+	const recipe = recipes.find(
+		(recipe: IRecipe) => recipe._id?.toString() === recipeId
+	);
+
+	const user = await User.findOneAndUpdate(
+		{ _id: _id },
+		{ $push: { planner: { day: day, recipe: recipe } } },
+		{ returnDocument: 'after' }
+	);
+
+	res.json({ planner: user?.planner });
 });

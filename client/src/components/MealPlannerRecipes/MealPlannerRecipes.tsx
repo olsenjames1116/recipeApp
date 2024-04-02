@@ -55,7 +55,7 @@ function MealPlannerRecipes({ setDisplayMenu }: MealPlannerRecipesProps) {
 			) : (
 				recipeList.map((recipe: IRecipeWithId) => {
 					return (
-						<li key={recipe._id}>
+						<li key={recipe._id} id={recipe._id}>
 							<span>{recipe.title}</span>
 							<AddMealToPlannerButton setDisplayMenu={setDisplayMenu} />
 						</li>

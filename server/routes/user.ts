@@ -60,4 +60,11 @@ router.post(
 	userController.storeIngredients
 );
 
+// POST a recipe to a user's planner.
+router.post(
+	'/store-in-planner/:day/:id',
+	userController.authenticateAndPass,
+	userController.storeRecipeInPlanner
+);
+
 export default router;
