@@ -272,6 +272,7 @@ export const getPlanner = asyncHandler(async (req, res, next) => {
 export const storeRecipeInPlanner = asyncHandler(async (req, res, next) => {
 	const { _id }: any = req.user;
 	const { recipes }: any = req.user;
+	const { planner }: any = req.user;
 	const recipeId = req.params.id;
 	const day = req.params.day.toLowerCase();
 
@@ -280,13 +281,21 @@ export const storeRecipeInPlanner = asyncHandler(async (req, res, next) => {
 		(recipe: IRecipe) => recipe._id?.toString() === recipeId
 	);
 
-	const user = await User.findOneAndUpdate(
-		{ _id: _id },
-		{ $push: { planner: { day: day, recipe: recipe } } },
-		{ returnDocument: 'after' }
-	);
+	/* If there is a recipe already stored in the planner for the day the user 
+	has selected, do not allow the recipe to be stored in the planner. */
+	if (planner.find((meal: IPlanner) => meal.day === day)) {
+		res
+			.status(409)
+			.send(`There is already a recipe stored in the planner on "${day}"`);
+	} else {
+		const user = await User.findOneAndUpdate(
+			{ _id: _id },
+			{ $push: { planner: { day: day, recipe: recipe } } },
+			{ returnDocument: 'after' }
+		);
 
-	res.json({ planner: user?.planner });
+		res.json({ planner: user?.planner });
+	}
 });
 
 // Deletes the recipe from the user's planner.
