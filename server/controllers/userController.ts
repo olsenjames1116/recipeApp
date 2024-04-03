@@ -337,3 +337,48 @@ export const clearPlanner = asyncHandler(async (req, res, next) => {
 
 	res.json({ planner: user?.planner });
 });
+
+// Validate grocery item input.
+export const validateGroceryItem = [
+	body('item')
+		.trim()
+		.escape()
+		.notEmpty()
+		.withMessage('Item input must not be empty.')
+		.isLength({ max: 50 })
+		.withMessage('Item input must be less than 50 characters.'),
+];
+
+// Store a grocery item for the user in the db.
+export const storeGroceryItem = asyncHandler(async (req, res, next) => {
+	// Extract the validation errors from the request.
+	const errors = validationResult(req);
+
+	const { _id }: any = req.user;
+	const { item } = req.body;
+
+	if (!errors.isEmpty()) {
+		// There are errors. Render form again with error messages.
+		const errorMessages = errors.array().map((error) => error.msg);
+
+		res.status(400).json({
+			message: errorMessages,
+		});
+	} else {
+		// There are no errors. Store the grocery item in the db.
+		const user = await User.findByIdAndUpdate(
+			{ _id: _id },
+			{ $push: { groceries: item } },
+			{ returnDocument: 'after' }
+		);
+
+		res.json({ groceries: user?.groceries });
+	}
+});
+
+// Retrieve the stored groceries for a user.
+export const getGroceries = asyncHandler(async (req, res, next) => {
+	const { groceries }: any = req.user;
+
+	res.json({ groceries: groceries });
+});

@@ -29,6 +29,7 @@ const UserSchema = new Schema<IUser, UserModel>({
 			},
 		},
 	],
+	groceries: [{ type: String }],
 });
 
 const User = model<IUser, UserModel>('User', UserSchema);

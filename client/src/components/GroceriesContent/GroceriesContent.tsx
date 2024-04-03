@@ -3,18 +3,18 @@ import GroceriesForm from '../GroceriesForm/GroceriesForm';
 import IngredientsOnHand from '../IngredientsOnHand/IngredientsOnHand';
 
 interface GroceriesContentProps {
-	inputRef: React.RefObject<HTMLLIElement>;
+	inputMenuRef: React.RefObject<HTMLLIElement>;
 }
 
 // Represents the content displayed on the groceries page.
-function GroceriesContent({ inputRef }: GroceriesContentProps) {
+function GroceriesContent({ inputMenuRef }: GroceriesContentProps) {
 	const [displayInput, setDisplayInput] = useState(false);
 
 	return (
 		<main>
 			<IngredientsOnHand />
 			<GroceriesForm
-				inputRef={inputRef}
+				inputMenuRef={inputMenuRef}
 				displayInput={displayInput}
 				setDisplayInput={setDisplayInput}
 			/>

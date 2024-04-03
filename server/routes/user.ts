@@ -95,4 +95,19 @@ router.delete(
 	userController.clearPlanner
 );
 
+// POST a grocery item to the user's profile.
+router.post(
+	'/save-grocery-item',
+	userController.authenticateAndPass,
+	userController.validateGroceryItem,
+	userController.storeGroceryItem
+);
+
+// GET the stored groceries from a user.
+router.get(
+	'/groceries',
+	userController.authenticateAndPass,
+	userController.getGroceries
+);
+
 export default router;

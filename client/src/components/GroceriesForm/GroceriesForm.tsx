@@ -1,29 +1,45 @@
-import { useRef, useEffect } from 'react';
+import { useEffect, useRef } from 'react';
+import GroceryItemInput from '../GroceryItemInput/GroceryItemInput';
+import api from '../../axiosConfig';
+import { AxiosError } from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 interface GroceriesFormProps {
-	inputRef: React.RefObject<HTMLLIElement>;
+	inputMenuRef: React.RefObject<HTMLLIElement>;
 	displayInput: boolean;
 	setDisplayInput: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
+// Represents the form to add new items to the grocery list.
 function GroceriesForm({
-	inputRef,
+	inputMenuRef,
 	displayInput,
 	setDisplayInput,
 }: GroceriesFormProps) {
 	const listRef = useRef(null);
 
+	const navigate = useNavigate();
+
 	useEffect(() => {
-		// Adds an event listener to hide the ingredient search menu.
-		document.addEventListener('mousedown', (event: MouseEvent) => {
-			// If the menu is displayed and the event occurred outside of the menu, hide menu.
-			if (
-				displayInput &&
-				!inputRef.current?.contains(event.currentTarget as Node)
-			) {
-				setDisplayInput(false);
+		// Get a user's stored groceries from their profile.
+		const getGroceries = async () => {
+			try {
+				const response = await api.get('/user/groceries');
+
+				console.log(response);
+			} catch (error) {
+				if (error instanceof AxiosError && error.response?.status === 403) {
+					/* 403 error code is sent from backend if user has not been authenticated. 
+					Navigate user back to log in page to authenticate. */
+					navigate('/log-in');
+				} else {
+					// A catch all for errors produced from api call.
+					console.log(error);
+				}
 			}
-		});
+		};
+
+		getGroceries();
 	}, []);
 
 	const printOrDownloadList = (event: React.FormEvent<HTMLFormElement>) => {
@@ -32,28 +48,13 @@ function GroceriesForm({
 		console.log('print or download list');
 	};
 
+	// Displays the input element to enter a new grocery list item.
 	const displayInputElement = (
 		event: React.MouseEvent<HTMLButtonElement, MouseEvent>
 	) => {
 		event.preventDefault();
 
 		setDisplayInput(true);
-	};
-
-	const addItemToList = (
-		event: React.MouseEvent<HTMLButtonElement, MouseEvent>
-	) => {
-		event.preventDefault();
-
-		console.log('add item to list');
-	};
-
-	const cancelItem = (
-		event: React.MouseEvent<HTMLButtonElement, MouseEvent>
-	) => {
-		event.preventDefault();
-
-		setDisplayInput(false);
 	};
 
 	const clearList = (
@@ -65,18 +66,18 @@ function GroceriesForm({
 	};
 
 	return (
-		<form onSubmit={printOrDownloadList}>
+		<form onSubmit={printOrDownloadList} noValidate>
 			<span>Groceries:</span>
 			<ul ref={listRef}>
 				<li>
 					<button onClick={displayInputElement}>+Add Item</button>
 				</li>
 				{displayInput && (
-					<li ref={inputRef}>
-						<input type="text" />
-						<button onClick={addItemToList}>Add</button>
-						<button onClick={cancelItem}>Cancel</button>
-					</li>
+					<GroceryItemInput
+						inputMenuRef={inputMenuRef}
+						displayInput={displayInput}
+						setDisplayInput={setDisplayInput}
+					/>
 				)}
 			</ul>
 			<button>Print or Download</button>

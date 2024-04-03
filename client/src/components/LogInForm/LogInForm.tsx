@@ -24,7 +24,8 @@ function LogInForm() {
 
 	// Reached when there is an error detected from front end validation.
 	const handleInputError = () => {
-		// Each check will determine what cause the error and display the appropriate error message for clarity.
+		/* Each check will determine what cause the error and display the appropriate error 
+		message for clarity. */
 		if (!usernameRef.current?.checkValidity()) {
 			usernameRef.current?.validity.valueMissing &&
 				setInputMessages((state) => [...state, 'Username must not be empty.']);

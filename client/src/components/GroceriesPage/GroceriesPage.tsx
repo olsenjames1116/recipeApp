@@ -3,7 +3,7 @@ import Header from '../Header/Header';
 import GroceriesContent from '../GroceriesContent/GroceriesContent';
 
 function GroceriesPage() {
-	const inputRef = useRef<HTMLLIElement>(null);
+	const inputMenuRef = useRef<HTMLLIElement>(null);
 
 	useEffect(() => {
 		document.title = 'Groceries';
@@ -12,7 +12,7 @@ function GroceriesPage() {
 	return (
 		<div>
 			<Header />
-			<GroceriesContent inputRef={inputRef} />
+			<GroceriesContent inputMenuRef={inputMenuRef} />
 		</div>
 	);
 }
