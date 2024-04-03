@@ -117,4 +117,11 @@ router.post(
 	userController.storeCheckedItem
 );
 
+// DELETE grocery item from user's list.
+router.delete(
+	'/grocery/:id',
+	userController.authenticateAndPass,
+	userController.deleteGrocery
+);
+
 export default router;

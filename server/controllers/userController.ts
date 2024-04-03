@@ -399,3 +399,17 @@ export const storeCheckedItem = asyncHandler(async (req, res, next) => {
 
 	res.json({ groceries: user?.groceries });
 });
+
+// Delete the specified grocery item from user's profile.
+export const deleteGrocery = asyncHandler(async (req, res, next) => {
+	const { _id }: any = req.user;
+	const itemId = req.params.id;
+
+	const user = await User.findOneAndUpdate(
+		{ _id: _id },
+		{ $pull: { groceries: { _id: itemId } } },
+		{ returnDocument: 'after' }
+	);
+
+	res.json({ groceries: user?.groceries });
+});

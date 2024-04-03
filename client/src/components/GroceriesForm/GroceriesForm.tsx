@@ -90,6 +90,30 @@ function GroceriesForm({
 		}
 	};
 
+	// Delete item from grocery list.
+	const deleteGroceryItem = async (
+		event: React.MouseEvent<HTMLButtonElement, MouseEvent>
+	) => {
+		event.preventDefault();
+
+		const id = (event.target as HTMLButtonElement).parentElement?.id;
+
+		try {
+			const response = await api.delete(`/user/grocery/${id}`);
+
+			dispatch(addGroceries(response.data.groceries));
+		} catch (error) {
+			if (error instanceof AxiosError && error.response?.status === 403) {
+				/* 403 error code is sent from backend if user has not been authenticated. 
+					Navigate user back to log in page to authenticate. */
+				navigate('/log-in');
+			} else {
+				// A catch all for errors produced from api call.
+				console.log(error);
+			}
+		}
+	};
+
 	const clearList = (
 		event: React.MouseEvent<HTMLButtonElement, MouseEvent>
 	) => {
@@ -113,7 +137,7 @@ function GroceriesForm({
 					/>
 				)}
 				{groceryList.map((grocery) => (
-					<li key={grocery._id}>
+					<li key={grocery._id} id={grocery._id}>
 						<input
 							type="checkbox"
 							id={grocery._id}
@@ -122,6 +146,7 @@ function GroceriesForm({
 							defaultChecked={grocery.checked}
 						/>
 						<label htmlFor={grocery._id}>{grocery.name}</label>
+						<button onClick={deleteGroceryItem}>Remove</button>
 					</li>
 				))}
 			</ul>
