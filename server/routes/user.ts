@@ -1,6 +1,6 @@
 import express from 'express';
 const router = express.Router();
-import * as userController from '../controllers/userController';
+import * as userController from '../controllers/user/userController';
 
 // POST a new user to validate and sign them up.
 router.post(
