@@ -88,7 +88,10 @@ function GroceriesForm({
 					/>
 				)}
 				{groceryList.map((grocery) => (
-					<li key={grocery._id}>{grocery.name}</li>
+					<li key={grocery._id}>
+						<input id={grocery._id} type="checkbox" />
+						<label htmlFor={grocery._id}>{grocery.name}</label>
+					</li>
 				))}
 			</ul>
 			<button>Print or Download</button>
