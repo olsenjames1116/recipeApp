@@ -413,3 +413,16 @@ export const deleteGrocery = asyncHandler(async (req, res, next) => {
 
 	res.json({ groceries: user?.groceries });
 });
+
+// Delete all items from a user's grocery list.
+export const clearGroceries = asyncHandler(async (req, res, next) => {
+	const { _id }: any = req.user;
+
+	const user = await User.findOneAndUpdate(
+		{ _id: _id },
+		{ groceries: [] },
+		{ returnDocument: 'after' }
+	);
+
+	res.json({ groceries: user?.groceries });
+});

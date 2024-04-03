@@ -114,12 +114,26 @@ function GroceriesForm({
 		}
 	};
 
-	const clearList = (
+	// Clear all items from grocery list.
+	const clearList = async (
 		event: React.MouseEvent<HTMLButtonElement, MouseEvent>
 	) => {
 		event.preventDefault();
 
-		console.log('clear list');
+		try {
+			const response = await api.delete('/user/groceries');
+
+			dispatch(addGroceries(response.data.groceries));
+		} catch (error) {
+			if (error instanceof AxiosError && error.response?.status === 403) {
+				/* 403 error code is sent from backend if user has not been authenticated. 
+					Navigate user back to log in page to authenticate. */
+				navigate('/log-in');
+			} else {
+				// A catch all for errors produced from api call.
+				console.log(error);
+			}
+		}
 	};
 
 	return (

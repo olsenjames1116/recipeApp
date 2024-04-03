@@ -124,4 +124,11 @@ router.delete(
 	userController.deleteGrocery
 );
 
+// DELETE all items from a user's grocery list.
+router.delete(
+	'/groceries',
+	userController.authenticateAndPass,
+	userController.clearGroceries
+);
+
 export default router;
