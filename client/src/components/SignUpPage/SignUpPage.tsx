@@ -18,7 +18,6 @@ function SignUpPage() {
 			try {
 				await api.get('/user/logged-out');
 			} catch (error) {
-				// Anything that reaches here is due to an error.
 				if (error instanceof AxiosError && error.response?.status === 403) {
 					/* 403 error is sent from backend if user has been authenticated. 
 					Navigate user back to home page. */

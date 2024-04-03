@@ -9,10 +9,10 @@ function RecipesPage() {
 	}, []);
 
 	return (
-		<main>
+		<div>
 			<Header />
 			<RecipesContent />
-		</main>
+		</div>
 	);
 }
 

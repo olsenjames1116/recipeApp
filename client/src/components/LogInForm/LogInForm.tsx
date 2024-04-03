@@ -61,7 +61,6 @@ function LogInForm() {
 
 			navigate('/');
 		} catch (error) {
-			// Anything that reaches here is due to an error.
 			if (
 				error instanceof AxiosError &&
 				(error.response?.status === 400 || error.response?.status === 401)

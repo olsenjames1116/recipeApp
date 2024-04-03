@@ -35,6 +35,7 @@ function MealPlannerMenu({
 		});
 	}, []);
 
+	// Closes the meal planner menu when the close icon is clicked.
 	const closeMenu = () => {
 		setDisplayMenu(false);
 	};

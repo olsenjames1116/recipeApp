@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import DemoAccountLogIn from '../DemoAccountLogIn/DemoAccountLogIn';
 
+// Represents the alternatives to logging in on the log in page.
 function LogInOptions() {
 	return (
 		<ul>

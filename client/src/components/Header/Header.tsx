@@ -1,6 +1,7 @@
 import LogOut from '../LogOut/LogOut';
 import { Link } from 'react-router-dom';
 
+// Represents the header at the top of the page.
 function Header() {
 	return (
 		<header>

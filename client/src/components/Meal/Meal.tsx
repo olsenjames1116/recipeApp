@@ -21,6 +21,7 @@ function Meal({ dayOfTheWeek }: MealProps) {
 	const dispatch = useDispatch();
 
 	useEffect(() => {
+		// Finds the meal from state to display details to user.
 		const index = planner.findIndex(
 			(meal: IPlanner) => meal.day === dayOfTheWeek
 		);
@@ -28,6 +29,7 @@ function Meal({ dayOfTheWeek }: MealProps) {
 		setMeal({ ...planner[index] });
 	}, []);
 
+	// Deletes the specified meal from the planner.
 	const deleteMeal = async (
 		event: React.MouseEvent<HTMLButtonElement, MouseEvent>
 	) => {

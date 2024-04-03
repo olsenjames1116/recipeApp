@@ -24,7 +24,6 @@ function SaveRecipe() {
 				id: randomRecipe.id,
 			});
 
-			// Navigate user to recipes page.
 			navigate('/recipes');
 		} catch (error) {
 			if (error instanceof AxiosError && error.response?.status === 409) {

@@ -15,7 +15,6 @@ passport.use(
 			return done(null, false, {
 				message: `Username "${username}" does not exist.`,
 			});
-			// return done(new Error(`Username "${username}" does not exist.`));
 		}
 
 		try {

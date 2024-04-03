@@ -13,6 +13,7 @@ import { removeRandomRecipe } from '../../redux/state/randomRecipeSlice';
 import { removeRecipeSearchResults } from '../../redux/state/recipeSearchResultsSlice';
 import { removeSearchIngredients } from '../../redux/state/searchIngredientsSlice';
 
+// Represents the log out button in the header.
 function LogOut() {
 	const navigate = useNavigate();
 	const dispatch = useDispatch();

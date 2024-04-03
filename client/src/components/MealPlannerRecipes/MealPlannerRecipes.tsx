@@ -25,7 +25,6 @@ function MealPlannerRecipes({ setDisplayMenu }: MealPlannerRecipesProps) {
 			try {
 				const response = await api.get('/user/recipes');
 
-				//Store user's recipes in state.
 				dispatch(addRecipeList(response.data.recipes));
 			} catch (error) {
 				if (error instanceof AxiosError && error.response?.status === 403) {

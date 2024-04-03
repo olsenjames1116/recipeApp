@@ -40,6 +40,7 @@ function GroceryItemInput({
 		});
 	}, []);
 
+	// Sets value for item when text is input into field.
 	const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 		const value = event.target.value;
 
@@ -88,6 +89,7 @@ function GroceryItemInput({
 		}
 	};
 
+	// Validate the input from the item input field before sending to backend.
 	const validateInput = (
 		event: React.MouseEvent<HTMLButtonElement, MouseEvent>
 	) => {
