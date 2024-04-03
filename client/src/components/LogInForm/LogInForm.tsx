@@ -59,9 +59,6 @@ function LogInForm() {
 				password: password,
 			});
 
-			// Reached if backend validation and user was found in database.
-
-			// Navigate user to home page.
 			navigate('/');
 		} catch (error) {
 			// Anything that reaches here is due to an error.

@@ -1,3 +1,4 @@
+// Represents the container for the form on the log in and sign up pages.
 function AccountFormContainer({ children }: { children: React.ReactNode }) {
 	return (
 		<div>

@@ -4,6 +4,7 @@ import { AxiosError } from 'axios';
 import { useDispatch } from 'react-redux';
 import { addPlanner } from '../../redux/state/plannerSlice';
 
+// Represents the button on the planner page that clears the planner.
 function ClearPlannerButton() {
 	const navigate = useNavigate();
 	const dispatch = useDispatch();

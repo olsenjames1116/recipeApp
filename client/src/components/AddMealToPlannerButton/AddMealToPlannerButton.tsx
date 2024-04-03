@@ -19,6 +19,7 @@ function AddMealToPlannerButton({ setDisplayMenu }: AddMealToPlannerProps) {
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
 
+	// Adds the selected meal to the planner on that day and stores in db.
 	const addMealToPlanner = async (
 		event: React.MouseEvent<HTMLButtonElement, MouseEvent>
 	) => {
