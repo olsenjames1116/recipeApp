@@ -3,6 +3,9 @@ import GroceryItemInput from '../GroceryItemInput/GroceryItemInput';
 import api from '../../axiosConfig';
 import { AxiosError } from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { IRootState } from '../../redux/store';
+import { addGroceries } from '../../redux/state/groceryListSlice';
 
 interface GroceriesFormProps {
 	inputMenuRef: React.RefObject<HTMLLIElement>;
@@ -16,9 +19,14 @@ function GroceriesForm({
 	displayInput,
 	setDisplayInput,
 }: GroceriesFormProps) {
+	const groceryList = useSelector(
+		(state: IRootState) => state.groceryList.value
+	);
+
 	const listRef = useRef(null);
 
 	const navigate = useNavigate();
+	const dispatch = useDispatch();
 
 	useEffect(() => {
 		// Get a user's stored groceries from their profile.
@@ -26,7 +34,7 @@ function GroceriesForm({
 			try {
 				const response = await api.get('/user/groceries');
 
-				console.log(response);
+				dispatch(addGroceries(response.data.groceries));
 			} catch (error) {
 				if (error instanceof AxiosError && error.response?.status === 403) {
 					/* 403 error code is sent from backend if user has not been authenticated. 
@@ -79,6 +87,9 @@ function GroceriesForm({
 						setDisplayInput={setDisplayInput}
 					/>
 				)}
+				{groceryList.map((grocery, index) => (
+					<li key={index}>{grocery}</li>
+				))}
 			</ul>
 			<button>Print or Download</button>
 			<button onClick={clearList}>Clear All</button>

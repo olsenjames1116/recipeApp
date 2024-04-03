@@ -3,6 +3,8 @@ import { AxiosError } from 'axios';
 import { useNavigate } from 'react-router-dom';
 import InputMessages from '../InputMessages/InputMessages';
 import api from '../../axiosConfig';
+import { useDispatch } from 'react-redux';
+import { addGroceries } from '../../redux/state/groceryListSlice';
 
 interface GroceryItemInputProps {
 	inputMenuRef: React.RefObject<HTMLLIElement>;
@@ -23,6 +25,7 @@ function GroceryItemInput({
 	const inputRef = useRef<HTMLInputElement>(null);
 
 	const navigate = useNavigate();
+	const dispatch = useDispatch();
 
 	useEffect(() => {
 		// Adds an event listener to hide the ingredient search menu.
@@ -61,7 +64,7 @@ function GroceryItemInput({
 				item: item,
 			});
 
-			console.log(response);
+			dispatch(addGroceries(response.data.groceries));
 		} catch (error) {
 			if (error instanceof AxiosError && error.response?.status === 403) {
 				/* 403 error code is sent from backend if user has not been authenticated. 

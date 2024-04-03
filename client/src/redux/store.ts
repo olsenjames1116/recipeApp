@@ -9,6 +9,7 @@ import selectedDayReducer from './state/selectedDaySlice';
 import recipesQueryReducer from './state/recipesQuerySlice';
 import recipeSearchResultsReducer from './state/recipeSearchResultsSlice';
 import plannerSliceReducer from './state/plannerSlice';
+import groceryListReducer from './state/groceryListSlice';
 
 export const store = configureStore({
 	reducer: {
@@ -22,6 +23,7 @@ export const store = configureStore({
 		recipesQuery: recipesQueryReducer,
 		recipeSearchResults: recipeSearchResultsReducer,
 		planner: plannerSliceReducer,
+		groceryList: groceryListReducer,
 	},
 });
 
