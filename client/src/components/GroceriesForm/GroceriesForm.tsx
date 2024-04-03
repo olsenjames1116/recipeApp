@@ -7,6 +7,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { IRootState } from '../../redux/store';
 import { addGroceries } from '../../redux/state/groceryListSlice';
 import GroceryListItem from '../GroceryListItem/GroceryListItem';
+import ReactToPrint from 'react-to-print';
 
 interface GroceriesFormProps {
 	inputMenuRef: React.RefObject<HTMLLIElement>;
@@ -25,6 +26,7 @@ function GroceriesForm({
 	);
 
 	const listRef = useRef(null);
+	const printFrameRef = useRef(null);
 
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
@@ -50,12 +52,6 @@ function GroceriesForm({
 
 		getGroceries();
 	}, []);
-
-	const printOrDownloadList = (event: React.FormEvent<HTMLFormElement>) => {
-		event.preventDefault();
-
-		console.log('print or download list');
-	};
 
 	// Displays the input element to enter a new grocery list item.
 	const displayInputElement = (
@@ -89,7 +85,11 @@ function GroceriesForm({
 	};
 
 	return (
-		<form onSubmit={printOrDownloadList} noValidate>
+		<form
+			onSubmit={(event) => event.preventDefault()}
+			noValidate
+			ref={printFrameRef}
+		>
 			<span>Groceries:</span>
 			<ul ref={listRef}>
 				<li>
@@ -106,7 +106,11 @@ function GroceriesForm({
 					<GroceryListItem key={grocery._id} grocery={grocery} />
 				))}
 			</ul>
-			<button>Print or Download</button>
+			<ReactToPrint
+				bodyClass="print-agreement"
+				content={() => printFrameRef.current}
+				trigger={() => <button>Print or Download</button>}
+			/>
 			<button onClick={clearList}>Clear All</button>
 		</form>
 	);
