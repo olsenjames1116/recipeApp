@@ -20,3 +20,9 @@ export interface IPlanner {
 	recipe: IRecipe;
 	_id?: string;
 }
+
+export interface IGrocery {
+	name: string;
+	checked: boolean;
+	_id?: string;
+}

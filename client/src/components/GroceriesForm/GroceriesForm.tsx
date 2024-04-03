@@ -87,8 +87,8 @@ function GroceriesForm({
 						setDisplayInput={setDisplayInput}
 					/>
 				)}
-				{groceryList.map((grocery, index) => (
-					<li key={index}>{grocery}</li>
+				{groceryList.map((grocery) => (
+					<li key={grocery._id}>{grocery.name}</li>
 				))}
 			</ul>
 			<button>Print or Download</button>

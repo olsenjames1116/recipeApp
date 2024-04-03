@@ -29,7 +29,7 @@ const UserSchema = new Schema<IUser, UserModel>({
 			},
 		},
 	],
-	groceries: [{ type: String }],
+	groceries: [{ name: { type: String }, checked: { type: Boolean } }],
 });
 
 const User = model<IUser, UserModel>('User', UserSchema);

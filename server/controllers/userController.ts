@@ -368,7 +368,7 @@ export const storeGroceryItem = asyncHandler(async (req, res, next) => {
 		// There are no errors. Store the grocery item in the db.
 		const user = await User.findByIdAndUpdate(
 			{ _id: _id },
-			{ $push: { groceries: item } },
+			{ $push: { groceries: { name: item, checked: false } } },
 			{ returnDocument: 'after' }
 		);
 

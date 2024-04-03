@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { IGrocery } from '../../types';
 
-const initialState: { value: string[] } = { value: [] };
+const initialState: { value: IGrocery[] } = { value: [] };
 
 // Represents all the groceries stored for a user in the db.
 export const groceryListSlice = createSlice({
