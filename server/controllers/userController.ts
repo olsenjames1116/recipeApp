@@ -382,3 +382,20 @@ export const getGroceries = asyncHandler(async (req, res, next) => {
 
 	res.json({ groceries: groceries });
 });
+
+// Store the change to the checked attribute for a grocery item.
+export const storeCheckedItem = asyncHandler(async (req, res, next) => {
+	const { _id }: any = req.user;
+	const itemId = req.body.id;
+	const { checked } = req.body;
+
+	const user = await User.findOneAndUpdate(
+		{ _id: _id, 'groceries._id': `${itemId}` },
+		{
+			$set: { 'groceries.$.checked': checked },
+		},
+		{ returnDocument: 'after' }
+	);
+
+	res.json({ groceries: user?.groceries });
+});

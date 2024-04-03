@@ -110,4 +110,11 @@ router.get(
 	userController.getGroceries
 );
 
+// POST checked attribute to a grocery item.
+router.post(
+	'/grocery',
+	userController.authenticateAndPass,
+	userController.storeCheckedItem
+);
+
 export default router;
