@@ -1,7 +1,10 @@
 This project highlights:
 
+- Express/Node.js
+- React
+- MongoDB
 - TypeScript
-- Cloudinary
+- Sass/SCSS
 - Redux
 - Google OAuth
 - Passport

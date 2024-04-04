@@ -37,7 +37,6 @@ passport.serializeUser((user, done) => {
 });
 
 passport.deserializeUser(async (user: any, done) => {
-	console.log('deserialized');
 	// Retrieve user from db.
 	const currentUser = await User.findOne({ username: user.username });
 
