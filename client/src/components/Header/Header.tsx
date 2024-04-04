@@ -5,24 +5,14 @@ import { Link } from 'react-router-dom';
 function Header() {
 	return (
 		<header>
-			<ul>
-				<li>
-					<Link to="/">Logo</Link>
-				</li>
-				<li>
-					<Link to="/recipes">Saved Recipes</Link>
-				</li>
-				<li>
-					<Link to="/ingredients">Pantry</Link>
-				</li>
-				<li>
-					<Link to="/meal-planner">Meal Planner</Link>
-				</li>
-				<li>
-					<Link to="/groceries">Groceries</Link>
-				</li>
+			<nav>
+				<Link to="/">Logo</Link>
+				<Link to="/recipes">Saved Recipes</Link>
+				<Link to="/ingredients">Pantry</Link>
+				<Link to="/meal-planner">Meal Planner</Link>
+				<Link to="/groceries">Groceries</Link>
 				<LogOut />
-			</ul>
+			</nav>
 		</header>
 	);
 }

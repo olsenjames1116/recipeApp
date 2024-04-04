@@ -13,6 +13,7 @@ import {
 	addUserIngredients,
 	removeUserIngredients,
 } from '../../redux/state/userIngredientsSlice';
+import IngredientInput from '../IngredientInput/IngredientInput';
 
 // Represents the form for users to add and remove ingredients.
 function IngredientsForm() {
@@ -119,11 +120,6 @@ function IngredientsForm() {
 		if (saveButtonRef.current) saveButtonRef.current.disabled = true;
 	};
 
-	// Enables the save button to be pressed after a change has been made to the form.
-	const enableSave = () => {
-		if (saveButtonRef.current) saveButtonRef.current.disabled = false;
-	};
-
 	return (
 		<form ref={formRef} onSubmit={saveIngredients}>
 			<ul>
@@ -133,16 +129,12 @@ function IngredientsForm() {
 					);
 
 					return (
-						<li key={ingredient._id}>
-							<input
-								type="checkbox"
-								id={ingredient._id}
-								value={ingredient.name}
-								onChange={enableSave}
-								defaultChecked={checked}
-							/>
-							<label htmlFor={ingredient._id}>{ingredient.name}</label>
-						</li>
+						<IngredientInput
+							key={ingredient._id}
+							ingredient={ingredient}
+							checked={checked}
+							saveButtonRef={saveButtonRef}
+						/>
 					);
 				})}
 			</ul>

@@ -45,16 +45,11 @@ function LogOut() {
 			clearRedux();
 			navigate('/log-in');
 		} catch (error) {
-			// A catch all for errors produced from api call.
 			console.log(error);
 		}
 	};
 
-	return (
-		<li>
-			<button onClick={logUserOut}>Log Out</button>
-		</li>
-	);
+	return <button onClick={logUserOut}>Log Out</button>;
 }
 
 export default LogOut;

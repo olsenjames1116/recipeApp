@@ -12,6 +12,7 @@ import axios from 'axios';
 import { addRecipeType } from '../../redux/state/recipeTypeSlice';
 import { addRandomRecipe } from '../../redux/state/randomRecipeSlice';
 import { addSearchIngredients } from '../../redux/state/searchIngredientsSlice';
+import IngredientSearchInput from '../IngredientSearchInput/IngredientSearchInput';
 
 interface IngredientSearchFormProps {
 	setDisplayMenu: React.Dispatch<React.SetStateAction<boolean>>;
@@ -160,36 +161,21 @@ function IngredientSearchForm({ setDisplayMenu }: IngredientSearchFormProps) {
 		}
 	};
 
-	// Enables the submit button to be pressed after a change has been made to the form.
-	const enableSubmit = () => {
-		if (submitButtonRef.current) submitButtonRef.current.disabled = false;
-	};
-
 	return (
 		<form ref={formRef} onSubmit={findCheckedElements}>
 			<ul>
 				{allIngredients.map((ingredient: IIngredientWithId) => {
-					const userHasIngredient = userIngredients.includes(ingredient._id)
-						? true
-						: false;
+					const userHasIngredient = userIngredients.some(
+						(userIngredient) => userIngredient._id === ingredient._id
+					);
 
 					return (
-						<li key={ingredient._id}>
-							<input
-								type="checkbox"
-								id={ingredient._id}
-								value={ingredient.name}
-								onChange={enableSubmit}
-							/>
-							<label
-								htmlFor={ingredient._id}
-								style={
-									userHasIngredient ? { color: 'green' } : { color: 'black' }
-								}
-							>
-								{ingredient.name}
-							</label>
-						</li>
+						<IngredientSearchInput
+							key={ingredient._id}
+							ingredient={ingredient}
+							userHasIngredient={userHasIngredient}
+							submitButtonRef={submitButtonRef}
+						/>
 					);
 				})}
 			</ul>

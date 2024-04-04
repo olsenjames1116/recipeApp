@@ -1,10 +1,10 @@
 import { useEffect } from 'react';
-import { closeBlackIcon } from '../../assets/images';
 import { useSelector } from 'react-redux';
 import { IRootState } from '../../redux/store';
 import MealPlannerForm from '../MealPlannerForm/MealPlannerForm';
 import MealPlannerRecipes from '../MealPlannerRecipes/MealPlannerRecipes';
 import MealPlannerSearchResults from '../MealPlannerSearchResults/MealPlannerSearchResults';
+import CloseIcon from '../CloseIcon/CloseIcon';
 
 interface MealPlannerMenuProps {
 	menuRef: React.RefObject<HTMLDivElement>;
@@ -35,14 +35,9 @@ function MealPlannerMenu({
 		});
 	}, []);
 
-	// Closes the meal planner menu when the close icon is clicked.
-	const closeMenu = () => {
-		setDisplayMenu(false);
-	};
-
 	return (
 		<div ref={menuRef}>
-			<img src={closeBlackIcon} onClick={closeMenu} />
+			<CloseIcon setDisplayMenu={setDisplayMenu} />
 			<span>{selectedDay}</span>
 			<MealPlannerForm />
 			{recipesQuery.length === 0 ? (
