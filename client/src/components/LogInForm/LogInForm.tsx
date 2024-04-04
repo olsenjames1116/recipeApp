@@ -3,6 +3,8 @@ import InputMessages from '../InputMessages/InputMessages';
 import { AxiosError } from 'axios';
 import api from '../../axiosConfig';
 import { useNavigate } from 'react-router-dom';
+import UsernameInput from '../UsernameInput/UsernameInput';
+import PasswordInput from '../PasswordInput/PasswordInput';
 
 // Represents the log in form to authenticate a user.
 function LogInForm() {
@@ -117,24 +119,8 @@ function LogInForm() {
 
 	return (
 		<form method="POST" onSubmit={handleSubmit} noValidate>
-			<input
-				id="username"
-				type="text"
-				placeholder="username"
-				onChange={handleChange}
-				ref={usernameRef}
-				required
-				maxLength={50}
-			/>
-			<input
-				id="password"
-				type="password"
-				placeholder="password"
-				onChange={handleChange}
-				ref={passwordRef}
-				required
-				maxLength={50}
-			/>
+			<UsernameInput handleChange={handleChange} usernameRef={usernameRef} />
+			<PasswordInput handleChange={handleChange} passwordRef={passwordRef} />
 			<InputMessages
 				messages={inputMessages}
 				inputMessagesRef={inputMessagesRef}

@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 import { IRootState } from '../../redux/store';
-import AddMealToPlannerButton from '../AddMealToPlannerButton/AddMealToPlannerButton';
+import MealPlannerRecipe from '../MealPlannerRecipe/MealPlannerRecipe';
 
 interface MealPlannerSearchResultsProps {
 	setDisplayMenu: React.Dispatch<React.SetStateAction<boolean>>;
@@ -24,10 +24,11 @@ function MealPlannerSearchResults({
 			) : (
 				recipeSearchResults.map((recipe) => {
 					return (
-						<li key={recipe._id} id={recipe._id}>
-							<span>{recipe.title}</span>
-							<AddMealToPlannerButton setDisplayMenu={setDisplayMenu} />
-						</li>
+						<MealPlannerRecipe
+							key={recipe._id}
+							recipe={recipe}
+							setDisplayMenu={setDisplayMenu}
+						/>
 					);
 				})
 			)}

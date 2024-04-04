@@ -85,7 +85,7 @@ function NextRecipe() {
 		}
 	};
 
-	return <img src={closeRedIcon} alt="" onClick={generateRecipe} />;
+	return <img src={closeRedIcon} onClick={generateRecipe} />;
 }
 
 export default NextRecipe;

@@ -37,7 +37,7 @@ function SaveRecipe() {
 		}
 	};
 
-	return <img src={saveIcon} alt="" onClick={saveRecipe} />;
+	return <img src={saveIcon} onClick={saveRecipe} />;
 }
 
 export default SaveRecipe;
