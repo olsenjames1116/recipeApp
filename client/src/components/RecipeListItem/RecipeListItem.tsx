@@ -39,7 +39,11 @@ function RecipeListItem({ recipe }: RecipeListItemProps) {
 				<img src={recipe.image} />
 				<span>{recipe.title}</span>
 			</a>
-			<img src={trashIcon} onClick={() => deleteRecipe(recipe._id)} />
+			<img
+				src={trashIcon}
+				alt="Delete recipe"
+				onClick={() => deleteRecipe(recipe._id)}
+			/>
 		</li>
 	);
 }

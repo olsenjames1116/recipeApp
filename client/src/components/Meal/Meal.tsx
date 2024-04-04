@@ -58,7 +58,7 @@ function Meal({ dayOfTheWeek }: MealProps) {
 			{Object.keys(meal).length !== 0 ? (
 				<div>
 					<a href={(meal as IPlanner).recipe.url} target="_blank">
-						<img src={(meal as IPlanner).recipe.image} />
+						<img src={(meal as IPlanner).recipe.image} alt="" />
 						<span>{(meal as IPlanner).recipe.title}</span>
 					</a>
 					<button onClick={deleteMeal}>Delete</button>

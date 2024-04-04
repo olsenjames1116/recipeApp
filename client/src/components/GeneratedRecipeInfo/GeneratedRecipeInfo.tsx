@@ -10,7 +10,7 @@ function GeneratedRecipeInfo() {
 
 	return (
 		<a href={randomRecipe.url} target="_blank">
-			<img src={randomRecipe.image} />
+			<img src={randomRecipe.image} alt="" />
 			<span>{randomRecipe.title}</span>
 		</a>
 	);

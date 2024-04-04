@@ -6,7 +6,13 @@ interface CloseIconProps {
 
 // Represents the icon to close a menu.
 function CloseIcon({ setDisplayMenu }: CloseIconProps) {
-	return <img src={closeBlackIcon} onClick={() => setDisplayMenu(false)} />;
+	return (
+		<img
+			src={closeBlackIcon}
+			alt="Close the menu"
+			onClick={() => setDisplayMenu(false)}
+		/>
+	);
 }
 
 export default CloseIcon;
