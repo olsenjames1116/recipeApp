@@ -1,0 +1,10 @@
+@import './assets/styles/resetAndNormalize';
+@import './assets/styles/typography';
+
+* {
+	outline: 1px solid black;
+}
+
+button {
+	background-color: gray;
+}
