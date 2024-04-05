@@ -1,5 +1,11 @@
 @use '../../assets/styles/mixins' as mixins;
 
+.form {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+
 .input {
 	@include mixins.accountFormIcon(url(../../assets/images/password.png));
 }

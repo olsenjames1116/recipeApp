@@ -6,6 +6,12 @@
 	align-items: center;
 }
 
+// Fill page and flex contents.
+@mixin fillAndFlex($direction) {
+	@include flexCenter($direction);
+	height: 100vh;
+}
+
 // Sets the style for logos.
 @mixin logoHeightAndWidth {
 	height: 75px;

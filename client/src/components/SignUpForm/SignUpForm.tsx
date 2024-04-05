@@ -156,7 +156,12 @@ function SignUpForm() {
 	};
 
 	return (
-		<form method="POST" onSubmit={handleSubmit} noValidate>
+		<form
+			method="POST"
+			onSubmit={handleSubmit}
+			noValidate
+			className={styles.form}
+		>
 			<UsernameInput handleChange={handleChange} usernameRef={usernameRef} />
 			<PasswordInput handleChange={handleChange} passwordRef={passwordRef} />
 			<input

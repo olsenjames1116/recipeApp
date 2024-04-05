@@ -35,7 +35,7 @@ function LogInPage() {
 	});
 
 	return (
-		<main className={styles.page}>
+		<main className={styles.main}>
 			<AccountFormContainer>
 				<ExternalAuthOptions />
 				<LogInForm />

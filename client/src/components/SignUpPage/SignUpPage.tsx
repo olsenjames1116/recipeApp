@@ -5,6 +5,7 @@ import SignUpOptions from '../SignUpOptions/SignUpOptions';
 import api from '../../axiosConfig';
 import { AxiosError } from 'axios';
 import { useNavigate } from 'react-router-dom';
+import styles from './SignUpPage.module.scss';
 
 // Represents the sign up page to create new users.
 function SignUpPage() {
@@ -33,7 +34,7 @@ function SignUpPage() {
 	});
 
 	return (
-		<main>
+		<main className={styles.main}>
 			<AccountFormContainer>
 				<SignUpForm />
 				<SignUpOptions />

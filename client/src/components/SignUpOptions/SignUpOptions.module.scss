@@ -1,0 +1,6 @@
+@use '../../assets/styles/mixins' as mixins;
+
+.listItem {
+	@include mixins.flexCenter(column);
+	gap: 10px;
+}
