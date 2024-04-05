@@ -10,3 +10,8 @@
 button {
 	background-color: gray;
 }
+
+.app {
+	display: grid;
+	grid-template-rows: 1fr auto;
+}

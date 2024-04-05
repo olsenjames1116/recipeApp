@@ -13,6 +13,7 @@ import { addRecipeType } from '../../redux/state/recipeTypeSlice';
 import { addRandomRecipe } from '../../redux/state/randomRecipeSlice';
 import { addSearchIngredients } from '../../redux/state/searchIngredientsSlice';
 import IngredientSearchInput from '../IngredientSearchInput/IngredientSearchInput';
+import styles from './IngredientSearchForm.module.scss';
 
 interface IngredientSearchFormProps {
 	setDisplayMenu: React.Dispatch<React.SetStateAction<boolean>>;
@@ -161,8 +162,8 @@ function IngredientSearchForm({ setDisplayMenu }: IngredientSearchFormProps) {
 	};
 
 	return (
-		<form ref={formRef} onSubmit={findCheckedElements}>
-			<ul>
+		<form ref={formRef} onSubmit={findCheckedElements} className={styles.form}>
+			<ul className={styles.list}>
 				{allIngredients.map((ingredient: IIngredientWithId) => {
 					const userHasIngredient = userIngredients.some(
 						(userIngredient) => userIngredient._id === ingredient._id
@@ -178,7 +179,7 @@ function IngredientSearchForm({ setDisplayMenu }: IngredientSearchFormProps) {
 					);
 				})}
 			</ul>
-			<button ref={submitButtonRef} disabled>
+			<button ref={submitButtonRef} disabled className={styles.button}>
 				Submit
 			</button>
 			<InputMessages messages={inputMessages} error={error} />

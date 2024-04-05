@@ -1,4 +1,5 @@
 import { IIngredientWithId } from '../../types';
+import styles from './IngredientSearchInput.module.scss';
 
 interface IngredientSearchInputProps {
 	ingredient: IIngredientWithId;
@@ -18,7 +19,7 @@ function IngredientSearchInput({
 	};
 
 	return (
-		<li>
+		<li className={styles.listItem}>
 			<input
 				type="checkbox"
 				id={ingredient._id}
@@ -27,7 +28,9 @@ function IngredientSearchInput({
 			/>
 			<label
 				htmlFor={ingredient._id}
-				style={userHasIngredient ? { color: 'green' } : { color: 'black' }}
+				className={`${styles.label} ${
+					userHasIngredient ? styles.inPantry : ''
+				}`}
 			>
 				{ingredient.name}
 			</label>

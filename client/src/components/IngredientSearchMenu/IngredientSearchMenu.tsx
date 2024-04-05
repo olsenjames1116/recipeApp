@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import IngredientSearchForm from '../IngredientSearchForm/IngredientSearchForm';
 import CloseIcon from '../CloseIcon/CloseIcon';
+import styles from './IngredientSearchMenu.module.scss';
 
 interface IngredientSearchMenuProps {
 	menuRef: React.RefObject<HTMLDivElement>;
@@ -26,11 +27,12 @@ function IngredientSearchMenu({
 	}, []);
 
 	return (
-		<div ref={menuRef}>
+		<div ref={menuRef} className={styles.container}>
 			<CloseIcon setDisplayMenu={setDisplayMenu} />
-			<span>
+			<span className={styles.span}>
 				Ingredients in your pantry are marked in green. Select one or many to
-				search for recipes that contain those ingredients.
+				search for recipes that contain those ingredients. (You may have to
+				scroll to see more.)
 			</span>
 			<IngredientSearchForm setDisplayMenu={setDisplayMenu} />
 		</div>

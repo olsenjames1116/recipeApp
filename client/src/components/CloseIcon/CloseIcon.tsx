@@ -1,4 +1,5 @@
 import { closeBlackIcon } from '../../assets/images';
+import styles from './CloseIcon.module.scss';
 
 interface CloseIconProps {
 	setDisplayMenu: React.Dispatch<React.SetStateAction<boolean>>;
@@ -11,6 +12,7 @@ function CloseIcon({ setDisplayMenu }: CloseIconProps) {
 			src={closeBlackIcon}
 			alt="Close the menu"
 			onClick={() => setDisplayMenu(false)}
+			className={styles.image}
 		/>
 	);
 }
