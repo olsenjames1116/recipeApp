@@ -2,7 +2,13 @@
 
 .button {
 	align-self: center;
-	margin: 20px;
 	border-radius: vars.$buttonBorderRadius;
+	margin: 5px;
 	padding: 5px;
+}
+
+@media (max-width: 600px) {
+	.button {
+		font-size: 10px;
+	}
 }

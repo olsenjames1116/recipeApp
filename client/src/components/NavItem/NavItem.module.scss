@@ -16,15 +16,12 @@
 	text-align: center;
 }
 
-@media (max-width: 500px) {
+@media (max-width: 600px) {
 	.image {
-		height: 40px;
-		width: 40px;
+		height: 30px;
+		width: 30px;
 	}
-}
-
-@media (max-width: 800px) {
 	.span {
-		display: none;
+		font-size: 10px;
 	}
 }
