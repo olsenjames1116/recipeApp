@@ -1,0 +1,12 @@
+@use '../../assets/styles/mixins' as mixins;
+
+.container {
+	@include mixins.flexCenter(column);
+	gap: 10px;
+	padding: 50px;
+	min-width: 30%;
+}
+
+.icon {
+	@include mixins.logoHeightAndWidth();
+}

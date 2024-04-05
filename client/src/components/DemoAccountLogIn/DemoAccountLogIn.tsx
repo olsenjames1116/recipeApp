@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import api from '../../axiosConfig';
+import styles from './DemoAccountLogIn.module.scss';
 
 // Represents the component to log in as a demo user.
 function DemoAccountLogIn() {
@@ -24,9 +25,11 @@ function DemoAccountLogIn() {
 	};
 
 	return (
-		<li>
-			or use the Demo Account{' '}
-			<button onClick={logInDemoAccount}>Demo Account</button>
+		<li className={styles.listItem}>
+			use the Demo Account
+			<button onClick={logInDemoAccount} className={styles.button}>
+				Demo Account
+			</button>
 		</li>
 	);
 }

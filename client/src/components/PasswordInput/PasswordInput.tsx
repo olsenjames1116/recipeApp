@@ -1,3 +1,5 @@
+import styles from './PasswordInput.module.scss';
+
 interface PasswordInputProps {
 	handleChange: ({ target }: React.ChangeEvent<HTMLInputElement>) => void;
 	passwordRef: React.RefObject<HTMLInputElement>;
@@ -14,6 +16,7 @@ function PasswordInput({ handleChange, passwordRef }: PasswordInputProps) {
 			ref={passwordRef}
 			required
 			maxLength={50}
+			className={styles.input}
 		/>
 	);
 }

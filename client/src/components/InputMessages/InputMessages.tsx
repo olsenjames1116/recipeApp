@@ -1,14 +1,20 @@
+import styles from './InputMessages.module.scss';
+
 interface InputMessagesProps {
 	messages: string[];
-	inputMessagesRef: React.RefObject<HTMLUListElement>;
+	error: boolean;
 }
 
 // Represents the input messages to show messages on a form to a user for clarity.
-function InputMessages({ messages, inputMessagesRef }: InputMessagesProps) {
+function InputMessages({ messages, error }: InputMessagesProps) {
 	return (
-		<ul ref={inputMessagesRef}>
+		<ul className={styles.list}>
 			{messages.map((message, index) => {
-				return <li key={index}>{message}</li>;
+				return (
+					<li key={index} className={error ? styles.error : styles.success}>
+						{message}
+					</li>
+				);
 			})}
 		</ul>
 	);

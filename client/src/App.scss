@@ -1,5 +1,4 @@
-@import './assets/styles/resetAndNormalize';
-@import './assets/styles/typography';
+@use './assets/styles/resetAndNormalize';
 
 * {
 	outline: 1px solid black;

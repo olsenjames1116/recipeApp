@@ -1,4 +1,5 @@
-@import 'normalize.css';
+@forward 'normalize.css';
+@forward './typography';
 
 /*** box sizing border-box for all elements ***/
 *,

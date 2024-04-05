@@ -1,0 +1,14 @@
+@use '../../assets/styles/variables' as vars;
+
+.button {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	padding: 0 5px;
+	border-radius: vars.$buttonBorderRadius;
+}
+
+.icon {
+	height: 30px;
+	width: 30px;
+}

@@ -1,0 +1,6 @@
+@use '../../assets/styles/mixins' as mixins;
+
+.page {
+	height: 100vh;
+	@include mixins.flexCenter(row);
+}

@@ -31,8 +31,8 @@ function IngredientSearchForm({ setDisplayMenu }: IngredientSearchFormProps) {
 	);
 
 	const [inputMessages, setInputMessages] = useState<string[]>([]);
+	const [error, setError] = useState(false);
 
-	const inputMessagesRef = useRef<HTMLUListElement>(null);
 	const submitButtonRef = useRef<HTMLButtonElement>(null);
 	const formRef = useRef<HTMLFormElement>(null);
 
@@ -146,8 +146,7 @@ function IngredientSearchForm({ setDisplayMenu }: IngredientSearchFormProps) {
 			// If array is empty, display an error message and disable search.
 			if (submitButtonRef.current) submitButtonRef.current.disabled = true;
 
-			if (inputMessagesRef.current)
-				inputMessagesRef.current.style.color = 'red';
+			setError(true);
 
 			setInputMessages(['Select ingredients to search for recipes.']);
 		} else {
@@ -182,10 +181,7 @@ function IngredientSearchForm({ setDisplayMenu }: IngredientSearchFormProps) {
 			<button ref={submitButtonRef} disabled>
 				Submit
 			</button>
-			<InputMessages
-				messages={inputMessages}
-				inputMessagesRef={inputMessagesRef}
-			/>
+			<InputMessages messages={inputMessages} error={error} />
 		</form>
 	);
 }

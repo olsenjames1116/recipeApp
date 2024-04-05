@@ -6,6 +6,7 @@ import ExternalAuthOptions from '../ExternalAuthOptions/ExternalAuthOptions';
 import api from '../../axiosConfig';
 import { AxiosError } from 'axios';
 import { useNavigate } from 'react-router-dom';
+import styles from './LogInPage.module.scss';
 
 // Represents the log in page to authenticate users.
 function LogInPage() {
@@ -34,7 +35,7 @@ function LogInPage() {
 	});
 
 	return (
-		<main>
+		<main className={styles.page}>
 			<AccountFormContainer>
 				<ExternalAuthOptions />
 				<LogInForm />

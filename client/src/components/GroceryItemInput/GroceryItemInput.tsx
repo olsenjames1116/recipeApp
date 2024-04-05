@@ -20,8 +20,8 @@ function GroceryItemInput({
 }: GroceryItemInputProps) {
 	const [inputMessages, setInputMessages] = useState<string[]>([]);
 	const [item, setItem] = useState<string>('');
+	const [error, setError] = useState(false);
 
-	const inputMessagesRef = useRef<HTMLUListElement>(null);
 	const inputRef = useRef<HTMLInputElement>(null);
 
 	const navigate = useNavigate();
@@ -78,8 +78,7 @@ function GroceryItemInput({
 				// 400 error code is sent from the backend if data from the form is invalid.
 				const { message } = error.response.data;
 				// Style message from backend to appear as invalid.
-				if (inputMessagesRef.current)
-					inputMessagesRef.current.style.color = 'red';
+				setError(true);
 				// Display message from backend.
 				setInputMessages([...message]);
 			} else {
@@ -97,8 +96,7 @@ function GroceryItemInput({
 		setInputMessages([]);
 
 		if (!inputRef.current?.checkValidity()) {
-			if (inputMessagesRef.current)
-				inputMessagesRef.current.style.color = 'red';
+			setError(true);
 			handleInputError();
 		} else {
 			addItemToList();
@@ -125,10 +123,7 @@ function GroceryItemInput({
 				required
 				maxLength={50}
 			/>
-			<InputMessages
-				messages={inputMessages}
-				inputMessagesRef={inputMessagesRef}
-			/>
+			<InputMessages messages={inputMessages} error={error} />
 			<button onClick={validateInput}>Add</button>
 			<button onClick={cancelItem}>Cancel</button>
 		</li>

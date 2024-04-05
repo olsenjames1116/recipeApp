@@ -5,6 +5,7 @@ import { AxiosError } from 'axios';
 import { useNavigate } from 'react-router-dom';
 import UsernameInput from '../UsernameInput/UsernameInput';
 import PasswordInput from '../PasswordInput/PasswordInput';
+import styles from './SignUpForm.module.scss';
 
 // Represents the sign up form to create a new user.
 function SignUpForm() {
@@ -12,11 +13,11 @@ function SignUpForm() {
 	const [username, setUsername] = useState('');
 	const [password, setPassword] = useState('');
 	const [confirmPassword, setConfirmPassword] = useState('');
+	const [error, setError] = useState(false);
 
 	const usernameRef = useRef<HTMLInputElement>(null);
 	const passwordRef = useRef<HTMLInputElement>(null);
 	const confirmPasswordRef = useRef<HTMLInputElement>(null);
-	const inputMessagesRef = useRef<HTMLUListElement>(null);
 
 	const navigate = useNavigate();
 
@@ -76,8 +77,7 @@ function SignUpForm() {
 	// Reached if backend validation and user storage was successful.
 	const handleSuccess = (message: string[]) => {
 		// Style message from backend to appear valid.
-		if (inputMessagesRef.current)
-			inputMessagesRef.current.style.color = 'black';
+		setError(false);
 
 		// Display message from backend.
 		setInputMessages(message);
@@ -104,8 +104,7 @@ function SignUpForm() {
 				// A 400 error code is sent from the backend if data from the request was invalid.
 				const { message } = error.response.data;
 				// Style message from backend to appear as invalid.
-				if (inputMessagesRef.current)
-					inputMessagesRef.current.style.color = 'red';
+				setError(true);
 				// Display validation errors from backend.
 				setInputMessages([...message]);
 			} else {
@@ -123,8 +122,7 @@ function SignUpForm() {
 			!event.currentTarget.checkValidity() ||
 			confirmPasswordRef.current?.value !== passwordRef.current?.value
 		) {
-			if (inputMessagesRef.current)
-				inputMessagesRef.current.style.color = 'red';
+			setError(true);
 			handleInputError();
 		} else {
 			// If input is valid, the below will execute.
@@ -169,11 +167,9 @@ function SignUpForm() {
 				ref={confirmPasswordRef}
 				required
 				maxLength={50}
+				className={styles.input}
 			/>
-			<InputMessages
-				messages={inputMessages}
-				inputMessagesRef={inputMessagesRef}
-			/>
+			<InputMessages messages={inputMessages} error={error} />
 			<button>Sign Up</button>
 		</form>
 	);

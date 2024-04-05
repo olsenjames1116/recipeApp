@@ -5,16 +5,17 @@ import api from '../../axiosConfig';
 import { useNavigate } from 'react-router-dom';
 import UsernameInput from '../UsernameInput/UsernameInput';
 import PasswordInput from '../PasswordInput/PasswordInput';
+import styles from './LogInForm.module.scss';
 
 // Represents the log in form to authenticate a user.
 function LogInForm() {
 	const [inputMessages, setInputMessages] = useState<string[]>([]);
 	const [username, setUsername] = useState('');
 	const [password, setPassword] = useState('');
+	const [error, setError] = useState(false);
 
 	const usernameRef = useRef<HTMLInputElement>(null);
 	const passwordRef = useRef<HTMLInputElement>(null);
-	const inputMessagesRef = useRef<HTMLUListElement>(null);
 
 	const navigate = useNavigate();
 
@@ -70,8 +71,7 @@ function LogInForm() {
 				// 400 error code is sent from the backend if data from the form is invalid.
 				const { message } = error.response.data;
 				// Style message from backend to appear as invalid.
-				if (inputMessagesRef.current)
-					inputMessagesRef.current.style.color = 'red';
+				setError(true);
 				// Display message from backend.
 				setInputMessages([...message]);
 			} else {
@@ -87,8 +87,7 @@ function LogInForm() {
 		setInputMessages([]);
 
 		if (!event.currentTarget.checkValidity()) {
-			if (inputMessagesRef.current)
-				inputMessagesRef.current.style.color = 'red';
+			setError(true);
 			handleInputError();
 		} else {
 			// If input is valid, below will execute.
@@ -118,14 +117,16 @@ function LogInForm() {
 	};
 
 	return (
-		<form method="POST" onSubmit={handleSubmit} noValidate>
+		<form
+			method="POST"
+			onSubmit={handleSubmit}
+			noValidate
+			className={styles.form}
+		>
 			<UsernameInput handleChange={handleChange} usernameRef={usernameRef} />
 			<PasswordInput handleChange={handleChange} passwordRef={passwordRef} />
-			<InputMessages
-				messages={inputMessages}
-				inputMessagesRef={inputMessagesRef}
-			/>
-			<button>Log In</button>
+			<InputMessages messages={inputMessages} error={error} />
+			<button className={styles.button}>Log In</button>
 		</form>
 	);
 }

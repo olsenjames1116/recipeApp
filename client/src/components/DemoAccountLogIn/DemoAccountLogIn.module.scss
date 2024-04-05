@@ -1,0 +1,12 @@
+@use '../../assets/styles/mixins' as mixins;
+@use '../../assets/styles/variables' as vars;
+
+.listItem {
+	@include mixins.flexCenter(column);
+	gap: 10px;
+}
+
+.button {
+	width: 100%;
+	border-radius: vars.$buttonBorderRadius;
+}

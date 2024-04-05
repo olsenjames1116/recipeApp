@@ -1,3 +1,5 @@
+import styles from './UsernameInput.module.scss';
+
 interface UsernameInputProps {
 	handleChange: ({ target }: React.ChangeEvent<HTMLInputElement>) => void;
 	usernameRef: React.RefObject<HTMLInputElement>;
@@ -14,6 +16,7 @@ function UsernameInput({ handleChange, usernameRef }: UsernameInputProps) {
 			ref={usernameRef}
 			required
 			maxLength={50}
+			className={styles.input}
 		/>
 	);
 }

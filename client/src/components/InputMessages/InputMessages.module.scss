@@ -1,0 +1,15 @@
+@use '../../assets/styles/variables' as vars;
+
+.list {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+
+.error {
+	color: vars.$errorColor;
+}
+
+.success {
+	color: vars.$successColor;
+}

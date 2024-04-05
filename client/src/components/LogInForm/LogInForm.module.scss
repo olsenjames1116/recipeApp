@@ -1,0 +1,11 @@
+@use '../../assets/styles/variables' as vars;
+
+.form {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+
+.button {
+	border-radius: vars.$buttonBorderRadius;
+}

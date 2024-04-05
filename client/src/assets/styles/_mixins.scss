@@ -1,0 +1,21 @@
+// Flex and center an item.
+@mixin flexCenter($direction) {
+	display: flex;
+	flex-direction: $direction;
+	justify-content: center;
+	align-items: center;
+}
+
+// Sets the style for logos.
+@mixin logoHeightAndWidth {
+	height: 75px;
+	width: 75px;
+}
+
+// Display and style an icon for account form inputs.
+@mixin accountFormIcon($image) {
+	height: 30px;
+	padding-left: 30px;
+	background: $image no-repeat 0px center;
+	background-size: contain;
+}
