@@ -1,0 +1,8 @@
+@use '../../assets/styles/variables' as vars;
+
+.button {
+	align-self: center;
+	margin: 20px;
+	border-radius: vars.$buttonBorderRadius;
+	padding: 5px;
+}

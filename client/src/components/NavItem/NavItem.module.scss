@@ -1,0 +1,30 @@
+.link {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	flex: 1;
+	padding: 5px;
+}
+
+.image {
+	height: 50px;
+	width: 50px;
+}
+
+.span {
+	text-align: center;
+}
+
+@media (max-width: 500px) {
+	.image {
+		height: 40px;
+		width: 40px;
+	}
+}
+
+@media (max-width: 800px) {
+	.span {
+		display: none;
+	}
+}

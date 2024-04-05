@@ -12,6 +12,7 @@ import { removeRecipesQuery } from '../../redux/state/recipesQuerySlice';
 import { removeRandomRecipe } from '../../redux/state/randomRecipeSlice';
 import { removeRecipeSearchResults } from '../../redux/state/recipeSearchResultsSlice';
 import { removeSearchIngredients } from '../../redux/state/searchIngredientsSlice';
+import styles from './LogOut.module.scss';
 
 // Represents the log out button in the header.
 function LogOut() {
@@ -49,7 +50,11 @@ function LogOut() {
 		}
 	};
 
-	return <button onClick={logUserOut}>Log Out</button>;
+	return (
+		<button onClick={logUserOut} className={styles.button}>
+			Log Out
+		</button>
+	);
 }
 
 export default LogOut;
