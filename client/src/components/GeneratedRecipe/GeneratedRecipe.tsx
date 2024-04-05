@@ -1,7 +1,6 @@
-import GeneratedRecipeInfo from '../GeneratedRecipeInfo/GeneratedRecipeInfo';
-import NextRecipe from '../NextRecipe/NextRecipe';
-import SaveRecipe from '../SaveRecipe/SaveRecipe';
 import { useNavigate } from 'react-router-dom';
+import styles from './GeneratedRecipe.module.scss';
+import GeneratedRecipeContainer from '../GeneratedRecipeContainer/GeneratedRecipeContainer';
 
 // Represents a recipe generated from Spoonacular api.
 function GeneratedRecipe() {
@@ -17,11 +16,11 @@ function GeneratedRecipe() {
 	};
 
 	return (
-		<div>
-			<GeneratedRecipeInfo />
-			<NextRecipe />
-			<SaveRecipe />
-			<button onClick={startOver}>Start Over</button>
+		<div className={styles.container}>
+			<GeneratedRecipeContainer />
+			<button onClick={startOver} className={styles.button}>
+				Start Over
+			</button>
 		</div>
 	);
 }

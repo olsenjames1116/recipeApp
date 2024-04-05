@@ -3,6 +3,9 @@
 * {
 	outline: 1px solid black;
 }
+*:focus {
+	background-color: red;
+}
 
 button {
 	background-color: gray;

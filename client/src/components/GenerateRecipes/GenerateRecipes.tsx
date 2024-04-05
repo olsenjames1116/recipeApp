@@ -36,7 +36,7 @@ function GenerateRecipes({ setDisplayMenu }: GenerateRecipesProps) {
 				diam sit amet nisl suscipit adipiscing bibendum est. Est sit amet
 				facilisis magna etiam tempor orci eu.
 			</blockquote>
-			{/* <blockquote>
+			{/* <blockquote className={styles.blockquote}>
 				Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
 				tempor incididunt ut labore et dolore magna aliqua.
 			</blockquote> */}

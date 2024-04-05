@@ -5,6 +5,7 @@ import { IRootState } from '../../redux/store';
 import { IRecipe } from '../../types';
 import { useNavigate } from 'react-router-dom';
 import { AxiosError } from 'axios';
+import styles from './SaveRecipe.module.scss';
 
 // Represents the icon that stores a recipe from the currently generated recipe.
 function SaveRecipe() {
@@ -37,7 +38,11 @@ function SaveRecipe() {
 		}
 	};
 
-	return <img src={saveIcon} alt="Save recipe" onClick={saveRecipe} />;
+	return (
+		<div onClick={saveRecipe} className={styles.container} tabIndex={0}>
+			<img src={saveIcon} alt="Save recipe" className={styles.image} />
+		</div>
+	);
 }
 
 export default SaveRecipe;

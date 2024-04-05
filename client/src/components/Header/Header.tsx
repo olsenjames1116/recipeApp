@@ -12,7 +12,7 @@ import {
 // Represents the header at the top of the page.
 function Header() {
 	return (
-		<header className={styles.header}>
+		<header>
 			<nav className={styles.nav}>
 				<NavItem to="/" src={homeIcon} alt="Home page" title="Home" />
 				<NavItem

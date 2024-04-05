@@ -4,6 +4,7 @@ import { IRootState } from '../../redux/store';
 import axios from 'axios';
 import { IRecipe } from '../../types';
 import { addRandomRecipe } from '../../redux/state/randomRecipeSlice';
+import styles from './NextRecipe.module.scss';
 
 interface IRecipeData {
 	title: string;
@@ -85,7 +86,11 @@ function NextRecipe() {
 		}
 	};
 
-	return <img src={closeRedIcon} alt="Next recipe" onClick={generateRecipe} />;
+	return (
+		<div onClick={generateRecipe} className={styles.container} tabIndex={0}>
+			<img src={closeRedIcon} alt="Next recipe" className={styles.image} />
+		</div>
+	);
 }
 
 export default NextRecipe;

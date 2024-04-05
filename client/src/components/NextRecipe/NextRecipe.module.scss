@@ -1,0 +1,21 @@
+.container {
+	display: flex;
+	flex-grow: 1;
+	justify-content: center;
+	border-top: 1px solid black;
+	border-left: 0 1px solid black;
+}
+
+@media (max-width: 800px) {
+	.image {
+		height: 60px;
+		width: 60px;
+	}
+}
+
+@media (max-width: 600px) {
+	.image {
+		height: 40px;
+		width: 40px;
+	}
+}
