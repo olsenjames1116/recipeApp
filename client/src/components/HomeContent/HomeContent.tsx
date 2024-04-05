@@ -4,6 +4,7 @@ import { IRootState } from '../../redux/store';
 import GeneratedRecipe from '../GeneratedRecipe/GeneratedRecipe';
 import { useState } from 'react';
 import IngredientSearchMenu from '../IngredientSearchMenu/IngredientSearchMenu';
+import styles from './HomeContent.module.scss';
 
 interface HomeContentProps {
 	menuRef: React.RefObject<HTMLDivElement>;
@@ -18,7 +19,7 @@ function HomeContent({ menuRef }: HomeContentProps) {
 	const [displayMenu, setDisplayMenu] = useState(false);
 
 	return (
-		<main>
+		<main className={styles.main}>
 			{Object.keys(randomRecipe).length === 0 ? (
 				<GenerateRecipes setDisplayMenu={setDisplayMenu} />
 			) : (

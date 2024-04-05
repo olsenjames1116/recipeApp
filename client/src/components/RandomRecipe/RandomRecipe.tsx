@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { addRandomRecipe } from '../../redux/state/randomRecipeSlice';
 import { IRecipe } from '../../types';
 import { addRecipeType } from '../../redux/state/recipeTypeSlice';
+import styles from './RandomRecipe.module.scss';
 
 // Represents the element that generates a random recipe.
 function RandomRecipe() {
@@ -45,7 +46,11 @@ function RandomRecipe() {
 		}
 	};
 
-	return <button onClick={generateRecipe}>Surprise Me</button>;
+	return (
+		<button onClick={generateRecipe} className={styles.button}>
+			Surprise Me
+		</button>
+	);
 }
 
 export default RandomRecipe;

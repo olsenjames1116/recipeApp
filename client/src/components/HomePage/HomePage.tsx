@@ -6,6 +6,7 @@ import { AxiosError } from 'axios';
 import HomeContent from '../HomeContent/HomeContent';
 import { useDispatch } from 'react-redux';
 import { removeRandomRecipe } from '../../redux/state/randomRecipeSlice';
+import styles from './HomePage.module.scss';
 
 // Represents the home page.
 function HomePage() {
@@ -40,7 +41,7 @@ function HomePage() {
 	});
 
 	return (
-		<div>
+		<div className={styles.page}>
 			<Header />
 			<HomeContent menuRef={menuRef} />
 		</div>

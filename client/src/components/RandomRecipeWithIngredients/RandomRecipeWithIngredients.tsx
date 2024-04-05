@@ -1,3 +1,5 @@
+import styles from './RandomRecipeWithIngredients.module.scss';
+
 interface RandomRecipeWithIngredientsProps {
 	setDisplayMenu: React.Dispatch<React.SetStateAction<boolean>>;
 }
@@ -17,7 +19,9 @@ function RandomRecipeWithIngredients({
 	};
 
 	return (
-		<button onClick={displaySearchMenu}>RandomRecipeWithIngredients</button>
+		<button onClick={displaySearchMenu} className={styles.button}>
+			Use My Ingredients
+		</button>
 	);
 }
 
