@@ -1,8 +1,8 @@
+@use '../../assets/styles/mixins' as mixins;
+@use '../../assets/styles/variables' as vars;
+
 .container {
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
+	@include mixins.positionCenter();
 	background-color: white;
 	display: grid;
 	grid-template-rows: auto auto 1fr;
@@ -14,4 +14,8 @@
 
 .span {
 	text-align: center;
+}
+
+.success {
+	color: vars.$successColor;
 }

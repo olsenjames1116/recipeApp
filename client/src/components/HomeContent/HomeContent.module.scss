@@ -1,6 +1,6 @@
+@use '../../assets/styles/mixins' as mixins;
+
 .main {
-	display: flex;
-	align-items: center;
-	justify-content: center;
+	@include mixins.flexCenter(row);
 	padding: 20px;
 }

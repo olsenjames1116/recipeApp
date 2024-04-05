@@ -1,8 +1,7 @@
+@use '../../assets/styles/mixins' as mixins;
+
 .container {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
+	@include mixins.flexCenter(column);
 	gap: 50px;
 	height: 100%;
 	width: 100%;

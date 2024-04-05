@@ -25,3 +25,17 @@
 	background: $image no-repeat 0px center;
 	background-size: contain;
 }
+
+// Set height and width for close image.
+@mixin closeIconSize {
+	width: 20px;
+	height: 20px;
+}
+
+// Position and center a popup.
+@mixin positionCenter {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}

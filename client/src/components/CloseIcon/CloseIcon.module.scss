@@ -1,5 +1,6 @@
+@use '../../assets/styles/mixins' as mixins;
+
 .image {
-	width: 20px;
-	height: 20px;
+	@include mixins.closeIconSize();
 	justify-self: flex-end;
 }
