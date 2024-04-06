@@ -1,3 +1,5 @@
+@use '../../assets/styles/mixins' as mixins;
+
 .form {
 	display: flex;
 	flex-direction: column;
@@ -15,4 +17,9 @@
 .buttonContainer {
 	display: flex;
 	justify-content: space-evenly;
+}
+
+.button {
+	@include mixins.styleButton();
+	width: 30%;
 }

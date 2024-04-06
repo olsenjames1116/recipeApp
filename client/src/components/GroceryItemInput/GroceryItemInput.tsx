@@ -126,8 +126,12 @@ function GroceryItemInput({
 			/>
 			<InputMessages messages={inputMessages} error={error} />
 			<div className={styles.container}>
-				<button onClick={validateInput}>Add</button>
-				<button onClick={cancelItem}>Cancel</button>
+				<button onClick={validateInput} className={styles.button}>
+					Add
+				</button>
+				<button onClick={cancelItem} className={styles.button}>
+					Cancel
+				</button>
 			</div>
 		</li>
 	);

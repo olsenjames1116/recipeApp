@@ -4,6 +4,7 @@ import { AxiosError } from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 import { IRootState } from '../../redux/store';
 import { addPlanner } from '../../redux/state/plannerSlice';
+import styles from './AddMealToPlannerButton.module.scss';
 
 interface AddMealToPlannerProps {
 	setDisplayMenu: React.Dispatch<React.SetStateAction<boolean>>;
@@ -47,7 +48,11 @@ function AddMealToPlannerButton({ setDisplayMenu }: AddMealToPlannerProps) {
 		}
 	};
 
-	return <button onClick={addMealToPlanner}>Add</button>;
+	return (
+		<button onClick={addMealToPlanner} className={styles.button}>
+			+Add
+		</button>
+	);
 }
 
 export default AddMealToPlannerButton;

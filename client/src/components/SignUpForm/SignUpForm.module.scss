@@ -9,3 +9,7 @@
 .input {
 	@include mixins.accountFormIcon(url(../../assets/images/password.png));
 }
+
+.button {
+	@include mixins.styleButton();
+}

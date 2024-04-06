@@ -175,7 +175,7 @@ function SignUpForm() {
 				className={styles.input}
 			/>
 			<InputMessages messages={inputMessages} error={error} />
-			<button>Sign Up</button>
+			<button className={styles.button}>Sign Up</button>
 		</form>
 	);
 }

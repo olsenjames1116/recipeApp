@@ -1,3 +1,5 @@
+@use '../../assets/styles/mixins' as mixins;
+
 .form {
 	display: flex;
 	flex-direction: column;
@@ -5,5 +7,5 @@
 }
 
 .button {
-	border-radius: 5px;
+	@include mixins.styleButton();
 }

@@ -11,7 +11,7 @@ interface MealPlannerRecipeProps {
 function MealPlannerRecipe({ recipe, setDisplayMenu }: MealPlannerRecipeProps) {
 	return (
 		<li key={recipe._id} id={recipe._id} className={styles.listItem}>
-			<span>{recipe.title}</span>
+			<span className={styles.span}>{recipe.title}</span>
 			<AddMealToPlannerButton setDisplayMenu={setDisplayMenu} />
 		</li>
 	);

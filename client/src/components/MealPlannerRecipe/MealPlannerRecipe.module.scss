@@ -2,3 +2,10 @@
 	display: flex;
 	justify-content: space-between;
 }
+
+.span {
+	flex-grow: 1;
+	font-size: 20rem;
+	display: flex;
+	align-items: center;
+}

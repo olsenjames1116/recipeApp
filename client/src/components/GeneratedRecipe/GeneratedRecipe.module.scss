@@ -8,20 +8,6 @@
 }
 
 .button {
-	border-radius: 5px;
-	padding: 5px 0;
-	font-size: 30rem;
-	width: 50%;
-}
-
-@media (max-width: 800px) {
-	.button {
-		font-size: 20rem;
-	}
-}
-
-@media (max-width: 500px) {
-	.button {
-		font-size: 15rem;
-	}
+	@include mixins.styleButton();
+	width: 30%;
 }

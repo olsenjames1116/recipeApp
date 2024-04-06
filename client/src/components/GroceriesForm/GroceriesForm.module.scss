@@ -1,3 +1,5 @@
+@use '../../assets/styles/mixins' as mixins;
+
 .form {
 	padding: 20px;
 	display: flex;
@@ -17,5 +19,6 @@
 }
 
 .button {
+	@include mixins.styleButton();
 	align-self: center;
 }

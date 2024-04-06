@@ -53,3 +53,10 @@
 	grid-template-rows: auto 1fr;
 	overflow: scroll;
 }
+
+// Add base style for all buttons.
+@mixin styleButton {
+	border-radius: 5px;
+	padding: 5px;
+	font-size: 20rem;
+}

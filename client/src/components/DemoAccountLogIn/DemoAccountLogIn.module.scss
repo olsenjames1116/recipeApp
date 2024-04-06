@@ -6,6 +6,6 @@
 }
 
 .button {
+	@include mixins.styleButton();
 	width: 100%;
-	border-radius: 5px;
 }

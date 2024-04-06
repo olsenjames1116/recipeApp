@@ -76,7 +76,9 @@ function GroceryListItem({ grocery }: GroceryListItemProps) {
 			<label htmlFor={grocery._id} className={styles.label}>
 				{grocery.name}
 			</label>
-			<button onClick={deleteGroceryItem}>Remove</button>
+			<button onClick={deleteGroceryItem} className={styles.button}>
+				Remove
+			</button>
 		</li>
 	);
 }
