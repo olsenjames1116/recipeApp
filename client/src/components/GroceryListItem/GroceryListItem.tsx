@@ -70,10 +70,12 @@ function GroceryListItem({ grocery }: GroceryListItemProps) {
 				type="checkbox"
 				id={grocery._id}
 				onChange={handleChange}
-				className={grocery.checked ? 'strikethrough' : undefined}
 				defaultChecked={grocery.checked}
 			/>
-			<label htmlFor={grocery._id} className={styles.label}>
+			<label
+				htmlFor={grocery._id}
+				className={`${styles.label} ${grocery.checked ? styles.strike : ''}`}
+			>
 				{grocery.name}
 			</label>
 			<button onClick={deleteGroceryItem} className={styles.button}>

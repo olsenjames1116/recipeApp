@@ -12,6 +12,11 @@
 	align-items: center;
 }
 
+.strike {
+	text-decoration: line-through;
+	filter: contrast(0);
+}
+
 .button {
 	@include mixins.styleButton();
 }
