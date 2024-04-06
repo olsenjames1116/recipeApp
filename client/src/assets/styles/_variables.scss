@@ -1,4 +1,23 @@
 $errorColor: red;
 $successColor: green;
+
+// Font sizes.
 $bodyTextFontSize: 20rem;
 $titleTextFontSize: 30rem;
+
+// Colors.
+$silver: #c7c6c2;
+$dimGray: #646364;
+$bloodRed: #6c0700;
+$goldenBrown: #8e6c24;
+$drabDarkBrown: #444025;
+$champagne: #f1e0c8;
+$white: #ffffff;
+
+$primaryDark: $dimGray;
+$primaryLight: $silver;
+$secondaryDark: $drabDarkBrown;
+$secondaryLight: $goldenBrown;
+$accentDark: $bloodRed;
+$accentLight: $champagne;
+$secondaryText: $white;

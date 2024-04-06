@@ -7,7 +7,10 @@ function LogInOptions() {
 	return (
 		<ul className={styles.list}>
 			<li className={styles.listItem}>
-				Don't have an account? <Link to="/sign-up">Create One</Link>
+				Don't have an account?{' '}
+				<Link to="/sign-up" className={styles.link}>
+					Create One
+				</Link>
 			</li>
 			<li className={styles.listItem}>or</li>
 			<DemoAccountLogIn />

@@ -1,4 +1,5 @@
 @use '../../assets/styles/mixins' as mixins;
+@use '../../assets/styles/variables' as vars;
 
 .list {
 	display: flex;
@@ -9,4 +10,8 @@
 .listItem {
 	@include mixins.flexCenter(column);
 	gap: 10px;
+}
+
+.link {
+	color: vars.$bloodRed;
 }

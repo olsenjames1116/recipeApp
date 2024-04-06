@@ -1,4 +1,5 @@
 @use '../../assets/styles/mixins' as mixins;
+@use '../../assets/styles/variables' as vars;
 
 .listItem {
 	@include mixins.flexCenter(column);
@@ -7,5 +8,7 @@
 
 .button {
 	@include mixins.styleButton();
+	background-color: vars.$goldenBrown;
+	color: vars.$secondaryText;
 	width: 100%;
 }

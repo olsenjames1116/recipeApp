@@ -1,4 +1,5 @@
 @use '../../assets/styles/mixins' as mixins;
+@use '../../assets/styles/variables' as vars;
 
 .form {
 	display: flex;
@@ -8,4 +9,6 @@
 
 .button {
 	@include mixins.styleButton();
+	background-color: vars.$secondaryDark;
+	color: vars.$champagne;
 }
