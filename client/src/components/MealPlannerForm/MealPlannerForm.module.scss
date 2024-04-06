@@ -1,4 +1,7 @@
+@use '../../assets/styles/mixins' as mixins;
+
 .form {
+	@include mixins.styleInput();
 	display: flex;
 	justify-content: center;
 	justify-self: center;

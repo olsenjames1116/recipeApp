@@ -8,6 +8,7 @@
 
 .input {
 	@include mixins.accountFormIcon(url(../../assets/images/password.png));
+	@include mixins.styleInput();
 }
 
 .button {

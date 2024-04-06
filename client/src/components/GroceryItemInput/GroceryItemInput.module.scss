@@ -7,6 +7,10 @@
 	border: 5px solid black;
 }
 
+.input {
+	@include mixins.styleInput();
+}
+
 .container {
 	display: flex;
 	justify-content: space-around;

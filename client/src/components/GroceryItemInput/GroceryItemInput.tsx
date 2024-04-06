@@ -123,6 +123,7 @@ function GroceryItemInput({
 				ref={inputRef}
 				required
 				maxLength={50}
+				className={styles.input}
 			/>
 			<InputMessages messages={inputMessages} error={error} />
 			<div className={styles.container}>

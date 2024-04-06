@@ -2,4 +2,5 @@
 
 .input {
 	@include mixins.accountFormIcon(url(../../assets/images/user.png));
+	@include mixins.styleInput();
 }
