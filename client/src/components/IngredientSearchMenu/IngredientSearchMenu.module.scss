@@ -13,7 +13,7 @@
 }
 
 .span {
-	@include mixins.styleBodyText();
+	font-size: vars.$bodyTextFontSize;
 	text-align: center;
 }
 

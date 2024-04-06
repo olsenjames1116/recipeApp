@@ -1,4 +1,4 @@
-@use '../../assets/styles/mixins' as mixins;
+@use '../../assets/styles/variables' as vars;
 
 .link {
 	display: flex;
@@ -15,7 +15,7 @@
 }
 
 .span {
-	@include mixins.styleTitleText();
+	font-size: vars.$titleTextFontSize;
 	text-align: center;
 }
 

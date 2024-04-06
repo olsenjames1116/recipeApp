@@ -1,4 +1,4 @@
-@use '../../assets/styles/mixins' as mixins;
+@use '../../assets/styles/variables' as vars;
 
 .list {
 	display: flex;
@@ -7,6 +7,6 @@
 }
 
 .listItem {
-	@include mixins.styleBodyText();
+	font-size: vars.$bodyTextFontSize;
 	text-align: center;
 }

@@ -1,7 +1,7 @@
-@use '../../assets/styles/mixins' as mixins;
+@use '../../assets/styles/variables' as vars;
 
 .form {
-	@include mixins.styleInput();
+	font-size: vars.$bodyTextFontSize;
 	display: flex;
 	justify-content: center;
 	justify-self: center;

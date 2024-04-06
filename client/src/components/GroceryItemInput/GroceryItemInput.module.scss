@@ -1,4 +1,5 @@
 @use '../../assets/styles/mixins' as mixins;
+@use '../../assets/styles/variables' as vars;
 
 .listItem {
 	display: flex;
@@ -8,7 +9,7 @@
 }
 
 .input {
-	@include mixins.styleInput();
+	font-size: vars.$bodyTextFontSize;
 }
 
 .container {

@@ -1,4 +1,4 @@
-@use '../../assets/styles/mixins' as mixins;
+@use '../../assets/styles/variables' as vars;
 
 .listItem {
 	display: grid;
@@ -10,7 +10,7 @@
 }
 
 .span {
-	@include mixins.styleTitleText();
+	font-size: vars.$titleTextFontSize;
 }
 
 .today {

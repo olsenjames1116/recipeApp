@@ -1,4 +1,5 @@
 @use '../../assets/styles/mixins' as mixins;
+@use '../../assets/styles/variables' as vars;
 
 .form {
 	padding: 20px;
@@ -8,7 +9,7 @@
 }
 
 .span {
-	@include mixins.styleTitleText();
+	font-size: vars.$titleTextFontSize;
 }
 
 .list {
