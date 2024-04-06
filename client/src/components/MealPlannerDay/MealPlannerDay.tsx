@@ -47,10 +47,11 @@ function MealPlannerDay({
 			id={dayOfTheWeek}
 			className={`${styles.listItem} ${index === today ? styles.today : ''}`}
 			onClick={displayMealPlannerMenu}
+			tabIndex={0}
 		>
-			<span>{`${dayOfTheWeek[0].toUpperCase()}${dayOfTheWeek.substring(
-				1
-			)}`}</span>
+			<span
+				className={styles.span}
+			>{`${dayOfTheWeek[0].toUpperCase()}${dayOfTheWeek.substring(1)}`}</span>
 			{planner.find((meal: IPlanner) => meal.day === dayOfTheWeek) ? (
 				<Meal dayOfTheWeek={dayOfTheWeek} />
 			) : null}

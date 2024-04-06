@@ -1,3 +1,5 @@
+@use '../../assets/styles/mixins' as mixins;
+
 .list {
 	display: flex;
 	flex-direction: column;
@@ -5,5 +7,6 @@
 }
 
 .listItem {
+	@include mixins.styleBodyText();
 	text-align: center;
 }

@@ -64,6 +64,7 @@ function Meal({ dayOfTheWeek }: MealProps) {
 						alt=""
 						onClick={deleteMeal}
 						className={styles.delete}
+						tabIndex={0}
 					/>
 					<a
 						href={(meal as IPlanner).recipe.url}

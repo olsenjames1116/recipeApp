@@ -65,3 +65,13 @@
 @mixin styleInput {
 	font-size: 20rem;
 }
+
+// Add base style for body text.
+@mixin styleBodyText {
+	font-size: 20rem;
+}
+
+// Add base style for title texts.
+@mixin styleTitleText {
+	font-size: 30rem;
+}

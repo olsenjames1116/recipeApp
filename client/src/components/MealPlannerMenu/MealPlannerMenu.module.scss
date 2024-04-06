@@ -13,5 +13,6 @@
 }
 
 .span {
+	@include mixins.styleTitleText();
 	text-align: center;
 }

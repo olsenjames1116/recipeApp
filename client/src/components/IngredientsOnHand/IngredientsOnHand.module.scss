@@ -1,6 +1,12 @@
+@use '../../assets/styles/mixins' as mixins;
+
 .container {
 	padding: 20px;
 	display: flex;
 	flex-direction: column;
 	gap: 10px;
+}
+
+.span {
+	@include mixins.styleTitleText();
 }

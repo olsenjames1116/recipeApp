@@ -11,7 +11,12 @@ function InputMessages({ messages, error }: InputMessagesProps) {
 		<ul className={styles.list}>
 			{messages.map((message, index) => {
 				return (
-					<li key={index} className={error ? styles.error : styles.success}>
+					<li
+						key={index}
+						className={`${styles.listItem} ${
+							error ? styles.error : styles.success
+						}`}
+					>
 						{message}
 					</li>
 				);

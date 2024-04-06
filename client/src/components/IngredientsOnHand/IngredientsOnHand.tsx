@@ -45,7 +45,7 @@ function IngredientsOnHand() {
 
 	return (
 		<div className={styles.container}>
-			<span>Here is what you have:</span>
+			<span className={styles.span}>Here is what you have:</span>
 			<IngredientsList />
 		</div>
 	);

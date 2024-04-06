@@ -1,4 +1,7 @@
+@use '../../assets/styles/mixins' as mixins;
+
 .list {
+	@include mixins.styleBodyText();
 	display: flex;
 	flex-direction: column;
 	gap: 5px;

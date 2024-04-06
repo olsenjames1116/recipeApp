@@ -41,6 +41,7 @@ function RecipeListItem({ recipe }: RecipeListItemProps) {
 				alt="Delete recipe"
 				onClick={() => deleteRecipe(recipe._id)}
 				className={styles.delete}
+				tabIndex={0}
 			/>
 			<a href={recipe.url} target="_blank" className={styles.link}>
 				<img

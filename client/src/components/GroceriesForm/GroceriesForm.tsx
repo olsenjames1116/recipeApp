@@ -92,7 +92,7 @@ function GroceriesForm({
 			ref={printFrameRef}
 			className={styles.form}
 		>
-			<span>Groceries:</span>
+			<span className={styles.span}>Groceries:</span>
 			<ul ref={listRef} className={styles.list}>
 				{!displayInput && (
 					<li className={styles.addItemButton}>
