@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import GroceriesForm from '../GroceriesForm/GroceriesForm';
 import IngredientsOnHand from '../IngredientsOnHand/IngredientsOnHand';
+import styles from './GroceriesContent.module.scss';
 
 interface GroceriesContentProps {
 	inputMenuRef: React.RefObject<HTMLLIElement>;
@@ -11,7 +12,7 @@ function GroceriesContent({ inputMenuRef }: GroceriesContentProps) {
 	const [displayInput, setDisplayInput] = useState(false);
 
 	return (
-		<main>
+		<main className={styles.main}>
 			<IngredientsOnHand />
 			<GroceriesForm
 				inputMenuRef={inputMenuRef}

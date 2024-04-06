@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react';
 import Header from '../Header/Header';
 import GroceriesContent from '../GroceriesContent/GroceriesContent';
+import styles from './GroceriesPage.module.scss';
 
 // Represents the page to display a grocery list.
 function GroceriesPage() {
@@ -11,7 +12,7 @@ function GroceriesPage() {
 	}, []);
 
 	return (
-		<div>
+		<div className={styles.page}>
 			<Header location="groceries" />
 			<GroceriesContent inputMenuRef={inputMenuRef} />
 		</div>

@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { IRootState } from '../../redux/store';
 import { addUserIngredients } from '../../redux/state/userIngredientsSlice';
 import IngredientsList from '../IngredientsList/IngredientsList';
+import styles from './IngredientsOnHand.module.scss';
 
 /* Represents the container for ingredients the user has stored 
 to be displayed on the groceries page. */
@@ -43,7 +44,7 @@ function IngredientsOnHand() {
 	}, []);
 
 	return (
-		<div>
+		<div className={styles.container}>
 			<span>Here is what you have:</span>
 			<IngredientsList />
 		</div>
