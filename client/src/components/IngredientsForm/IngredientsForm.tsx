@@ -14,6 +14,7 @@ import {
 	removeUserIngredients,
 } from '../../redux/state/userIngredientsSlice';
 import IngredientInput from '../IngredientInput/IngredientInput';
+import styles from './IngredientsForm.module.scss';
 
 // Represents the form for users to add and remove ingredients.
 function IngredientsForm() {
@@ -121,8 +122,8 @@ function IngredientsForm() {
 	};
 
 	return (
-		<form ref={formRef} onSubmit={saveIngredients}>
-			<ul>
+		<form ref={formRef} onSubmit={saveIngredients} className={styles.form}>
+			<ul className={styles.list}>
 				{allIngredients.map((ingredient: IIngredientWithId) => {
 					const checked = userIngredients.some(
 						({ _id }) => _id === ingredient._id
@@ -138,10 +139,12 @@ function IngredientsForm() {
 					);
 				})}
 			</ul>
-			<button onClick={cancelChanges}>Cancel</button>
-			<button ref={saveButtonRef} disabled>
-				Save
-			</button>
+			<div className={styles.buttonContainer}>
+				<button onClick={cancelChanges}>Cancel</button>
+				<button ref={saveButtonRef} disabled>
+					Save
+				</button>
+			</div>
 		</form>
 	);
 }

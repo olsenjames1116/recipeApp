@@ -1,4 +1,5 @@
 import { IIngredientWithId } from '../../types';
+import styles from './IngredientInput.module.scss';
 
 interface IngredientInputProps {
 	ingredient: IIngredientWithId;
@@ -18,7 +19,7 @@ function IngredientInput({
 	};
 
 	return (
-		<li key={ingredient._id}>
+		<li key={ingredient._id} className={styles.listItem}>
 			<input
 				type="checkbox"
 				id={ingredient._id}
@@ -26,7 +27,9 @@ function IngredientInput({
 				onChange={enableSave}
 				defaultChecked={checked}
 			/>
-			<label htmlFor={ingredient._id}>{ingredient.name}</label>
+			<label htmlFor={ingredient._id} className={styles.label}>
+				{ingredient.name}
+			</label>
 		</li>
 	);
 }
