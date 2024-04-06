@@ -3,6 +3,7 @@ import { IRootState } from '../../redux/store';
 import { IPlanner } from '../../types';
 import Meal from '../Meal/Meal';
 import { addSelectedDay } from '../../redux/state/selectedDaySlice';
+import styles from './MealPlannerDay.module.scss';
 
 interface MealPlannerDayProps {
 	dayOfTheWeek: string;
@@ -44,11 +45,7 @@ function MealPlannerDay({
 	return (
 		<li
 			id={dayOfTheWeek}
-			style={{
-				height: '500px',
-				width: '600px',
-				border: index === today ? '5px solid blue' : '1px solid black',
-			}}
+			className={`${styles.listItem} ${index === today ? styles.today : ''}`}
 			onClick={displayMealPlannerMenu}
 		>
 			<span>{`${dayOfTheWeek[0].toUpperCase()}${dayOfTheWeek.substring(

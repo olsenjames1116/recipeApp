@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { IRootState } from '../../redux/store';
 import { addRecipesQuery } from '../../redux/state/recipesQuerySlice';
 import { addRecipeSearchResults } from '../../redux/state/recipeSearchResultsSlice';
+import styles from './MealPlannerForm.module.scss';
 
 // Represents the form to search stored recipes to add to planner.
 function MealPlannerForm() {
@@ -23,8 +24,13 @@ function MealPlannerForm() {
 	};
 
 	return (
-		<form>
-			<input type="text" onChange={searchRecipes} />
+		<form className={styles.form}>
+			<input
+				type="text"
+				onChange={searchRecipes}
+				maxLength={50}
+				className={styles.input}
+			/>
 		</form>
 	);
 }

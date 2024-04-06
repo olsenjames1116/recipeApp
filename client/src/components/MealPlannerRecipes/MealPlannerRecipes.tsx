@@ -7,6 +7,7 @@ import api from '../../axiosConfig';
 import { addRecipeList } from '../../redux/state/recipeListSlice';
 import { IRecipeWithId } from '../../types';
 import MealPlannerRecipe from '../MealPlannerRecipe/MealPlannerRecipe';
+import styles from './MealPlannerRecipes.module.scss';
 
 interface MealPlannerRecipesProps {
 	setDisplayMenu: React.Dispatch<React.SetStateAction<boolean>>;
@@ -45,9 +46,9 @@ function MealPlannerRecipes({ setDisplayMenu }: MealPlannerRecipesProps) {
 	}, []);
 
 	return (
-		<ul>
+		<ul className={styles.list}>
 			{recipeList.length === 0 ? (
-				<li>
+				<li className={styles.listItem}>
 					You do not have saved recipes. View our <Link to="/">recipes</Link>{' '}
 					and save one!
 				</li>

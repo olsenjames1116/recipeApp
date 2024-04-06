@@ -4,8 +4,8 @@ import api from '../../axiosConfig';
 import { AxiosError } from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { addPlanner } from '../../redux/state/plannerSlice';
-import ClearPlannerButton from '../ClearPlannerButton/ClearPlannerButton';
 import MealPlannerDay from '../MealPlannerDay/MealPlannerDay';
+import styles from './MealPlanner.module.scss';
 
 interface MealPlannerProps {
 	setDisplayMenu: React.Dispatch<React.SetStateAction<boolean>>;
@@ -48,10 +48,7 @@ function MealPlanner({ setDisplayMenu }: MealPlannerProps) {
 	}, []);
 
 	return (
-		<ul>
-			<li>
-				<ClearPlannerButton />
-			</li>
+		<ul className={styles.list}>
 			{daysOfTheWeek.map((dayOfTheWeek, index) => {
 				return (
 					<MealPlannerDay

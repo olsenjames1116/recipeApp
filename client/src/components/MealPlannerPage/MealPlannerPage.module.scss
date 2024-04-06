@@ -1,0 +1,5 @@
+@use '../../assets/styles/mixins' as mixins;
+
+.page {
+	@include mixins.fillPage();
+}

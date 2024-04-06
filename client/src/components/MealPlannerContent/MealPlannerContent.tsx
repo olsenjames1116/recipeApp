@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import MealPlanner from '../MealPlanner/MealPlanner';
 import MealPlannerMenu from '../MealPlannerMenu/MealPlannerMenu';
+import styles from './MealPlannerContent.module.scss';
+import ClearPlannerButton from '../ClearPlannerButton/ClearPlannerButton';
 
 interface MealPlannerContentProps {
 	menuRef: React.RefObject<HTMLDivElement>;
@@ -11,7 +13,8 @@ function MealPlannerContent({ menuRef }: MealPlannerContentProps) {
 	const [displayMenu, setDisplayMenu] = useState(false);
 
 	return (
-		<main>
+		<main className={styles.main}>
+			<ClearPlannerButton />
 			<MealPlanner setDisplayMenu={setDisplayMenu} />
 			{displayMenu && (
 				<MealPlannerMenu

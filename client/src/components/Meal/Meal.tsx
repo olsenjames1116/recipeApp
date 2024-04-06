@@ -6,6 +6,8 @@ import api from '../../axiosConfig';
 import { useDispatch, useSelector } from 'react-redux';
 import { IRootState } from '../../redux/store';
 import { addPlanner } from '../../redux/state/plannerSlice';
+import styles from './Meal.module.scss';
+import { trashIcon } from '../../assets/images';
 
 interface MealProps {
 	dayOfTheWeek: string;
@@ -31,7 +33,7 @@ function Meal({ dayOfTheWeek }: MealProps) {
 
 	// Deletes the specified meal from the planner.
 	const deleteMeal = async (
-		event: React.MouseEvent<HTMLButtonElement, MouseEvent>
+		event: React.MouseEvent<HTMLImageElement, MouseEvent>
 	) => {
 		event.preventDefault();
 
@@ -56,12 +58,25 @@ function Meal({ dayOfTheWeek }: MealProps) {
 	return (
 		<>
 			{Object.keys(meal).length !== 0 ? (
-				<div>
-					<a href={(meal as IPlanner).recipe.url} target="_blank">
-						<img src={(meal as IPlanner).recipe.image} alt="" />
+				<div className={styles.container}>
+					<img
+						src={trashIcon}
+						alt=""
+						onClick={deleteMeal}
+						className={styles.delete}
+					/>
+					<a
+						href={(meal as IPlanner).recipe.url}
+						target="_blank"
+						className={styles.link}
+					>
+						<img
+							src={(meal as IPlanner).recipe.image}
+							alt=""
+							className={styles.image}
+						/>
 						<span>{(meal as IPlanner).recipe.title}</span>
 					</a>
-					<button onClick={deleteMeal}>Delete</button>
 				</div>
 			) : null}
 		</>

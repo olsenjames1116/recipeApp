@@ -5,6 +5,7 @@ import MealPlannerForm from '../MealPlannerForm/MealPlannerForm';
 import MealPlannerRecipes from '../MealPlannerRecipes/MealPlannerRecipes';
 import MealPlannerSearchResults from '../MealPlannerSearchResults/MealPlannerSearchResults';
 import CloseIcon from '../CloseIcon/CloseIcon';
+import styles from './MealPlannerMenu.module.scss';
 
 interface MealPlannerMenuProps {
 	menuRef: React.RefObject<HTMLDivElement>;
@@ -36,9 +37,9 @@ function MealPlannerMenu({
 	}, []);
 
 	return (
-		<div ref={menuRef}>
+		<div ref={menuRef} className={styles.container}>
 			<CloseIcon setDisplayMenu={setDisplayMenu} />
-			<span>{selectedDay}</span>
+			<span className={styles.span}>{selectedDay}</span>
 			<MealPlannerForm />
 			{recipesQuery.length === 0 ? (
 				<MealPlannerRecipes setDisplayMenu={setDisplayMenu} />

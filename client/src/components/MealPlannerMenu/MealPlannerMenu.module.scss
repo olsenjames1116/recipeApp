@@ -1,0 +1,17 @@
+@use '../../assets/styles/mixins' as mixins;
+
+.container {
+	@include mixins.positionCenter();
+	background-color: white;
+	display: grid;
+	grid-template-rows: auto auto auto 1fr;
+	gap: 10px;
+	padding: 20px;
+	height: 75%;
+	width: 75%;
+	overflow: scroll;
+}
+
+.span {
+	text-align: center;
+}

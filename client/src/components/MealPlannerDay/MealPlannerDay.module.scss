@@ -1,0 +1,12 @@
+.listItem {
+	display: grid;
+	grid-template-rows: auto 1fr;
+	justify-content: center;
+	text-align: center;
+	min-height: 500px;
+	padding: 20px;
+}
+
+.today {
+	border: 5px solid blue;
+}

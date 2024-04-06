@@ -3,6 +3,7 @@ import api from '../../axiosConfig';
 import { AxiosError } from 'axios';
 import { useDispatch } from 'react-redux';
 import { addPlanner } from '../../redux/state/plannerSlice';
+import styles from './ClearPlannerButton.module.scss';
 
 // Represents the button on the planner page that clears the planner.
 function ClearPlannerButton() {
@@ -31,7 +32,11 @@ function ClearPlannerButton() {
 		}
 	};
 
-	return <button onClick={clearPlanner}>Clear All</button>;
+	return (
+		<button onClick={clearPlanner} className={styles.button}>
+			Clear All
+		</button>
+	);
 }
 
 export default ClearPlannerButton;

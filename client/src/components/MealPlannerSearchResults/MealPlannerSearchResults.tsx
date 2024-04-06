@@ -1,6 +1,7 @@
 import { useSelector } from 'react-redux';
 import { IRootState } from '../../redux/store';
 import MealPlannerRecipe from '../MealPlannerRecipe/MealPlannerRecipe';
+import styles from './MealPlannerSearchResults.module.scss';
 
 interface MealPlannerSearchResultsProps {
 	setDisplayMenu: React.Dispatch<React.SetStateAction<boolean>>;
@@ -18,9 +19,9 @@ function MealPlannerSearchResults({
 	);
 
 	return (
-		<ul>
+		<ul className={styles.list}>
 			{recipeSearchResults.length === 0 ? (
-				<li>No results for "{recipesQuery}"</li>
+				<li className={styles.listItem}>No results for "{recipesQuery}"</li>
 			) : (
 				recipeSearchResults.map((recipe) => {
 					return (
