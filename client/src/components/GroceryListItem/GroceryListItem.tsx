@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import { addGroceries } from '../../redux/state/groceryListSlice';
 import { AxiosError } from 'axios';
 import { useNavigate } from 'react-router-dom';
+import styles from './GroceryListItem.module.scss';
 
 interface GroceryListItemProps {
 	grocery: IGrocery;
@@ -64,7 +65,7 @@ function GroceryListItem({ grocery }: GroceryListItemProps) {
 	};
 
 	return (
-		<li key={grocery._id} id={grocery._id}>
+		<li key={grocery._id} id={grocery._id} className={styles.listItem}>
 			<input
 				type="checkbox"
 				id={grocery._id}
@@ -72,7 +73,9 @@ function GroceryListItem({ grocery }: GroceryListItemProps) {
 				className={grocery.checked ? 'strikethrough' : undefined}
 				defaultChecked={grocery.checked}
 			/>
-			<label htmlFor={grocery._id}>{grocery.name}</label>
+			<label htmlFor={grocery._id} className={styles.label}>
+				{grocery.name}
+			</label>
 			<button onClick={deleteGroceryItem}>Remove</button>
 		</li>
 	);

@@ -5,6 +5,7 @@ import InputMessages from '../InputMessages/InputMessages';
 import api from '../../axiosConfig';
 import { useDispatch } from 'react-redux';
 import { addGroceries } from '../../redux/state/groceryListSlice';
+import styles from './GroceryItemInput.module.scss';
 
 interface GroceryItemInputProps {
 	inputMenuRef: React.RefObject<HTMLLIElement>;
@@ -114,7 +115,7 @@ function GroceryItemInput({
 	};
 
 	return (
-		<li ref={inputMenuRef}>
+		<li ref={inputMenuRef} className={styles.listItem}>
 			<input
 				type="text"
 				placeholder="Enter item to add..."
@@ -124,8 +125,10 @@ function GroceryItemInput({
 				maxLength={50}
 			/>
 			<InputMessages messages={inputMessages} error={error} />
-			<button onClick={validateInput}>Add</button>
-			<button onClick={cancelItem}>Cancel</button>
+			<div className={styles.container}>
+				<button onClick={validateInput}>Add</button>
+				<button onClick={cancelItem}>Cancel</button>
+			</div>
 		</li>
 	);
 }

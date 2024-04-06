@@ -8,6 +8,7 @@ import { IRootState } from '../../redux/store';
 import { addGroceries } from '../../redux/state/groceryListSlice';
 import GroceryListItem from '../GroceryListItem/GroceryListItem';
 import ReactToPrint from 'react-to-print';
+import styles from './GroceriesForm.module.scss';
 
 interface GroceriesFormProps {
 	inputMenuRef: React.RefObject<HTMLLIElement>;
@@ -89,12 +90,15 @@ function GroceriesForm({
 			onSubmit={(event) => event.preventDefault()}
 			noValidate
 			ref={printFrameRef}
+			className={styles.form}
 		>
 			<span>Groceries:</span>
-			<ul ref={listRef}>
-				<li>
-					<button onClick={displayInputElement}>+Add Item</button>
-				</li>
+			<ul ref={listRef} className={styles.list}>
+				{!displayInput && (
+					<li className={styles.addItemButton}>
+						<button onClick={displayInputElement}>+Add Item</button>
+					</li>
+				)}
 				{displayInput && (
 					<GroceryItemInput
 						inputMenuRef={inputMenuRef}
@@ -109,9 +113,13 @@ function GroceriesForm({
 			<ReactToPrint
 				bodyClass="print-agreement"
 				content={() => printFrameRef.current}
-				trigger={() => <button>Print or Download</button>}
+				trigger={() => (
+					<button className={styles.button}>Print or Download</button>
+				)}
 			/>
-			<button onClick={clearList}>Clear All</button>
+			<button onClick={clearList} className={styles.button}>
+				Clear All
+			</button>
 		</form>
 	);
 }
