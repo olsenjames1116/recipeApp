@@ -12,7 +12,7 @@ function MealPlannerPage() {
 
 	return (
 		<div>
-			<Header />
+			<Header location="planner" />
 			<MealPlannerContent menuRef={menuRef} />
 		</div>
 	);

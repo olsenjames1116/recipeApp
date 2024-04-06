@@ -42,7 +42,7 @@ function HomePage() {
 
 	return (
 		<div className={styles.page}>
-			<Header />
+			<Header location="home" />
 			<HomeContent menuRef={menuRef} />
 		</div>
 	);

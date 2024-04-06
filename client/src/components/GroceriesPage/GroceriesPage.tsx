@@ -12,7 +12,7 @@ function GroceriesPage() {
 
 	return (
 		<div>
-			<Header />
+			<Header location="groceries" />
 			<GroceriesContent inputMenuRef={inputMenuRef} />
 		</div>
 	);

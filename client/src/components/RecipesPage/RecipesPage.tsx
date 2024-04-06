@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import Header from '../Header/Header';
 import RecipesContent from '../RecipesContent/RecipesContent';
+import styles from './RecipesPage.module.scss';
 
 // Represents the recipes page for users to view saved recipes.
 function RecipesPage() {
@@ -9,8 +10,8 @@ function RecipesPage() {
 	}, []);
 
 	return (
-		<div>
-			<Header />
+		<div className={styles.page}>
+			<Header location="recipes" />
 			<RecipesContent />
 		</div>
 	);

@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { AxiosError } from 'axios';
 import { addRecipeList } from '../../redux/state/recipeListSlice';
 import api from '../../axiosConfig';
+import styles from './RecipeListItem.module.scss';
 
 interface RecipeListItemProps {
 	recipe: IRecipeWithId;
@@ -34,16 +35,21 @@ function RecipeListItem({ recipe }: RecipeListItemProps) {
 	};
 
 	return (
-		<li key={recipe._id}>
-			<a href={recipe.url} target="_blank">
-				<img src={recipe.image} />
-				<span>{recipe.title}</span>
-			</a>
+		<li key={recipe._id} className={styles.listItem}>
 			<img
 				src={trashIcon}
 				alt="Delete recipe"
 				onClick={() => deleteRecipe(recipe._id)}
+				className={styles.delete}
 			/>
+			<a href={recipe.url} target="_blank" className={styles.link}>
+				<img
+					src={recipe.image}
+					className={styles.image}
+					alt="Recipe information page"
+				/>
+				<span className={styles.span}>{recipe.title}</span>
+			</a>
 		</li>
 	);
 }

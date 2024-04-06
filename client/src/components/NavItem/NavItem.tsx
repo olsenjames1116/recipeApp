@@ -6,11 +6,12 @@ interface NavItemProps {
 	src: string;
 	alt: string;
 	title: string;
+	className: string;
 }
 
-function NavItem({ to, src, alt, title }: NavItemProps) {
+function NavItem({ to, src, alt, title, className }: NavItemProps) {
 	return (
-		<Link to={to} className={styles.link}>
+		<Link to={to} className={`${styles.link} ${className}`}>
 			<img src={src} alt={alt} className={styles.image} />
 			<span className={styles.span}>{title}</span>
 		</Link>

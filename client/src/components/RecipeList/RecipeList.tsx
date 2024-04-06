@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { IRootState } from '../../redux/store';
 import { addRecipeList } from '../../redux/state/recipeListSlice';
 import RecipeListItem from '../RecipeListItem/RecipeListItem';
+import styles from './RecipeList.module.scss';
 
 // Represents the list of recipes stored by the user.
 function RecipeList() {
@@ -38,9 +39,9 @@ function RecipeList() {
 	}, []);
 
 	return (
-		<ul>
+		<ul className={styles.list}>
 			{recipeList.length === 0 ? (
-				<li>
+				<li className={styles.text}>
 					You do not have saved recipes. View our <Link to="/">recipes</Link>{' '}
 					and save one!
 				</li>

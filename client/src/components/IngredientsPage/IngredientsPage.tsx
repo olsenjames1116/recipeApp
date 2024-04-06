@@ -10,7 +10,7 @@ function IngredientsPage() {
 
 	return (
 		<div>
-			<Header />
+			<Header location="ingredients" />
 			<IngredientsContent />
 		</div>
 	);

@@ -1,5 +1,6 @@
 @use '../../assets/styles/mixins' as mixins;
 
 .main {
-	@include mixins.flexCenterWithPadding(row);
+	display: grid;
+	padding: 20px;
 }

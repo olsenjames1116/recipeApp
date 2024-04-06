@@ -6,6 +6,12 @@
 	align-items: center;
 }
 
+// Flex, center and add padding.
+@mixin flexCenterWithPadding($direction) {
+	@include flexCenter($direction);
+	padding: 20px;
+}
+
 // Fill page and flex contents.
 @mixin fillAndFlex($direction) {
 	@include flexCenter($direction);
@@ -38,4 +44,12 @@
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
+}
+
+// Size component to fill page.
+@mixin fillPage {
+	height: 100vh;
+	display: grid;
+	grid-template-rows: auto 1fr;
+	overflow: scroll;
 }
