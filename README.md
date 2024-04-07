@@ -34,6 +34,7 @@ This project highlights:
 - MongoDB
 - TypeScript
 - Sass/SCSS
+- Mixins and CSS variables
 - Redux
 - Google OAuth
 - Passport

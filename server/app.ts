@@ -11,14 +11,27 @@ import cors from 'cors';
 import flash from 'express-flash';
 import session from 'express-session';
 import passport from 'passport';
+import helmet from 'helmet';
+import compression from 'compression';
+import { rateLimit } from 'express-rate-limit';
 
 import userRouter from './routes/user';
 import ingredientsRouter from './routes/ingredients';
 
 const app = express();
 const port = process.env.PORT || 3000;
+app.set('trust proxy', 1);
+
+// Apply rate limit to all requests.
+const limiter = rateLimit({
+	windowMs: 1 * 60 * 1000,
+	max: 20,
+});
 
 // Middleware for all routes.
+app.use(limiter);
+app.use(helmet());
+app.use(compression());
 app.use(
 	session({
 		secret: process.env.SESSION_SECRET!,
