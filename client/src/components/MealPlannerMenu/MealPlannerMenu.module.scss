@@ -13,7 +13,6 @@
 
 .popupContainer {
 	@include mixins.positionCenter();
-	background-color: white;
 	display: grid;
 	grid-template-rows: auto auto auto 1fr;
 	gap: 10px;

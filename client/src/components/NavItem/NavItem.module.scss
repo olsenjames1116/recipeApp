@@ -8,7 +8,7 @@
 
 	&:hover,
 	&:focus {
-		background: vars.$champagne;
+		background: vars.$accentLight;
 
 		& > .image {
 			filter: invert(0%) sepia(0%) saturate(7%) hue-rotate(253deg)
