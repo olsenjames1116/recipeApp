@@ -6,6 +6,19 @@
 	justify-content: center;
 	border-top: 1px solid vars.$accentLight;
 	border-right: 1px solid vars.$accentLight;
+	cursor: pointer;
+
+	&:hover,
+	&:focus {
+		& > .image {
+			filter: contrast(0.6);
+			transform: scale(1.1);
+		}
+	}
+}
+
+.image {
+	transition: transform 0.4s;
 }
 
 @media (max-width: 800px) {

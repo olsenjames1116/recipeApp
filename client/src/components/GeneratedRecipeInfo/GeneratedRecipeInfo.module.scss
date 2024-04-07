@@ -8,15 +8,26 @@
 	padding: 0 20px;
 	padding-top: 20px;
 	width: 100%;
+
+	&:hover,
+	&:focus {
+		& > .image,
+		& > .span {
+			filter: contrast(0.6);
+			transform: scale(1.1);
+		}
+	}
 }
 
 .image {
 	width: 500px;
+	transition: transform 0.4s;
 }
 
 .span {
 	font-size: vars.$titleTextFontSize;
 	text-align: center;
+	transition: transform 0.4s;
 }
 
 @media (max-width: 800px) {

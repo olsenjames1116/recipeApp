@@ -12,6 +12,7 @@
 	border-radius: 5px;
 	min-height: 20px;
 	min-width: 20px;
+	cursor: pointer;
 }
 
 .input:checked {
@@ -24,4 +25,5 @@
 	flex-grow: 1;
 	display: flex;
 	align-items: center;
+	cursor: pointer;
 }

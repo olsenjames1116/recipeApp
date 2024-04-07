@@ -3,4 +3,5 @@
 .image {
 	@include mixins.closeIconSize();
 	justify-self: flex-end;
+	cursor: pointer;
 }

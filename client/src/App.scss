@@ -1,9 +1,5 @@
 @use './assets/styles/resetAndNormalize';
 
-*:focus {
-	background-color: red;
-}
-
 .app {
 	display: grid;
 	grid-template-rows: 1fr auto;
