@@ -1,10 +1,13 @@
 @use '../../assets/styles/mixins' as mixins;
+@use '../../assets/styles/variables' as vars;
 
 .form {
 	display: flex;
 	flex-direction: column;
 	padding: 20px;
 	gap: 10px;
+	background-color: vars.$primaryLight;
+	border-radius: 5px;
 }
 
 .list {
@@ -22,4 +25,13 @@
 .button {
 	@include mixins.styleButton();
 	width: 30%;
+}
+
+.cancelButton {
+	background-color: vars.$secondaryLight;
+}
+
+.saveButton {
+	background-color: vars.$secondaryDark;
+	color: vars.$accentLight;
 }

@@ -1,6 +1,8 @@
 @use '../../assets/styles/mixins' as mixins;
+@use '../../assets/styles/variables' as vars;
 
 .main {
 	display: grid;
 	padding: 20px;
+	background-color: vars.$primaryDark;
 }

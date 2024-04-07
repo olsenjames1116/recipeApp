@@ -26,6 +26,7 @@ function IngredientInput({
 				value={ingredient.name}
 				onChange={enableSave}
 				defaultChecked={checked}
+				className={styles.input}
 			/>
 			<label htmlFor={ingredient._id} className={styles.label}>
 				{ingredient.name}

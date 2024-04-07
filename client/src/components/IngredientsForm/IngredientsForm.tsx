@@ -140,10 +140,17 @@ function IngredientsForm() {
 				})}
 			</ul>
 			<div className={styles.buttonContainer}>
-				<button onClick={cancelChanges} className={styles.button}>
+				<button
+					onClick={cancelChanges}
+					className={`${styles.button} ${styles.cancelButton}`}
+				>
 					Cancel
 				</button>
-				<button ref={saveButtonRef} disabled className={styles.button}>
+				<button
+					ref={saveButtonRef}
+					disabled
+					className={`${styles.button} ${styles.saveButton}`}
+				>
 					Save
 				</button>
 			</div>
