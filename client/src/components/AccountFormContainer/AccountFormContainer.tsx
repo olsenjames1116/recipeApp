@@ -7,7 +7,6 @@ function AccountFormContainer({ children }: { children: React.ReactNode }) {
 		<div className={styles.container}>
 			<img src={logoIcon} alt="" className={styles.icon} />
 			<span className={styles.span}>Whisk</span>
-			<span>Slogan</span>
 			{children}
 		</div>
 	);
