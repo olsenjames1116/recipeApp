@@ -10,5 +10,5 @@
 .button {
 	@include mixins.styleButton();
 	background-color: vars.$secondaryDark;
-	color: vars.$champagne;
+	color: vars.$accentLight;
 }

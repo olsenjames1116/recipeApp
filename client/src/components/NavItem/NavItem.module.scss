@@ -1,4 +1,5 @@
 @use '../../assets/styles/mixins' as mixins;
+@use '../../assets/styles/variables' as vars;
 
 .link {
 	@include mixins.flexCenter(column);
@@ -9,11 +10,14 @@
 .image {
 	height: 50px;
 	width: 50px;
+	filter: invert(99%) sepia(5%) saturate(0%) hue-rotate(312deg) brightness(115%)
+		contrast(100%);
 }
 
 .span {
 	text-align: center;
 	overflow-wrap: break-word;
+	color: vars.$secondaryText;
 }
 
 @media (max-width: 600px) {

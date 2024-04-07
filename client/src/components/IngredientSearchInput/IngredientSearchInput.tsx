@@ -25,6 +25,7 @@ function IngredientSearchInput({
 				id={ingredient._id}
 				value={ingredient.name}
 				onChange={enableSubmit}
+				className={styles.input}
 			/>
 			<label
 				htmlFor={ingredient._id}
@@ -32,7 +33,7 @@ function IngredientSearchInput({
 					userHasIngredient ? styles.inPantry : ''
 				}`}
 			>
-				{ingredient.name}
+				{`${ingredient.name}${userHasIngredient ? '*' : ''}`}
 			</label>
 		</li>
 	);

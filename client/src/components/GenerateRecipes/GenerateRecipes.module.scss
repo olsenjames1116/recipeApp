@@ -9,9 +9,13 @@
 	padding: 20px;
 	width: 75%;
 	text-align: center;
+	background-color: vars.$primaryLight;
+	border-radius: 5px;
 }
 
 .blockquote {
 	font-size: vars.$bodyTextFontSize;
 	margin: 0;
+	outline: 5px ridge vars.$accentLight;
+	padding: 5px;
 }

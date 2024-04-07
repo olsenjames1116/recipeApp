@@ -1,4 +1,5 @@
 @use '../../assets/styles/mixins' as mixins;
+@use '../../assets/styles/variables' as vars;
 
 .container {
 	@include mixins.flexCenter(column);
@@ -10,4 +11,6 @@
 .button {
 	@include mixins.styleButton();
 	width: 30%;
+	background-color: vars.$secondaryDark;
+	color: vars.$accentLight;
 }

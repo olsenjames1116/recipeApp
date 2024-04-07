@@ -1,5 +1,7 @@
 @use '../../assets/styles/mixins' as mixins;
+@use '../../assets/styles/variables' as vars;
 
 .main {
 	@include mixins.flexCenterWithPadding(row);
+	background-color: vars.$primaryDark;
 }

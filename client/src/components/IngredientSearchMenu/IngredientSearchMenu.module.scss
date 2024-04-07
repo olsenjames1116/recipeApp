@@ -3,13 +3,14 @@
 
 .container {
 	@include mixins.positionCenter();
-	background-color: white;
+	background-color: vars.$primaryLight;
 	display: grid;
 	grid-template-rows: auto auto 1fr;
 	gap: 10px;
 	padding: 20px;
 	width: 75%;
 	height: 75%;
+	border-radius: 5px;
 }
 
 .span {
@@ -18,5 +19,5 @@
 }
 
 .success {
-	color: vars.$successColor;
+	color: vars.$secondaryLight;
 }

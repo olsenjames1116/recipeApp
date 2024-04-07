@@ -2,7 +2,20 @@
 
 .listItem {
 	display: flex;
-	border: 1px solid black;
+	align-items: center;
+	border: 1px solid vars.$accentLight;
+	border-radius: 5px;
+	padding-left: 5px;
+}
+
+.input {
+	border-radius: 5px;
+	height: 20px;
+	width: 20px;
+}
+
+.input:checked {
+	accent-color: vars.$secondaryDark;
 }
 
 .label {
@@ -14,5 +27,5 @@
 }
 
 .inPantry {
-	color: vars.$successColor;
+	color: vars.$secondaryLight;
 }

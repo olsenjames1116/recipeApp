@@ -5,6 +5,8 @@
 	@include mixins.styleButton();
 	align-self: center;
 	margin: 5px;
+	background-color: vars.$secondaryDark;
+	color: vars.$accentLight;
 }
 
 @media (max-width: 600px) {

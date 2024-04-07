@@ -1,4 +1,14 @@
+@use '../../assets/styles/variables' as vars;
+
 .footer {
 	display: flex;
 	justify-content: center;
+	background-color: vars.$primaryDark;
+	color: white;
+	padding: 5px;
+	gap: 5px;
+}
+
+.link {
+	color: vars.$accentLight;
 }

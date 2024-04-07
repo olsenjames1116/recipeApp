@@ -1,4 +1,5 @@
 @use '../../assets/styles/mixins' as mixins;
+@use '../../assets/styles/variables' as vars;
 
 .form {
 	display: flex;
@@ -20,6 +21,8 @@
 	@include mixins.styleButton();
 	align-self: center;
 	width: 30%;
+	background-color: vars.$secondaryDark;
+	color: vars.$accentLight;
 }
 
 @media (max-width: 500px) {
