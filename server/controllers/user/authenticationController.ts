@@ -122,6 +122,7 @@ export const checkLogInValidationResult = asyncHandler(
 			});
 		}
 
+		console.log(`checkLogInValidationResult: ${req}`);
 		// There are no errors, pass on to the next middleware.
 		next();
 	}
@@ -145,6 +146,7 @@ export const authenticateUserLocal = (
 		req.logIn(user, function (err) {
 			if (err) return next(err);
 
+			console.log(`authenticateUserLocal: ${req.user}`);
 			// No errors. Send response back to front end.
 			return res.status(200).json(req.user);
 		});
@@ -165,6 +167,8 @@ export const getGoogleCallback = passport.authenticate('google', {
 
 // Determine if the user has been authenticated and send response.
 export const isLoggedIn = (req: Request, res: Response, next: NextFunction) => {
+	console.log(`isLoggedIn: ${req}`);
+	console.log(`isLoggedIn: ${req.isAuthenticated()}`);
 	req.isAuthenticated() ? res.sendStatus(200) : res.sendStatus(403);
 };
 
