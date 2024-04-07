@@ -27,20 +27,25 @@
 }
 
 .button {
-	@include mixins.styleButton();
 	align-self: center;
-	background-color: vars.$secondaryDark;
-	color: vars.$accentLight;
 }
 
 .printButton {
-	background-color: vars.$secondaryDark;
-	color: vars.$accentLight;
+	@include mixins.styleButton(
+		vars.$secondaryDark,
+		vars.$secondaryDarkTransition,
+		vars.$accentLight
+	);
+	@include mixins.styleButtonHoverAndFocus();
 }
 
 .clearButton {
-	background-color: vars.$accentDark;
-	color: vars.$accentLight;
+	@include mixins.styleButton(
+		vars.$accentDark,
+		vars.$accentDarkTransition,
+		vars.$accentLight
+	);
+	@include mixins.styleButtonHoverAndFocus();
 }
 
 @media print {

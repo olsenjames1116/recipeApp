@@ -2,11 +2,14 @@
 @use '../../assets/styles/variables' as vars;
 
 .button {
-	@include mixins.styleButton();
+	@include mixins.styleButton(
+		vars.$secondaryDark,
+		vars.$secondaryDarkTransition,
+		vars.$accentLight
+	);
+	@include mixins.styleButtonHoverAndFocus();
 	align-self: center;
 	margin: 5px;
-	background-color: vars.$secondaryDark;
-	color: vars.$accentLight;
 }
 
 @media (max-width: 600px) {

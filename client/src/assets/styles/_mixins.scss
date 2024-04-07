@@ -1,3 +1,5 @@
+@use './variables' as vars;
+
 // Flex and center an item.
 @mixin flexCenter($direction) {
 	display: flex;
@@ -55,8 +57,58 @@
 }
 
 // Add base style for all buttons.
-@mixin styleButton {
+@mixin styleButton($backgroundColor, $transitionColor, $textColor) {
 	border-radius: 5px;
 	padding: 5px;
 	font-size: 20rem;
+	background-image: (
+		linear-gradient(270deg, $backgroundColor, $transitionColor)
+	);
+	background-size: 400% 400%;
+	transition: transform 0.6s;
+	overflow: hidden;
+	position: relative;
+	color: $textColor;
+}
+
+// Style a button to change color and shine on hover and focus.
+@mixin styleButtonHoverAndFocus {
+	&::before {
+		content: '';
+		display: block;
+		position: absolute;
+		background: rgba(255, 255, 255, 0.5);
+		width: 60px;
+		height: 100%;
+		top: 0;
+		filter: blur(30px);
+		transform: translateX(-100px) skewX(-15deg);
+	}
+
+	&::after {
+		content: '';
+		display: block;
+		position: absolute;
+		background: rgba(255, 255, 255, 0.2);
+		width: 30px;
+		height: 100%;
+		top: 0;
+		filter: blur(5px);
+		transform: translateX(-100px) skewX(-15deg);
+	}
+
+	&:hover,
+	&:focus {
+		background-image: (
+			linear-gradient(to left, vars.$secondaryDark, vars.$champagne)
+		);
+		color: black;
+		transform: scale(1.1);
+
+		&::before,
+		&::after {
+			transform: translateX(300px) skewX(-15deg);
+			transition: 0.7s;
+		}
+	}
 }

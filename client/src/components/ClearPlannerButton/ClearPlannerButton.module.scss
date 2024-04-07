@@ -2,9 +2,12 @@
 @use '../../assets/styles/variables' as vars;
 
 .button {
-	@include mixins.styleButton();
+	@include mixins.styleButton(
+		vars.$accentDark,
+		vars.$accentDarkTransition,
+		vars.$accentLight
+	);
+	@include mixins.styleButtonHoverAndFocus();
 	width: 30%;
 	justify-self: center;
-	background-color: vars.$accentDark;
-	color: vars.$accentLight;
 }

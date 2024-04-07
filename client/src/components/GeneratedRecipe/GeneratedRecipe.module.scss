@@ -9,8 +9,11 @@
 }
 
 .button {
-	@include mixins.styleButton();
+	@include mixins.styleButton(
+		vars.$secondaryDark,
+		vars.$secondaryDarkTransition,
+		vars.$accentLight
+	);
+	@include mixins.styleButtonHoverAndFocus();
 	width: 30%;
-	background-color: vars.$secondaryDark;
-	color: vars.$accentLight;
 }

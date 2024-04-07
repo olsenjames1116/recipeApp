@@ -24,16 +24,25 @@
 }
 
 .button {
-	@include mixins.styleButton();
 	width: 30%;
 }
 
 .cancelButton {
+	@include mixins.styleButton(
+		vars.$secondaryLight,
+		vars.$secondaryLightTransition,
+		vars.$secondaryText
+	);
+	@include mixins.styleButtonHoverAndFocus();
 	background-color: vars.$secondaryLight;
 	color: vars.$secondaryText;
 }
 
 .saveButton {
-	background-color: vars.$secondaryDark;
-	color: vars.$accentLight;
+	@include mixins.styleButton(
+		vars.$secondaryDark,
+		vars.$secondaryDarkTransition,
+		vars.$accentLight
+	);
+	@include mixins.styleButtonHoverAndFocus();
 }

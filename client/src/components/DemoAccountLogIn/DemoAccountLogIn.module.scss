@@ -7,8 +7,11 @@
 }
 
 .button {
-	@include mixins.styleButton();
-	background-color: vars.$goldenBrown;
-	color: vars.$secondaryText;
+	@include mixins.styleButton(
+		vars.$secondaryLight,
+		vars.$secondaryLightTransition,
+		vars.$secondaryText
+	);
+	@include mixins.styleButtonHoverAndFocus();
 	width: 100%;
 }

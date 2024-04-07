@@ -34,9 +34,12 @@
 }
 
 .button {
-	@include mixins.styleButton();
-	background-color: vars.$accentDark;
-	color: vars.$accentLight;
+	@include mixins.styleButton(
+		vars.$accentDark,
+		vars.$accentDarkTransition,
+		vars.$accentLight
+	);
+	@include mixins.styleButtonHoverAndFocus();
 }
 
 @media print {

@@ -21,11 +21,14 @@
 }
 
 .button {
-	@include mixins.styleButton();
+	@include mixins.styleButton(
+		vars.$secondaryDark,
+		vars.$secondaryDarkTransition,
+		vars.$accentLight
+	);
+	@include mixins.styleButtonHoverAndFocus();
 	align-self: center;
 	width: 30%;
-	background-color: vars.$secondaryDark;
-	color: vars.$accentLight;
 }
 
 @media (max-width: 500px) {
