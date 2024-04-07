@@ -1,3 +1,4 @@
+@use '../../assets/styles/mixins' as mixins;
 @use '../../assets/styles/variables' as vars;
 
 .container {
@@ -7,14 +8,7 @@
 	border-top: 1px solid vars.$accentLight;
 	border-right: 1px solid vars.$accentLight;
 	cursor: pointer;
-
-	&:hover,
-	&:focus {
-		& > .image {
-			filter: contrast(0.6);
-			transform: scale(1.1);
-		}
-	}
+	@include mixins.styleRecipeHoverAndFocus();
 }
 
 .image {

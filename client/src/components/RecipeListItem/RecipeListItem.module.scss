@@ -5,12 +5,7 @@
 	height: 50px;
 	width: 50px;
 	align-self: flex-end;
-
-	&:hover,
-	&:focus {
-		filter: invert(10%) sepia(70%) saturate(3263%) hue-rotate(354deg)
-			brightness(103%) contrast(112%);
-	}
+	@include mixins.styleDeleteHoverAndFocus();
 }
 
 .listItem {
@@ -29,15 +24,7 @@
 	flex-direction: column;
 	align-items: center;
 	gap: 10px;
-
-	&:hover,
-	&:focus {
-		& > .image,
-		& > .span {
-			filter: contrast(0.6);
-			transform: scale(1.1);
-		}
-	}
+	@include mixins.styleRecipeHoverAndFocus();
 }
 
 .image {

@@ -1,3 +1,4 @@
+@use '../../assets/styles/mixins' as mixins;
 @use '../../assets/styles/variables' as vars;
 
 .link {
@@ -8,15 +9,7 @@
 	padding: 0 20px;
 	padding-top: 20px;
 	width: 100%;
-
-	&:hover,
-	&:focus {
-		& > .image,
-		& > .span {
-			filter: contrast(0.6);
-			transform: scale(1.1);
-		}
-	}
+	@include mixins.styleRecipeHoverAndFocus();
 }
 
 .image {
