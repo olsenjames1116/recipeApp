@@ -8,7 +8,7 @@ export const groceryListSlice = createSlice({
 	name: 'groceryList',
 	initialState,
 	reducers: {
-		addGroceries: (state, action) => {
+		addGroceries: (_state, action) => {
 			return { value: [...action.payload] };
 		},
 		removeGroceries: () => {

@@ -7,7 +7,7 @@ export const randomRecipeSlice = createSlice({
 		value: {},
 	},
 	reducers: {
-		addRandomRecipe: (state, action) => {
+		addRandomRecipe: (_state, action) => {
 			return { value: { ...action.payload } };
 		},
 		removeRandomRecipe: () => {

@@ -10,7 +10,7 @@ export const recipeSearchResultsSlice = createSlice({
 	name: 'recipeSearchResults',
 	initialState,
 	reducers: {
-		addRecipeSearchResults: (state, action) => {
+		addRecipeSearchResults: (_state, action) => {
 			return { value: [...action.payload] };
 		},
 		removeRecipeSearchResults: () => {

@@ -7,7 +7,7 @@ export const recipesQuerySlice = createSlice({
 		value: '',
 	},
 	reducers: {
-		addRecipesQuery: (state, action) => {
+		addRecipesQuery: (_state, action) => {
 			return { value: action.payload };
 		},
 		removeRecipesQuery: () => {

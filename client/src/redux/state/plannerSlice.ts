@@ -10,7 +10,7 @@ export const plannerSlice = createSlice({
 	name: 'planner',
 	initialState,
 	reducers: {
-		addPlanner: (state, action) => {
+		addPlanner: (_state, action) => {
 			return { value: [...action.payload] };
 		},
 		removePlanner: () => {

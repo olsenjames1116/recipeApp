@@ -10,7 +10,7 @@ export const recipeListSlice = createSlice({
 	name: 'recipeList',
 	initialState,
 	reducers: {
-		addRecipeList: (state, action) => {
+		addRecipeList: (_state, action) => {
 			return { value: [...action.payload] };
 		},
 		removeRecipeList: () => {

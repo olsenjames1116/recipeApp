@@ -7,7 +7,7 @@ export const recipeTypeSlice = createSlice({
 		value: '',
 	},
 	reducers: {
-		addRecipeType: (state, action) => {
+		addRecipeType: (_state, action) => {
 			return { value: action.payload };
 		},
 		removeRecipeType: () => {

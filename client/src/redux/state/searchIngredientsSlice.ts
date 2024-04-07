@@ -7,7 +7,7 @@ export const searchIngredientsSlice = createSlice({
 		value: '',
 	},
 	reducers: {
-		addSearchIngredients: (state, action) => {
+		addSearchIngredients: (_state, action) => {
 			return { value: action.payload };
 		},
 		removeSearchIngredients: () => {

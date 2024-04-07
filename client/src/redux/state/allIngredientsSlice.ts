@@ -10,7 +10,7 @@ export const allIngredientsSlice = createSlice({
 	name: 'allIngredients',
 	initialState,
 	reducers: {
-		addAllIngredients: (state, action) => {
+		addAllIngredients: (_state, action) => {
 			return { value: [...action.payload] };
 		},
 		removeAllIngredients: () => {

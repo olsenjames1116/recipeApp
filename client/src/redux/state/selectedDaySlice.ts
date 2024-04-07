@@ -7,7 +7,7 @@ export const selectedDaySlice = createSlice({
 		value: '',
 	},
 	reducers: {
-		addSelectedDay: (state, action) => {
+		addSelectedDay: (_state, action) => {
 			return { value: action.payload };
 		},
 		removeSelectedDay: () => {
