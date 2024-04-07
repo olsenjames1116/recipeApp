@@ -13,6 +13,7 @@ function CloseIcon({ setDisplayMenu }: CloseIconProps) {
 			alt="Close the menu"
 			onClick={() => setDisplayMenu(false)}
 			className={styles.image}
+			tabIndex={0}
 		/>
 	);
 }
