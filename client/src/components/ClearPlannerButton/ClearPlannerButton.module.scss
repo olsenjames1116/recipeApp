@@ -1,7 +1,10 @@
 @use '../../assets/styles/mixins' as mixins;
+@use '../../assets/styles/variables' as vars;
 
 .button {
 	@include mixins.styleButton();
 	width: 30%;
 	justify-self: center;
+	background-color: vars.$secondaryDark;
+	color: vars.$accentLight;
 }

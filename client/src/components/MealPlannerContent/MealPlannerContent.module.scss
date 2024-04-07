@@ -1,6 +1,9 @@
+@use '../../assets/styles/variables' as vars;
+
 .main {
 	padding: 20px;
 	display: grid;
 	grid-template-rows: auto 1fr;
 	gap: 20px;
+	background-color: vars.$primaryDark;
 }
