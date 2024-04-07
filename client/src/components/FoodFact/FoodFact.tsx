@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import styles from './FoodFact.module.scss';
 
 // Represents the component that displays a food fact to the user.
 function FoodFact() {
@@ -25,7 +26,7 @@ function FoodFact() {
 		getFoodFact();
 	}, []);
 
-	return <blockquote>{foodFact}</blockquote>;
+	return <blockquote className={styles.blockquote}>{foodFact}</blockquote>;
 }
 
 export default FoodFact;

@@ -173,7 +173,7 @@
 		height: 100%;
 		top: 0;
 		filter: blur(30px);
-		transform: translateX(-150px) skewX(-15deg);
+		transform: translateX(-200px) skewX(-15deg);
 	}
 
 	&::after {
@@ -185,7 +185,7 @@
 		height: 100%;
 		top: 0;
 		filter: blur(5px);
-		transform: translateX(-150px) skewX(-15deg);
+		transform: translateX(-200px) skewX(-15deg);
 	}
 
 	&:hover,

@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import styles from './FoodJoke.module.scss';
 
 // Represents the component that displays a food joke to the user.
 function FoodJoke() {
@@ -25,7 +26,7 @@ function FoodJoke() {
 		getFoodJoke();
 	}, []);
 
-	return <blockquote>{foodJoke}</blockquote>;
+	return <blockquote className={styles.blockquote}>{foodJoke}</blockquote>;
 }
 
 export default FoodJoke;
