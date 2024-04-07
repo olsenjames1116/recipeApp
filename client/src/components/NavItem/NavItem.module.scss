@@ -5,6 +5,20 @@
 	@include mixins.flexCenter(column);
 	flex: 1;
 	padding: 5px;
+
+	&:hover,
+	&:focus {
+		background: vars.$champagne;
+
+		& > .image {
+			filter: invert(0%) sepia(0%) saturate(7%) hue-rotate(253deg)
+				brightness(103%) contrast(100%);
+		}
+
+		& > .span {
+			color: black;
+		}
+	}
 }
 
 .image {

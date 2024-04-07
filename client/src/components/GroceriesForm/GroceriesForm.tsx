@@ -95,7 +95,7 @@ function GroceriesForm({
 			<span className={styles.span}>Groceries:</span>
 			<ul ref={listRef} className={styles.list}>
 				{!displayInput && (
-					<li className={styles.addItemButton}>
+					<li className={`${styles.button} ${styles.addItemButton}`}>
 						<button onClick={displayInputElement} className={styles.button}>
 							+Add Item
 						</button>

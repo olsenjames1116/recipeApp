@@ -22,6 +22,12 @@
 }
 
 .addItemButton {
+	@include mixins.styleButton(
+		vars.$secondaryDark,
+		vars.$secondaryDarkTransition,
+		vars.$accentLight
+	);
+	@include mixins.styleButtonHoverAndFocus();
 	display: flex;
 	justify-content: center;
 }
