@@ -5,4 +5,5 @@
 	@include mixins.styleButton();
 	background-color: vars.$secondaryDark;
 	color: vars.$accentLight;
+	width: 30%;
 }

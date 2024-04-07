@@ -37,15 +37,17 @@ function MealPlannerMenu({
 	}, []);
 
 	return (
-		<div ref={menuRef} className={styles.container}>
-			<CloseIcon setDisplayMenu={setDisplayMenu} />
-			<span className={styles.span}>{selectedDay}</span>
-			<MealPlannerForm />
-			{recipesQuery.length === 0 ? (
-				<MealPlannerRecipes setDisplayMenu={setDisplayMenu} />
-			) : (
-				<MealPlannerSearchResults setDisplayMenu={setDisplayMenu} />
-			)}
+		<div className={styles.container}>
+			<div ref={menuRef} className={styles.popupContainer}>
+				<CloseIcon setDisplayMenu={setDisplayMenu} />
+				<span className={styles.span}>{selectedDay}</span>
+				<MealPlannerForm />
+				{recipesQuery.length === 0 ? (
+					<MealPlannerRecipes setDisplayMenu={setDisplayMenu} />
+				) : (
+					<MealPlannerSearchResults setDisplayMenu={setDisplayMenu} />
+				)}
+			</div>
 		</div>
 	);
 }

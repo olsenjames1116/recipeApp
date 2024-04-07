@@ -27,15 +27,17 @@ function IngredientSearchMenu({
 	}, []);
 
 	return (
-		<div ref={menuRef} className={styles.container}>
-			<CloseIcon setDisplayMenu={setDisplayMenu} />
-			<span className={styles.span}>
-				Ingredients in your pantry are marked in{' '}
-				<span className={styles.success}>golden brown</span> with an asterisk
-				"*". Select one or many to search for recipes that contain those
-				ingredients. (You may have to scroll to see more.)
-			</span>
-			<IngredientSearchForm setDisplayMenu={setDisplayMenu} />
+		<div className={styles.container}>
+			<div ref={menuRef} className={styles.popupContainer}>
+				<CloseIcon setDisplayMenu={setDisplayMenu} />
+				<span className={styles.span}>
+					Ingredients in your pantry are marked in{' '}
+					<span className={styles.success}>golden brown</span> with an asterisk
+					"*". Select one or many to search for recipes that contain those
+					ingredients. (You may have to scroll to see more.)
+				</span>
+				<IngredientSearchForm setDisplayMenu={setDisplayMenu} />
+			</div>
 		</div>
 	);
 }
