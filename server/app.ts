@@ -14,6 +14,7 @@ import passport from 'passport';
 import helmet from 'helmet';
 import compression from 'compression';
 import { rateLimit } from 'express-rate-limit';
+const MemoryStore = require('memorystore')(session);
 
 import userRouter from './routes/user';
 import ingredientsRouter from './routes/ingredients';
@@ -34,6 +35,10 @@ app.use(helmet());
 app.use(compression());
 app.use(
 	session({
+		cookie: { maxAge: 86400000 },
+		store: new MemoryStore({
+			checkPeriod: 86400000,
+		}),
 		secret: process.env.SESSION_SECRET!,
 		resave: false,
 		saveUninitialized: true,
