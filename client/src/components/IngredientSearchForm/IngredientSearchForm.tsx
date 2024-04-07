@@ -27,9 +27,9 @@ function IngredientSearchForm({ setDisplayMenu }: IngredientSearchFormProps) {
 	const userIngredients = useSelector(
 		(state: IRootState) => state.userIngredients.value
 	);
-	const searchIngredients = useSelector(
-		(state: IRootState) => state.searchIngredients.value
-	);
+	// const searchIngredients = useSelector(
+	// 	(state: IRootState) => state.searchIngredients.value
+	// );
 
 	const [inputMessages, setInputMessages] = useState<string[]>([]);
 	const [error, setError] = useState(false);
@@ -92,13 +92,13 @@ function IngredientSearchForm({ setDisplayMenu }: IngredientSearchFormProps) {
 	};
 
 	// Generate a recipe using the user's ingredients from the Spoonacular api.
-	const generateRecipe = async () => {
+	const generateRecipe = async (checkedElementsString: string) => {
 		try {
 			// Generate the random recipe using ingredients.
 			const randomRecipe = await axios.get(
 				`https://api.spoonacular.com/recipes/complexSearch?apiKey=${
 					import.meta.env.VITE_SPOONACULAR_API_KEY
-				}&includeIngredients=${searchIngredients}&sort=random&number=1`
+				}&includeIngredients=${checkedElementsString}&sort=random&number=1`
 			);
 
 			const { id } = randomRecipe.data.results[0];
@@ -157,7 +157,7 @@ function IngredientSearchForm({ setDisplayMenu }: IngredientSearchFormProps) {
 
 			dispatch(addSearchIngredients(checkedElementsString));
 
-			generateRecipe();
+			generateRecipe(checkedElementsString!);
 		}
 	};
 
