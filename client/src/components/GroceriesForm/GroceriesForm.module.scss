@@ -6,6 +6,8 @@
 	display: flex;
 	flex-direction: column;
 	gap: 10px;
+	background-color: vars.$primaryLight;
+	border-radius: 5px;
 }
 
 .span {
@@ -26,9 +28,25 @@
 .button {
 	@include mixins.styleButton();
 	align-self: center;
+	background-color: vars.$secondaryDark;
+	color: vars.$accentLight;
+}
+
+.printButton {
+	background-color: vars.$secondaryDark;
+	color: vars.$accentLight;
+}
+
+.clearButton {
+	background-color: vars.$accentDark;
+	color: vars.$accentLight;
 }
 
 @media print {
+	.form {
+		background-color: white;
+	}
+
 	.button {
 		display: none;
 	}

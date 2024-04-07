@@ -5,6 +5,6 @@
 	@include mixins.styleButton();
 	width: 30%;
 	justify-self: center;
-	background-color: vars.$secondaryDark;
+	background-color: vars.$accentDark;
 	color: vars.$accentLight;
 }

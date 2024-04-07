@@ -16,6 +16,7 @@
 .blockquote {
 	font-size: vars.$bodyTextFontSize;
 	margin: 0;
-	outline: 5px ridge vars.$accentLight;
+	outline: 3px solid vars.$accentLight;
+	border-radius: 5px;
 	padding: 5px;
 }

@@ -5,7 +5,9 @@
 	display: flex;
 	flex-direction: column;
 	gap: 5px;
-	border: 5px solid black;
+	border: 3px solid vars.$accentLight;
+	border-radius: 5px;
+	padding: 10px;
 }
 
 .input {
@@ -20,4 +22,14 @@
 .button {
 	@include mixins.styleButton();
 	width: 30%;
+}
+
+.addButton {
+	background-color: vars.$secondaryDark;
+	color: vars.$accentLight;
+}
+
+.cancelButton {
+	background-color: vars.$secondaryLight;
+	color: vars.$secondaryText;
 }

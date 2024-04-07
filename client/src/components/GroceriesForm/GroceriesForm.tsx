@@ -116,10 +116,15 @@ function GroceriesForm({
 				bodyClass="print-agreement"
 				content={() => printFrameRef.current}
 				trigger={() => (
-					<button className={styles.button}>Print or Download</button>
+					<button className={`${styles.button} ${styles.printButton}`}>
+						Print or Download
+					</button>
 				)}
 			/>
-			<button onClick={clearList} className={styles.button}>
+			<button
+				onClick={clearList}
+				className={`${styles.button} ${styles.clearButton}`}
+			>
 				Clear All
 			</button>
 		</form>

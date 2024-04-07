@@ -127,11 +127,17 @@ function GroceryItemInput({
 			/>
 			<InputMessages messages={inputMessages} error={error} />
 			<div className={styles.container}>
-				<button onClick={validateInput} className={styles.button}>
-					Add
-				</button>
-				<button onClick={cancelItem} className={styles.button}>
+				<button
+					onClick={cancelItem}
+					className={`${styles.button} ${styles.cancelButton}`}
+				>
 					Cancel
+				</button>
+				<button
+					onClick={validateInput}
+					className={`${styles.button} ${styles.addButton}`}
+				>
+					Add
 				</button>
 			</div>
 		</li>

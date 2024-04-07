@@ -71,6 +71,7 @@ function GroceryListItem({ grocery }: GroceryListItemProps) {
 				id={grocery._id}
 				onChange={handleChange}
 				defaultChecked={grocery.checked}
+				className={styles.input}
 			/>
 			<label
 				htmlFor={grocery._id}
