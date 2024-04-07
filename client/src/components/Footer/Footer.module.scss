@@ -1,3 +1,4 @@
+@use '../../assets/styles/mixins' as mixins;
 @use '../../assets/styles/variables' as vars;
 
 .footer {
@@ -10,5 +11,5 @@
 }
 
 .link {
-	color: vars.$accentLight;
+	@include mixins.styleLinkHoverAndFocus(vars.$accentLight);
 }

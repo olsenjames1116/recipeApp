@@ -9,5 +9,6 @@ This project highlights:
 - Google OAuth
 - Passport
 - SPAs
+- Responsive design
 - MVC architecture
 - CRUD operations

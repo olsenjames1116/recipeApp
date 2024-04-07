@@ -13,5 +13,5 @@
 }
 
 .link {
-	color: vars.$secondaryLight;
+	@include mixins.styleLinkHoverAndFocus(vars.$secondaryLight);
 }
