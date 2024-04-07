@@ -10,6 +10,8 @@ passport.use(
 	new LocalStrategy(async (username, password, done) => {
 		const user = await User.findOne({ username: username });
 
+		console.log(`localStrat: ${user}`);
+
 		// If a user is not found in the db with the input username, return an error.
 		if (!user) {
 			return done(null, false, {
@@ -33,12 +35,15 @@ passport.use(
 );
 
 passport.serializeUser((user, done) => {
+	console.log(`localSerialize: ${user}`);
+
 	done(null, user);
 });
 
 passport.deserializeUser(async (user: any, done) => {
 	// Retrieve user from db.
 	const currentUser = await User.findOne({ username: user.username });
+	console.log(`localDeserialize: ${user}`);
 
 	done(null, currentUser);
 });

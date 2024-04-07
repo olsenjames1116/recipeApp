@@ -30,6 +30,8 @@ passport.use(
 
 			const user = await User.findOne({ username: email });
 
+			console.log(`googleStrat: ${user}`);
+
 			// If user is not found in db with input username, create a new user in the db.
 			if (!user) {
 				const newUser = new User({
@@ -48,12 +50,15 @@ passport.use(
 );
 
 passport.serializeUser((user, done) => {
+	console.log(`googleSerialize: ${user}`);
+
 	done(null, user);
 });
 
 passport.deserializeUser(async ({ _id }, done) => {
 	// Retrieve user from db.
 	const user = await User.findOne({ _id: _id });
+	console.log(`googleDeserialize: ${user}`);
 
 	done(null, user);
 });
