@@ -1,5 +1,9 @@
 @use '../../assets/styles/variables' as vars;
 
+.header {
+	box-shadow: -5px -5px 5px white;
+}
+
 .nav {
 	display: flex;
 	background-color: vars.$secondaryLight;

@@ -100,7 +100,7 @@
 	&:hover,
 	&:focus {
 		background-image: (
-			linear-gradient(to left, vars.$secondaryDark, vars.$champagne)
+			linear-gradient(to left, vars.$secondaryDark, vars.$accentLight)
 		);
 		color: black;
 		transform: scale(1.1);
@@ -157,5 +157,47 @@
 	&:focus {
 		filter: invert(10%) sepia(70%) saturate(3263%) hue-rotate(354deg)
 			brightness(103%) contrast(112%);
+	}
+}
+
+// Style a button to change color and shine on hover and focus.
+@mixin styleNavItemHoverAndFocus {
+	box-shadow: 0px -1px 5px white;
+
+	&::before {
+		content: '';
+		display: block;
+		position: absolute;
+		background: rgba(255, 255, 255, 0.5);
+		width: 60px;
+		height: 100%;
+		top: 0;
+		filter: blur(30px);
+		transform: translateX(-150px) skewX(-15deg);
+	}
+
+	&::after {
+		content: '';
+		display: block;
+		position: absolute;
+		background: rgba(255, 255, 255, 0.2);
+		width: 30px;
+		height: 100%;
+		top: 0;
+		filter: blur(5px);
+		transform: translateX(-150px) skewX(-15deg);
+	}
+
+	&:hover,
+	&:focus {
+		background-image: (
+			linear-gradient(to left, vars.$secondaryDark, vars.$accentLight)
+		);
+
+		&::before,
+		&::after {
+			transform: translateX(300px) skewX(-15deg);
+			transition: 0.7s;
+		}
 	}
 }

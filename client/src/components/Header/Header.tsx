@@ -16,7 +16,7 @@ interface HeaderProps {
 // Represents the header at the top of the page.
 function Header({ location }: HeaderProps) {
 	return (
-		<header>
+		<header className={styles.header}>
 			<nav className={styles.nav}>
 				<NavItem
 					to="/"
