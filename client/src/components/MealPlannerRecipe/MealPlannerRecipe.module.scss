@@ -1,6 +1,10 @@
+@use '../../assets/styles/variables' as vars;
+
 .listItem {
 	display: flex;
 	justify-content: space-between;
+	border: 1px solid vars.$accentLight;
+	border-radius: 5px;
 }
 
 .span {
