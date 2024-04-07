@@ -13,9 +13,7 @@ function InputMessages({ messages, error }: InputMessagesProps) {
 				return (
 					<li
 						key={index}
-						className={`${styles.listItem} ${
-							error ? styles.error : styles.success
-						}`}
+						className={`${styles.listItem} ${error ? styles.error : ''}`}
 					>
 						{message}
 					</li>

@@ -6,7 +6,10 @@ function SignUpOptions() {
 	return (
 		<ul>
 			<li className={styles.listItem}>
-				Already have an account? <Link to="/log-in">Log In</Link>
+				Already have an account?{' '}
+				<Link to="/log-in" className={styles.link}>
+					Log In
+				</Link>
 			</li>
 		</ul>
 	);
