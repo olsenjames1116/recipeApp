@@ -8,5 +8,5 @@
 		vars.$accentLight
 	);
 	@include mixins.styleButtonHoverAndFocus();
-	width: 30%;
+	min-width: 30%;
 }
