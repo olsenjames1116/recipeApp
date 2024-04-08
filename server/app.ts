@@ -41,7 +41,7 @@ app.use(passport.session());
 // Sets up a session for passport.
 app.use(
 	session({
-		cookie: { maxAge: 86400000 },
+		cookie: { maxAge: 86400000, secure: true },
 		store: new MemoryStore({
 			checkPeriod: 86400000,
 		}),
