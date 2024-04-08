@@ -30,8 +30,6 @@ passport.use(
 
 			const user = await User.findOne({ username: email });
 
-			console.log(`googleStrat: ${user}`);
-
 			// If user is not found in db with input username, create a new user in the db.
 			if (!user) {
 				const newUser = new User({
