@@ -1,8 +1,8 @@
 @use '../../assets/styles/variables' as vars;
 
 .listItem {
-	display: flex;
-	justify-content: space-between;
+	display: grid;
+	grid-template-columns: 1fr auto;
 	border: 1px solid vars.$accentLight;
 	border-radius: 5px;
 }
