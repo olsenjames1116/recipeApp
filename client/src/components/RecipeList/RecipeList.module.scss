@@ -1,3 +1,6 @@
+@use '../../assets/styles/variables' as vars;
+@use '../../assets/styles/mixins' as mixins;
+
 .list {
 	text-align: center;
 	display: grid;
@@ -8,4 +11,9 @@
 .text {
 	align-self: center;
 	justify-self: center;
+	color: vars.$secondaryText;
+}
+
+.link {
+	@include mixins.styleLinkHoverAndFocus(vars.$accentLight);
 }

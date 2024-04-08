@@ -42,7 +42,10 @@ function RecipeList() {
 		<ul className={styles.list}>
 			{recipeList.length === 0 ? (
 				<li className={styles.text}>
-					You do not have saved recipes. View our <Link to="/">recipes</Link>{' '}
+					You do not have saved recipes. View our{' '}
+					<Link to="/" className={styles.link}>
+						recipes
+					</Link>{' '}
 					and save one!
 				</li>
 			) : (

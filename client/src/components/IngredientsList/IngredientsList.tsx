@@ -15,7 +15,10 @@ function IngredientsList() {
 			{userIngredients.length === 0 ? (
 				<li className={styles.text}>
 					You do not have any ingredients in your pantry. You can add some{' '}
-					<Link to="/ingredients">here</Link>.
+					<Link to="/ingredients" className={styles.link}>
+						here
+					</Link>
+					.
 				</li>
 			) : (
 				userIngredients.map((ingredient) => (

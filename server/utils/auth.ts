@@ -35,15 +35,14 @@ passport.use(
 );
 
 passport.serializeUser((user, done) => {
-	console.log(`localSerialize: ${user}`);
+	console.log(`passportSerialize: ${user}`);
 
 	done(null, user);
 });
-
-passport.deserializeUser(async (user: any, done) => {
+passport.deserializeUser(async ({ _id }, done) => {
 	// Retrieve user from db.
-	const currentUser = await User.findOne({ username: user.username });
-	console.log(`localDeserialize: ${user}`);
+	const user = await User.findOne({ _id: _id });
+	console.log(`passportDeserialize: ${user}`);
 
-	done(null, currentUser);
+	done(null, user);
 });

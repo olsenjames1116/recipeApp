@@ -16,6 +16,8 @@ import compression from 'compression';
 import { rateLimit } from 'express-rate-limit';
 const MemoryStore = require('memorystore')(session);
 
+import User from './models/user';
+
 import userRouter from './routes/user';
 import ingredientsRouter from './routes/ingredients';
 
@@ -29,10 +31,11 @@ const limiter = rateLimit({
 	max: 20,
 });
 
-// Middleware for all routes.
 app.use(limiter);
 app.use(helmet());
 app.use(compression());
+
+// Sets up a session for passport.
 app.use(
 	session({
 		cookie: { maxAge: 86400000 },
@@ -44,9 +47,8 @@ app.use(
 		saveUninitialized: true,
 	})
 );
-app.use(flash());
-app.use(passport.initialize());
-app.use(passport.session());
+
+// CORS settings.
 app.use(
 	cors({
 		origin: [
@@ -58,6 +60,10 @@ app.use(
 		credentials: true,
 	})
 );
+
+app.use(flash());
+app.use(passport.initialize());
+app.use(passport.session());
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));

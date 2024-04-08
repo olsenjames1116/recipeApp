@@ -48,17 +48,3 @@ passport.use(
 		}
 	)
 );
-
-passport.serializeUser((user, done) => {
-	console.log(`googleSerialize: ${user}`);
-
-	done(null, user);
-});
-
-passport.deserializeUser(async ({ _id }, done) => {
-	// Retrieve user from db.
-	const user = await User.findOne({ _id: _id });
-	console.log(`googleDeserialize: ${user}`);
-
-	done(null, user);
-});

@@ -1,4 +1,5 @@
 @use '../../assets/styles/variables' as vars;
+@use '../../assets/styles/mixins' as mixins;
 
 .list {
 	font-size: vars.$bodyTextFontSize;
@@ -9,6 +10,10 @@
 
 .text {
 	text-align: center;
+}
+
+.link {
+	@include mixins.styleLinkHoverAndFocus(vars.$secondaryLight);
 }
 
 .ingredient {

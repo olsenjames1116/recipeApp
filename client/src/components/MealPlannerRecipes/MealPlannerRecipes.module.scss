@@ -1,3 +1,6 @@
+@use '../../assets/styles/mixins' as mixins;
+@use '../../assets/styles/variables' as vars;
+
 .list {
 	display: flex;
 	flex-direction: column;
@@ -6,4 +9,8 @@
 
 .listItem {
 	text-align: center;
+}
+
+.link {
+	@include mixins.styleLinkHoverAndFocus(vars.$secondaryLight);
 }
