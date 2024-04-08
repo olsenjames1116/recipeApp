@@ -10,7 +10,7 @@ passport.use(
 	new LocalStrategy(async (username, password, done) => {
 		const user = await User.findOne({ username: username });
 
-		console.log(`localStrat: ${user}`);
+		console.log('localStrat');
 
 		// If a user is not found in the db with the input username, return an error.
 		if (!user) {
@@ -35,7 +35,7 @@ passport.use(
 );
 
 passport.serializeUser((user, done) => {
-	console.log(`passportSerialize: ${user}`);
+	console.log('passportSerialize');
 
 	done(null, user);
 });
