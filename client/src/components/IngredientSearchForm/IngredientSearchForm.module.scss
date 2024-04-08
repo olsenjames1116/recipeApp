@@ -2,14 +2,11 @@
 @use '../../assets/styles/variables' as vars;
 
 .form {
-	display: flex;
-	flex-direction: column;
-	height: 100%;
+	display: grid;
 	overflow: scroll;
 }
 
 .list {
-	flex-grow: 1;
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
 	overflow: scroll;
@@ -27,7 +24,7 @@
 		vars.$secondaryDarkTransition,
 		vars.$accentLight
 	);
-	align-self: center;
+	justify-self: center;
 	width: 30%;
 }
 
