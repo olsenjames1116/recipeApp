@@ -34,6 +34,9 @@ const limiter = rateLimit({
 app.use(limiter);
 app.use(helmet());
 app.use(compression());
+app.use(flash());
+app.use(passport.initialize());
+app.use(passport.session());
 
 // Sets up a session for passport.
 app.use(
@@ -61,9 +64,6 @@ app.use(
 	})
 );
 
-app.use(flash());
-app.use(passport.initialize());
-app.use(passport.session());
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
