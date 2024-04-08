@@ -39,7 +39,11 @@ function RecipeList() {
 	}, []);
 
 	return (
-		<ul className={styles.list}>
+		<ul
+			className={`${styles.list} ${
+				recipeList.length === 0 ? styles.noRecipes : styles.recipes
+			}`}
+		>
 			{recipeList.length === 0 ? (
 				<li className={styles.text}>
 					You do not have saved recipes. View our{' '}

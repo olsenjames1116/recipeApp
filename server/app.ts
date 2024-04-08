@@ -38,8 +38,8 @@ app.use(
 	session({
 		cookie: {
 			maxAge: 86400000,
-			secure: true,
-			sameSite: 'none',
+			// secure: true,
+			// sameSite: 'none',
 		},
 		store: new MemoryStore({
 			checkPeriod: 86400000,
