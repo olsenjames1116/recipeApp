@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 import api from '../../axiosConfig';
 import Header from '../Header/Header';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import { AxiosError } from 'axios';
 import HomeContent from '../HomeContent/HomeContent';
 import { useDispatch } from 'react-redux';
@@ -10,7 +10,7 @@ import styles from './HomePage.module.scss';
 
 // Represents the home page.
 function HomePage() {
-	const navigate = useNavigate();
+	// const navigate = useNavigate();
 	const dispatch = useDispatch();
 
 	const menuRef = useRef<HTMLDivElement>(null);
@@ -26,7 +26,7 @@ function HomePage() {
 				if (error instanceof AxiosError && error.response?.status === 403) {
 					/* 403 error code is sent from backend if user has not been authenticated. 
 					Navigate user back to log in page to authenticate. */
-					navigate('/log-in');
+					// navigate('/log-in');
 				} else {
 					// A catch all for errors produced from api call.
 					console.log(error);
