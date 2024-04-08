@@ -18,6 +18,7 @@
 	padding: 5px;
 	border: 3px solid vars.$accentLight;
 	border-radius: 5px;
+	overflow: scroll;
 }
 
 .button {
@@ -26,9 +27,16 @@
 		vars.$secondaryDarkTransition,
 		vars.$accentLight
 	);
-	@include mixins.styleButtonHoverAndFocus();
 	align-self: center;
 	width: 30%;
+}
+
+.button:enabled {
+	@include mixins.styleButtonHoverAndFocus();
+}
+
+.button:disabled {
+	filter: contrast(0.3);
 }
 
 @media (max-width: 500px) {

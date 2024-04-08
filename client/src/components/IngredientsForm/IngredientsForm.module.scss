@@ -44,5 +44,12 @@
 		vars.$secondaryDarkTransition,
 		vars.$accentLight
 	);
+}
+
+.saveButton:enabled {
 	@include mixins.styleButtonHoverAndFocus();
+}
+
+.saveButton:disabled {
+	filter: contrast(0.3);
 }
