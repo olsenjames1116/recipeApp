@@ -17,6 +17,9 @@
 	border-radius: 5px;
 	background-color: vars.$primaryLight;
 	box-shadow: vars.$boxShadow;
+	height: 350px;
+	width: 250px;
+	overflow: scroll;
 }
 
 .link {
