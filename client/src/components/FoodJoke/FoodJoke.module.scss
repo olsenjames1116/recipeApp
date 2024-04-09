@@ -1,9 +1,0 @@
-@use '../../assets/styles/variables' as vars;
-
-.blockquote {
-	font-size: vars.$bodyTextFontSize;
-	margin: 0;
-	outline: 3px solid vars.$accentLight;
-	border-radius: 5px;
-	padding: 5px;
-}
