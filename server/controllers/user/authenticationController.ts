@@ -145,6 +145,8 @@ export const authenticateUserLocal = (
 		req.logIn(user, function (err) {
 			if (err) return next(err);
 
+			console.log(`authenticateUserLocal: ${user}`);
+
 			// No errors. Send response back to front end.
 			return res.status(200).json(req.user);
 		});
@@ -165,6 +167,8 @@ export const getGoogleCallback = passport.authenticate('google', {
 
 // Determine if the user has been authenticated and send response.
 export const isLoggedIn = (req: Request, res: Response, next: NextFunction) => {
+	console.log(JSON.stringify(req));
+	console.log(req.isAuthenticated());
 	req.isAuthenticated() ? res.sendStatus(200) : res.sendStatus(403);
 };
 
