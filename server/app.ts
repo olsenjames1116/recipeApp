@@ -21,8 +21,7 @@ import ingredientsRouter from './routes/ingredients';
 
 const app = express();
 const port = process.env.PORT || 3000;
-// app.set('trust proxy', true);
-app.enable('trust proxy');
+app.set('trust proxy', true);
 
 // Apply rate limit to all requests.
 const limiter = rateLimit({
