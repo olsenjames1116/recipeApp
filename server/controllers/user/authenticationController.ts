@@ -145,7 +145,7 @@ export const authenticateUserLocal = (
 		req.logIn(user, function (err) {
 			if (err) return next(err);
 
-			console.log(`authenticateUserLocal: ${user}`);
+			console.log(`authenticateUserLocal: ${user.username}`);
 
 			// No errors. Send response back to front end.
 			return res.status(200).json(req.user);
@@ -171,6 +171,7 @@ export const isLoggedIn = (req: Request, res: Response, next: NextFunction) => {
 	console.log(JSON.stringify(req.cookies));
 	console.log(JSON.stringify(req.session));
 	console.log(req.isAuthenticated());
+	console.log(JSON.stringify(res.getHeaders()));
 	req.isAuthenticated() ? res.sendStatus(200) : res.sendStatus(403);
 };
 
