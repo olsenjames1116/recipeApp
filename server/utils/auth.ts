@@ -9,7 +9,6 @@ const LocalStrategy = passportLocal.Strategy;
 passport.use(
 	new LocalStrategy(async (username, password, done) => {
 		const user = await User.findOne({ username: username });
-		console.log('localStrat');
 
 		// If a user is not found in the db with the input username, return an error.
 		if (!user) {
@@ -27,6 +26,7 @@ passport.use(
 				return done(null, false, { message: 'Invalid password.' });
 			}
 		} catch (error) {
+			console.log('localStrat');
 			// A  for errors with bcrypt.
 			return done(error);
 		}

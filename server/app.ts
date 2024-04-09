@@ -34,12 +34,13 @@ app.use(helmet());
 app.use(compression());
 
 // Sets up a session for passport.
+console.log(process.env.NODE_ENV);
 app.use(
 	session({
 		cookie: {
 			maxAge: 86400000,
-			secure: true,
-			sameSite: 'none',
+			secure: process.env.NODE_ENV === 'production' ? true : 'auto',
+			sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
 		},
 		store: new MemoryStore({
 			checkPeriod: 86400000,
