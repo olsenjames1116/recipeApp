@@ -167,9 +167,9 @@ export const getGoogleCallback = passport.authenticate('google', {
 
 // Determine if the user has been authenticated and send response.
 export const isLoggedIn = (req: Request, res: Response, next: NextFunction) => {
-	console.log(JSON.stringify(`req.headers: ${req.headers}`));
-	console.log(JSON.stringify(`req.cookies: ${req.cookies}`));
-	console.log(JSON.stringify(`req.session: ${req.session}`));
+	console.log(JSON.stringify(req.headers));
+	console.log(JSON.stringify(req.cookies));
+	console.log(JSON.stringify(req.session));
 	console.log(req.isAuthenticated());
 	req.isAuthenticated() ? res.sendStatus(200) : res.sendStatus(403);
 };
