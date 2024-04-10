@@ -6,9 +6,10 @@ import { Request } from 'express';
 const GoogleStrategy = passportGoogleOAth2.Strategy;
 
 // Use the production url if in production, otherwise use the development url.
-const callbackURL = process.env.SERVER_URI
-	? `${process.env.SERVER_URI}/api/user/auth/google/callback`
-	: 'http://localhost:3000/api/user/auth/google/callback';
+const callbackURL =
+	process.env.NODE_ENV === 'production'
+		? `https://api.whisk-recipes.com/user/auth/google/callback`
+		: 'http://localhost:3000/user/auth/google/callback';
 
 // Google strategy to authenticate users through Google OAuth.
 passport.use(

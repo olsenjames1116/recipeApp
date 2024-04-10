@@ -57,7 +57,6 @@ app.use(
 			'http://localhost:5173',
 			'http://localhost:3000',
 			'https://whisk-recipes.com',
-			'https://api.whisk-recipes.com',
 		],
 		credentials: true,
 	})
@@ -84,9 +83,10 @@ app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
 
 // Listen on port when server is started.
 app.listen(port, () => {
-	const url = process.env.SERVER_URI
-		? process.env.SERVER_URI
-		: `http://localhost:${port}`;
+	const url =
+		process.env.NODE_ENV === 'production'
+			? 'https://api.whisk-recipes.com'
+			: `http://localhost:${port}`;
 	console.log(`Server running at ${url}`);
 });
 

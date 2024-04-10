@@ -157,9 +157,14 @@ export const getGoogleAccountInfo = passport.authenticate('google', {
 
 // Called after successful Google authentication.
 export const getGoogleCallback = passport.authenticate('google', {
-	successRedirect: process.env.CLIENT_URI || 'http://localhost:5173',
+	successRedirect:
+		process.env.NODE_ENV === 'production'
+			? 'https://whisk-recipes.com'
+			: 'http://localhost:5173',
 	failureRedirect:
-		`${process.env.CLIENT_URI}/log-in` || 'http://localhost:5173/log-in',
+		process.env.NODE_ENV === 'production'
+			? 'https://whisk-recipes.com/log-in'
+			: 'http://localhost:5173/log-in',
 	failureFlash: true,
 });
 

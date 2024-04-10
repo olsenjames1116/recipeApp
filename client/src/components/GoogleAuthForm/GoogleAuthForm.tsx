@@ -4,7 +4,7 @@ import styles from './GoogleAuthForm.module.scss';
 // Dynamically set the server uri for development or production.
 const serverURI = import.meta.env.VITE_SERVER_URI
 	? `${import.meta.env.VITE_SERVER_URI}`
-	: 'http://localhost:3000/api';
+	: 'http://localhost:3000';
 
 // Represents the form to log in using Google.
 function GoogleAuthForm() {
