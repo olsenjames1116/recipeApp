@@ -26,7 +26,6 @@ passport.use(
 				return done(null, false, { message: 'Invalid password.' });
 			}
 		} catch (error) {
-			console.log('localStrat');
 			// A  for errors with bcrypt.
 			return done(error);
 		}
@@ -34,11 +33,9 @@ passport.use(
 );
 
 passport.serializeUser((user, done) => {
-	console.log('serializeUser');
 	done(null, user);
 });
 passport.deserializeUser(async ({ _id }, done) => {
-	console.log('deserializeUser');
 	// Retrieve user from db.
 	const user = await User.findOne({ _id: _id });
 

@@ -14,7 +14,7 @@ import passport from 'passport';
 import helmet from 'helmet';
 import compression from 'compression';
 import { rateLimit } from 'express-rate-limit';
-// const MemoryStore = require('memorystore')(session);
+const MemoryStore = require('memorystore')(session);
 
 import userRouter from './routes/user';
 import ingredientsRouter from './routes/ingredients';
@@ -34,7 +34,6 @@ app.use(helmet());
 app.use(compression());
 
 // Sets up a session for passport.
-console.log(process.env.NODE_ENV);
 app.use(
 	session({
 		cookie: {
@@ -42,9 +41,9 @@ app.use(
 			secure: process.env.NODE_ENV === 'production' ? true : 'auto',
 			sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
 		},
-		// store: new MemoryStore({
-		// 	checkPeriod: 86400000,
-		// }),
+		store: new MemoryStore({
+			checkPeriod: 86400000,
+		}),
 		secret: process.env.SESSION_SECRET!,
 		resave: false,
 		saveUninitialized: true,
@@ -74,8 +73,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Direct to route files.
-app.use('/api/user', userRouter);
-app.use('/api/ingredients', ingredientsRouter);
+app.use('/user', userRouter);
+app.use('/ingredients', ingredientsRouter);
 
 // Generic error handler.
 app.use((err: Error, req: Request, res: Response, next: NextFunction) => {

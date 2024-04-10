@@ -40,7 +40,6 @@ passport.use(
 
 				return done(null, newUser);
 			} else {
-				console.log('googleStrat');
 				// A user exists. Pass on user object.
 				return done(null, user);
 			}
