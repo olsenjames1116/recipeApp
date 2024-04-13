@@ -3,7 +3,8 @@
 
 .footer {
 	display: flex;
-	justify-content: center;
+	flex-direction: column;
+	align-items: center;
 	background-color: vars.$primaryDark;
 	color: vars.$secondaryText;
 	padding: 5px;

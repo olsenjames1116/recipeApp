@@ -4,10 +4,13 @@ import styles from './Footer.module.scss';
 function Footer() {
 	return (
 		<footer className={styles.footer}>
-			Built and designed by
-			<a href="https://github.com/olsenjames1116" className={styles.link}>
-				olsenjames1116
-			</a>
+			© 2024 James Olsen. All Rights Reserved.
+			<p>
+				Built and designed by
+				<a href="https://github.com/olsenjames1116" className={styles.link}>
+					olsenjames1116
+				</a>
+			</p>
 		</footer>
 	);
 }
