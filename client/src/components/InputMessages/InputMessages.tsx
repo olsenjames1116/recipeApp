@@ -8,7 +8,7 @@ interface InputMessagesProps {
 // Represents the input messages to show messages on a form to a user for clarity.
 function InputMessages({ messages, error }: InputMessagesProps) {
 	return (
-		<ul className={styles.list}>
+		<ul className={styles.list} data-testid="input-messages">
 			{messages.map((message, index) => {
 				return (
 					<li
