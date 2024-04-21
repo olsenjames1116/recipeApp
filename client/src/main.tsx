@@ -5,16 +5,6 @@ import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { store } from './redux/store';
 
-// async function deferRender() {
-// 	if (import.meta.env.MODE !== 'development') {
-// 		return;
-// 	}
-
-// 	const { worker } = await import('./mocks/browser');
-// 	return worker.start();
-// }
-
-// deferRender().then(() => {
 ReactDOM.createRoot(document.getElementById('root')!).render(
 	<React.StrictMode>
 		<Provider store={store}>
@@ -24,4 +14,3 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
 		</Provider>
 	</React.StrictMode>
 );
-// });
