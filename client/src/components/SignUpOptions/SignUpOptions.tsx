@@ -5,7 +5,7 @@ import styles from './SignUpOptions.module.scss';
 function SignUpOptions() {
 	return (
 		<ul>
-			<li className={styles.listItem}>
+			<li className={styles.listItem} data-cy="sign-up-options">
 				Already have an account?{' '}
 				<Link to="/log-in" className={styles.link}>
 					Log In

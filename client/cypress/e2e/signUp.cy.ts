@@ -66,4 +66,12 @@ describe('SignUpForm', () => {
 
 		cy.get('[data-cy="input-messages"]').find('li').should('have.length', 3);
 	});
+
+	it('should redirect user to login page when link is clicked', () => {
+		cy.visit('http://localhost:5173/sign-up');
+
+		cy.get('[data-cy="sign-up-options"] > a').click();
+
+		cy.url().should('match', /\/log-in$/);
+	});
 });
