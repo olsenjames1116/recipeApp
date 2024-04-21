@@ -6,7 +6,7 @@ import styles from './LogInOptions.module.scss';
 function LogInOptions() {
 	return (
 		<ul className={styles.list}>
-			<li className={styles.listItem}>
+			<li className={styles.listItem} data-cy="log-in-options">
 				Don't have an account?{' '}
 				<Link to="/sign-up" className={styles.link}>
 					Create One

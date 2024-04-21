@@ -15,9 +15,7 @@ describe('SignUpForm', () => {
 	it('should return an error message if a user tries to sign up with an existing username', () => {
 		cy.visit('http://localhost:5173/sign-up');
 
-		const username = 'testUser1';
-
-		cy.get('[data-cy="username-input"]').type(username);
+		cy.get('[data-cy="username-input"]').type('testUser1');
 		cy.get('[data-cy="password-input"]').type('password123');
 		cy.get('[data-cy="confirm-password-input"]').type('password123');
 
