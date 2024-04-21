@@ -28,14 +28,21 @@ describe('SignUpForm', () => {
 		const passwordInput = screen.getByPlaceholderText(/^password/i);
 		const confirmPasswordInput =
 			screen.getByPlaceholderText(/confirm password$/i);
+		const submitButton = screen.getByText(/sign up/i);
 
-		user.type(usernameInput, 'username123');
-		user.type(passwordInput, 'password123');
-		user.type(confirmPasswordInput, 'password123');
+		await user.type(usernameInput, 'username123');
+		await user.type(passwordInput, 'password123');
+		await user.type(confirmPasswordInput, 'password123');
 
-		const inputMessages = await screen.findByTestId('input-messages');
+		user.click(submitButton);
 
-		expect(inputMessages).toHaveTextContent('');
+		const inputMessage = await screen.findByTestId('input-message-0');
+
+		screen.debug();
+
+		expect(inputMessage).toHaveTextContent(
+			'Your account has been created. You will be redirected to log in.'
+		);
 	});
 
 	// should display an error message if username is empty
