@@ -27,7 +27,11 @@ function DemoAccountLogIn() {
 	return (
 		<li className={styles.listItem}>
 			use the Demo Account
-			<button onClick={logInDemoAccount} className={styles.button}>
+			<button
+				onClick={logInDemoAccount}
+				className={styles.button}
+				data-cy="demo-account-button"
+			>
 				Demo Account
 			</button>
 		</li>
