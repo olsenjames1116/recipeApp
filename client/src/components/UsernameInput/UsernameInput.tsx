@@ -17,6 +17,7 @@ function UsernameInput({ handleChange, usernameRef }: UsernameInputProps) {
 			required
 			maxLength={50}
 			className={styles.input}
+			data-cy="username-input"
 		/>
 	);
 }

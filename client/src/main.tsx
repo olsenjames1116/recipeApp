@@ -6,12 +6,13 @@ import { Provider } from 'react-redux';
 import { store } from './redux/store';
 
 async function deferRender() {
-	if (import.meta.env.MODE !== 'development') {
-		return;
-	}
+	// if (import.meta.env.MODE !== 'development') {
+	// 	return;
+	// }
 
-	const { worker } = await import('./mocks/browser');
-	return worker.start();
+	// const { worker } = await import('./mocks/browser');
+	// return worker.start();
+	return;
 }
 
 deferRender().then(() => {
