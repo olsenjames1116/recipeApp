@@ -18,7 +18,11 @@ function GeneratedRecipe() {
 	return (
 		<div className={styles.container}>
 			<GeneratedRecipeContainer />
-			<button onClick={startOver} className={styles.button}>
+			<button
+				onClick={startOver}
+				className={styles.button}
+				data-cy="start-over-button"
+			>
 				Start Over
 			</button>
 		</div>

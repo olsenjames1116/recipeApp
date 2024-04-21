@@ -19,7 +19,11 @@ function RandomRecipeWithIngredients({
 	};
 
 	return (
-		<button onClick={displaySearchMenu} className={styles.button}>
+		<button
+			onClick={displaySearchMenu}
+			className={styles.button}
+			data-cy="use-ingredients-button"
+		>
 			Use My Ingredients
 		</button>
 	);

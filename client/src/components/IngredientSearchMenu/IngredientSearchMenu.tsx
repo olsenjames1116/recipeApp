@@ -27,7 +27,10 @@ function IngredientSearchMenu({
 	}, []);
 
 	return (
-		<div className={styles.container}>
+		<div
+			className={styles.container}
+			data-cy="ingredient-search-menu-container"
+		>
 			<div ref={menuRef} className={styles.popupContainer}>
 				<CloseIcon setDisplayMenu={setDisplayMenu} />
 				<span className={styles.span}>

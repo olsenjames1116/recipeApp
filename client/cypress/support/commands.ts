@@ -35,3 +35,16 @@
 //     }
 //   }
 // }
+
+Cypress.Commands.add('login', () => {
+	cy.visit('http://localhost:5173/log-in');
+
+	cy.get('[data-cy="username-input"]').type('testUser1');
+	cy.get('[data-cy="password-input"]').type('password123');
+
+	cy.get('[data-cy="log-in-submit"]').click();
+});
+
+Cypress.Commands.add('logout', () => {
+	cy.get('[data-cy="log-out-button"]').click();
+});

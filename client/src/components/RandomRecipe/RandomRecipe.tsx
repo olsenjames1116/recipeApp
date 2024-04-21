@@ -47,7 +47,11 @@ function RandomRecipe() {
 	};
 
 	return (
-		<button onClick={generateRecipe} className={styles.button}>
+		<button
+			onClick={generateRecipe}
+			className={styles.button}
+			data-cy="random-recipe-button"
+		>
 			Surprise Me
 		</button>
 	);

@@ -7,7 +7,10 @@ import styles from './GeneratedRecipeContainer.module.scss';
 for user interaction. */
 function GeneratedRecipeContainer() {
 	return (
-		<div className={styles.recipeContainer}>
+		<div
+			className={styles.recipeContainer}
+			data-cy="generated-recipe-container"
+		>
 			<GeneratedRecipeInfo />
 			<div className={styles.iconContainer}>
 				<NextRecipe />

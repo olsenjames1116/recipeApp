@@ -163,7 +163,7 @@ function IngredientSearchForm({ setDisplayMenu }: IngredientSearchFormProps) {
 
 	return (
 		<form ref={formRef} onSubmit={findCheckedElements} className={styles.form}>
-			<ul className={styles.list}>
+			<ul className={styles.list} data-cy="ingredient-search-list">
 				{allIngredients.map((ingredient: IIngredientWithId) => {
 					const userHasIngredient = userIngredients.some(
 						(userIngredient) => userIngredient._id === ingredient._id
@@ -179,7 +179,12 @@ function IngredientSearchForm({ setDisplayMenu }: IngredientSearchFormProps) {
 					);
 				})}
 			</ul>
-			<button ref={submitButtonRef} disabled className={styles.button}>
+			<button
+				ref={submitButtonRef}
+				disabled
+				className={styles.button}
+				data-cy="submit-ingredient-search-form-button"
+			>
 				Submit
 			</button>
 			<InputMessages messages={inputMessages} error={error} />

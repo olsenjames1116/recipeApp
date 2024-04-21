@@ -87,7 +87,12 @@ function NextRecipe() {
 	};
 
 	return (
-		<div onClick={generateRecipe} className={styles.container} tabIndex={0}>
+		<div
+			onClick={generateRecipe}
+			className={styles.container}
+			tabIndex={0}
+			data-cy="next-recipe-container"
+		>
 			<img src={closeRedIcon} alt="Next recipe" className={styles.image} />
 		</div>
 	);
