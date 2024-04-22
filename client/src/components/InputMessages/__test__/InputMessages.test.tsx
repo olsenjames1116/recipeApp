@@ -21,8 +21,14 @@ describe('InputMessages', () => {
 
 		const inputMessages = screen.getAllByTestId(/input-message-./);
 
-		inputMessages.forEach((message) => {
-			expect(message).toBeInTheDocument();
-		});
+		expect(inputMessages).toHaveLength(2);
+	});
+
+	it('should have an error class if the message is an error.', () => {
+		render(<InputMessages messages={['One message.']} error={true} />);
+
+		const inputMessage = screen.getByTestId('input-message-0');
+
+		expect(inputMessage).toHaveClass(/error/);
 	});
 });

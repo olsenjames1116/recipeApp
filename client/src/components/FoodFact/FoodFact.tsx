@@ -26,7 +26,11 @@ function FoodFact() {
 		getFoodFact();
 	}, []);
 
-	return <blockquote className={styles.blockquote}>{foodFact}</blockquote>;
+	return (
+		<blockquote className={styles.blockquote} data-testid="food-fact">
+			{foodFact}
+		</blockquote>
+	);
 }
 
 export default FoodFact;
