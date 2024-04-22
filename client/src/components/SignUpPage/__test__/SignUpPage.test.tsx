@@ -13,7 +13,6 @@ const MockSignUpPage = () => {
 describe('SignUpPage', () => {
 	it('should render component', () => {
 		render(<MockSignUpPage />);
-
 		const signUpPage = screen.getByTestId('sign-up-page');
 
 		expect(signUpPage).toBeInTheDocument();

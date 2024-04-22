@@ -10,7 +10,6 @@ const server = setupServer(
 			import.meta.env.VITE_SPOONACULAR_API_KEY
 		}`,
 		() => {
-			console.log('made it');
 			return HttpResponse.json({ text: 'food fact' });
 		}
 	)
