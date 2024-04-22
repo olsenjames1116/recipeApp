@@ -50,7 +50,7 @@ function RandomRecipe() {
 		<button
 			onClick={generateRecipe}
 			className={styles.button}
-			data-cy="random-recipe-button"
+			data-testid="random-recipe-button"
 		>
 			Surprise Me
 		</button>

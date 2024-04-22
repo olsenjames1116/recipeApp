@@ -14,7 +14,7 @@ function CloseIcon({ setDisplayMenu }: CloseIconProps) {
 			onClick={() => setDisplayMenu(false)}
 			className={styles.image}
 			tabIndex={0}
-			data-cy="close-icon"
+			data-testid="close-icon"
 		/>
 	);
 }

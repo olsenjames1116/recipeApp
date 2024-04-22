@@ -173,10 +173,10 @@ function SignUpForm() {
 				required
 				maxLength={50}
 				className={styles.input}
-				data-cy="confirm-password-input"
+				data-testid="confirm-password-input"
 			/>
 			<InputMessages messages={inputMessages} error={error} />
-			<button className={styles.button} data-cy="signup-submit-button">
+			<button className={styles.button} data-testid="signup-submit-button">
 				Sign Up
 			</button>
 		</form>

@@ -30,7 +30,7 @@ function DemoAccountLogIn() {
 			<button
 				onClick={logInDemoAccount}
 				className={styles.button}
-				data-cy="demo-account-button"
+				data-testid="demo-account-button"
 			>
 				Demo Account
 			</button>

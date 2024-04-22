@@ -22,7 +22,7 @@ function RandomRecipeWithIngredients({
 		<button
 			onClick={displaySearchMenu}
 			className={styles.button}
-			data-cy="use-ingredients-button"
+			data-testid="use-ingredients-button"
 		>
 			Use My Ingredients
 		</button>

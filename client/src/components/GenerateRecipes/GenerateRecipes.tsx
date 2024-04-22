@@ -10,7 +10,7 @@ interface GenerateRecipesProps {
 // Represents the recipe generator for the Spoonacular api.
 function GenerateRecipes({ setDisplayMenu }: GenerateRecipesProps) {
 	return (
-		<div className={styles.container} data-cy="generate-recipes-container">
+		<div className={styles.container} data-testid="generate-recipes-container">
 			{/* <FoodFact /> */}
 			Select an option below to generate recipes <RandomRecipe /> or{' '}
 			<RandomRecipeWithIngredients setDisplayMenu={setDisplayMenu} />

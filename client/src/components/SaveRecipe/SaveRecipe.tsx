@@ -43,7 +43,7 @@ function SaveRecipe() {
 			onClick={saveRecipe}
 			className={styles.container}
 			tabIndex={0}
-			data-cy="save-recipe-container"
+			data-testid="save-recipe-container"
 		>
 			<img src={saveIcon} alt="Save recipe" className={styles.image} />
 		</div>

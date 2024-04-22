@@ -17,7 +17,7 @@ function PasswordInput({ handleChange, passwordRef }: PasswordInputProps) {
 			required
 			maxLength={50}
 			className={styles.input}
-			data-cy="password-input"
+			data-testid="password-input"
 		/>
 	);
 }

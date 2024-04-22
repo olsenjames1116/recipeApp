@@ -21,7 +21,7 @@ function GeneratedRecipe() {
 			<button
 				onClick={startOver}
 				className={styles.button}
-				data-cy="start-over-button"
+				data-testid="start-over-button"
 			>
 				Start Over
 			</button>

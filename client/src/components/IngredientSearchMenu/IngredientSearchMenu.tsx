@@ -29,7 +29,7 @@ function IngredientSearchMenu({
 	return (
 		<div
 			className={styles.container}
-			data-cy="ingredient-search-menu-container"
+			data-testid="ingredient-search-menu-container"
 		>
 			<div ref={menuRef} className={styles.popupContainer}>
 				<CloseIcon setDisplayMenu={setDisplayMenu} />

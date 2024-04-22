@@ -9,7 +9,7 @@ function GeneratedRecipeContainer() {
 	return (
 		<div
 			className={styles.recipeContainer}
-			data-cy="generated-recipe-container"
+			data-testid="generated-recipe-container"
 		>
 			<GeneratedRecipeInfo />
 			<div className={styles.iconContainer}>

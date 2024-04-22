@@ -54,7 +54,7 @@ function LogOut() {
 		<button
 			onClick={logUserOut}
 			className={styles.button}
-			data-cy="log-out-button"
+			data-testid="log-out-button"
 		>
 			Log Out
 		</button>

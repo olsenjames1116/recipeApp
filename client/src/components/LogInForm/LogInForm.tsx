@@ -126,7 +126,7 @@ function LogInForm() {
 			<UsernameInput handleChange={handleChange} usernameRef={usernameRef} />
 			<PasswordInput handleChange={handleChange} passwordRef={passwordRef} />
 			<InputMessages messages={inputMessages} error={error} />
-			<button className={styles.button} data-cy="log-in-submit">
+			<button className={styles.button} data-testid="log-in-submit">
 				Log In
 			</button>
 		</form>
