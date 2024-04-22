@@ -2,22 +2,6 @@ import { BrowserRouter } from 'react-router-dom';
 import SignUpForm from '../SignUpForm';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { setupServer } from 'msw/node';
-import { HttpResponse, http } from 'msw';
-
-const server = setupServer(
-	http.post('http://localhost:3000/user/sign-up', () => {
-		return HttpResponse.json({
-			message: [
-				'Your account has been created. You will be redirected to log in.',
-			],
-		});
-	})
-);
-
-beforeAll(() => server.listen());
-afterEach(() => server.resetHandlers());
-afterAll(() => server.close());
 
 const MockSignUpForm = () => {
 	return (
