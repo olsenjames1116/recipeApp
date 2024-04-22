@@ -7,11 +7,6 @@
 	gap: 10px;
 }
 
-.input {
-	@include mixins.accountFormIcon(url(../../assets/images/password.png));
-	font-size: vars.$bodyTextFontSize;
-}
-
 .button {
 	@include mixins.styleButton(
 		vars.$secondaryDark,

@@ -5,6 +5,7 @@ import { AxiosError } from 'axios';
 import { useNavigate } from 'react-router-dom';
 import UsernameInput from '../UsernameInput/UsernameInput';
 import PasswordInput from '../PasswordInput/PasswordInput';
+import ConfirmPasswordInput from '../ConfirmPasswordInput/ConfirmPasswordInput';
 import styles from './SignUpForm.module.scss';
 
 // Represents the sign up form to create a new user.
@@ -161,19 +162,13 @@ function SignUpForm() {
 			onSubmit={handleSubmit}
 			noValidate
 			className={styles.form}
+			data-testid="sign-up-form"
 		>
 			<UsernameInput handleChange={handleChange} usernameRef={usernameRef} />
 			<PasswordInput handleChange={handleChange} passwordRef={passwordRef} />
-			<input
-				id="confirmPassword"
-				type="password"
-				placeholder="confirm password"
-				onChange={handleChange}
-				ref={confirmPasswordRef}
-				required
-				maxLength={50}
-				className={styles.input}
-				data-testid="confirm-password-input"
+			<ConfirmPasswordInput
+				handleChange={handleChange}
+				confirmPasswordRef={confirmPasswordRef}
 			/>
 			<InputMessages messages={inputMessages} error={error} />
 			<button className={styles.button} data-testid="signup-submit-button">
