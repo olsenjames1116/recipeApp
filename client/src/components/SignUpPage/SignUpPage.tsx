@@ -34,7 +34,7 @@ function SignUpPage() {
 	});
 
 	return (
-		<main className={styles.main}>
+		<main className={styles.main} data-testid="sign-up-page">
 			<AccountFormContainer>
 				<SignUpForm />
 				<SignUpOptions />

@@ -26,8 +26,6 @@ describe('FoodFact', () => {
 
 		const foodFact = await screen.findByTestId('food-fact');
 
-		screen.debug();
-
 		expect(foodFact).toHaveTextContent(/food fact/);
 	});
 });
