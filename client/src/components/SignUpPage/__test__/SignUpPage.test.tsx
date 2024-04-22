@@ -14,8 +14,8 @@ describe('SignUpPage', () => {
 	it('should render component', () => {
 		render(<MockSignUpPage />);
 
-		const main = screen.getByTestId('sign-up-page');
+		const signUpPage = screen.getByTestId('sign-up-page');
 
-		expect(main).toBeInTheDocument();
+		expect(signUpPage).toBeInTheDocument();
 	});
 });
