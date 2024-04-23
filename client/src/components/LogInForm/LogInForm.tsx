@@ -122,6 +122,7 @@ function LogInForm() {
 			onSubmit={handleSubmit}
 			noValidate
 			className={styles.form}
+			data-testid="login-form"
 		>
 			<UsernameInput handleChange={handleChange} usernameRef={usernameRef} />
 			<PasswordInput handleChange={handleChange} passwordRef={passwordRef} />

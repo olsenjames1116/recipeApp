@@ -1,19 +1,11 @@
 import { DefaultBodyType, HttpResponse, http } from 'msw';
-
-interface DataInterface {
-	username?: string;
-	password?: string;
-	confirmPassword?: string;
-}
+import { DataInterface } from '../src/types';
 
 export const handlers = [
 	http.post('http://localhost:3000/user/sign-up', async ({ request }) => {
 		const data: DataInterface | DefaultBodyType = await request.json();
 
 		if (typeof data === 'object') {
-			if (data?.password !== 'password') {
-				return HttpResponse.json({ message: ['Invalid password.'] });
-			}
 			if (data?.username === 'demo') {
 				return HttpResponse.json({
 					message: [`Username "demo" is already in use.`],

@@ -101,22 +101,6 @@ describe('SignUpForm', () => {
 			);
 			expect(inputMessage).toBeInTheDocument();
 		});
-
-		it('should display an error message if stored password does not match input password.', async () => {
-			render(<MockSignUpForm />);
-			const usernameInput = screen.getByTestId('username-input');
-			const passwordInput = screen.getByTestId('password-input');
-			const confirmPasswordInput = screen.getByTestId('confirm-password-input');
-			const signUpSubmitButton = screen.getByTestId('signup-submit-button');
-
-			await userEvent.type(usernameInput, 'username');
-			await userEvent.type(passwordInput, 'passw0rd');
-			await userEvent.type(confirmPasswordInput, 'passw0rd');
-			userEvent.click(signUpSubmitButton);
-
-			const inputMessage = await screen.findByText(/invalid password./i);
-			expect(inputMessage).toBeInTheDocument();
-		});
 	});
 
 	describe('Happy Path', () => {

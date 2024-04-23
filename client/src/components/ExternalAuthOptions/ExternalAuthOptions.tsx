@@ -3,7 +3,7 @@ import GoogleAuthForm from '../GoogleAuthForm/GoogleAuthForm';
 
 function ExternalAuthOptions() {
 	return (
-		<ul>
+		<ul data-testid="external-auth-options">
 			<GoogleAuthForm />
 		</ul>
 	);

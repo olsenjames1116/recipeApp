@@ -9,9 +9,9 @@ const serverURI = import.meta.env.VITE_SERVER_URI
 // Represents the form to log in using Google.
 function GoogleAuthForm() {
 	return (
-		<li>
+		<li data-testid="google-auth-form">
 			<form action={`${serverURI}/user/auth/google`} className={styles.form}>
-				<button className={styles.button}>
+				<button className={styles.button} data-testid="google-auth-button">
 					<img src={googleIcon} alt="" className={styles.icon} />
 					Continue with Google
 				</button>

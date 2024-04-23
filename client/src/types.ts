@@ -26,3 +26,9 @@ export interface IGrocery {
 	checked: boolean;
 	_id?: string;
 }
+
+export interface DataInterface {
+	username?: string;
+	password?: string;
+	confirmPassword?: string;
+}

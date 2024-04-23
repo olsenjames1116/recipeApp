@@ -35,7 +35,7 @@ function LogInPage() {
 	});
 
 	return (
-		<main className={styles.main}>
+		<main className={styles.main} data-testid="login-page">
 			<AccountFormContainer>
 				<ExternalAuthOptions />
 				<LogInForm />
