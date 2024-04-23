@@ -2,8 +2,6 @@ import { BrowserRouter } from 'react-router-dom';
 import SignUpForm from '../SignUpForm';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { server } from '../../../../mocks/server';
-import { HttpResponse, http } from 'msw';
 
 const MockSignUpForm = () => {
 	return (
@@ -87,38 +85,24 @@ describe('SignUpForm', () => {
 		});
 
 		it('should display an error message if a user with the given username already exists.', async () => {
-			server.use(
-				http.post('http://localhost:3000/user/sign-up', () => {
-					return HttpResponse.json({
-						message: ['Username "username" is already in use.'],
-					});
-				})
-			);
 			render(<MockSignUpForm />);
 			const usernameInput = screen.getByTestId('username-input');
 			const passwordInput = screen.getByTestId('password-input');
 			const confirmPasswordInput = screen.getByTestId('confirm-password-input');
 			const signUpSubmitButton = screen.getByTestId('signup-submit-button');
 
-			await userEvent.type(usernameInput, 'username');
+			await userEvent.type(usernameInput, 'demo');
 			await userEvent.type(passwordInput, 'password');
 			await userEvent.type(confirmPasswordInput, 'password');
 			userEvent.click(signUpSubmitButton);
 
 			const inputMessage = await screen.findByText(
-				/username "username" is already in use./i
+				/username "demo" is already in use./i
 			);
 			expect(inputMessage).toBeInTheDocument();
 		});
 
 		it('should display an error message if stored password does not match input password.', async () => {
-			server.use(
-				http.post('http://localhost:3000/user/sign-up', () => {
-					return HttpResponse.json({
-						message: ['Invalid password.'],
-					});
-				})
-			);
 			render(<MockSignUpForm />);
 			const usernameInput = screen.getByTestId('username-input');
 			const passwordInput = screen.getByTestId('password-input');
@@ -126,8 +110,8 @@ describe('SignUpForm', () => {
 			const signUpSubmitButton = screen.getByTestId('signup-submit-button');
 
 			await userEvent.type(usernameInput, 'username');
-			await userEvent.type(passwordInput, 'password');
-			await userEvent.type(confirmPasswordInput, 'password');
+			await userEvent.type(passwordInput, 'passw0rd');
+			await userEvent.type(confirmPasswordInput, 'passw0rd');
 			userEvent.click(signUpSubmitButton);
 
 			const inputMessage = await screen.findByText(/invalid password./i);
