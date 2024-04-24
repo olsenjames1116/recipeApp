@@ -19,7 +19,7 @@ const MemoryStore = require('memorystore')(session);
 import userRouter from './routes/user';
 import ingredientsRouter from './routes/ingredients';
 
-const app = express();
+export const app = express();
 const port = process.env.PORT || 3000;
 app.set('trust proxy', 1);
 
