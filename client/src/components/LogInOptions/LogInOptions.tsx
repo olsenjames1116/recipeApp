@@ -5,8 +5,8 @@ import styles from './LogInOptions.module.scss';
 // Represents the alternatives to logging in on the log in page.
 function LogInOptions() {
 	return (
-		<ul className={styles.list}>
-			<li className={styles.listItem} data-testid="log-in-options">
+		<ul className={styles.list} data-testid="log-in-options">
+			<li className={styles.listItem}>
 				Don't have an account?{' '}
 				<Link to="/sign-up" className={styles.link}>
 					Create One

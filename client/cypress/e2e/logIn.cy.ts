@@ -53,7 +53,7 @@ describe('LogInPage', () => {
 	it('should redirect user to sign up page when link is clicked.', () => {
 		cy.visit('http://localhost:5173/log-in');
 
-		cy.get('[data-testid="log-in-options"] > a').click();
+		cy.get('[data-testid="log-in-options"] a').click();
 
 		cy.url().should('match', /\/sign-up$/);
 	});

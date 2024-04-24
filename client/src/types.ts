@@ -27,8 +27,13 @@ export interface IGrocery {
 	_id?: string;
 }
 
-export interface DataInterface {
+export interface SignUpInterface {
 	username?: string;
 	password?: string;
 	confirmPassword?: string;
+}
+
+export interface LogInInterface {
+	username?: string;
+	password?: string;
 }

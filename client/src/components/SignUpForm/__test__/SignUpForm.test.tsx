@@ -91,13 +91,14 @@ describe('SignUpForm', () => {
 			const confirmPasswordInput = screen.getByTestId('confirm-password-input');
 			const signUpSubmitButton = screen.getByTestId('signup-submit-button');
 
-			await userEvent.type(usernameInput, 'demo');
+			const username = 'demo';
+			await userEvent.type(usernameInput, username);
 			await userEvent.type(passwordInput, 'password');
 			await userEvent.type(confirmPasswordInput, 'password');
 			userEvent.click(signUpSubmitButton);
 
 			const inputMessage = await screen.findByText(
-				/username "demo" is already in use./i
+				`Username "${username}" is already in use.`
 			);
 			expect(inputMessage).toBeInTheDocument();
 		});

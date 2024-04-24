@@ -1,15 +1,18 @@
 import { DefaultBodyType, HttpResponse, http } from 'msw';
-import { DataInterface } from '../src/types';
+import { SignUpInterface, LogInInterface } from '../src/types';
 
 export const handlers = [
 	http.post('http://localhost:3000/user/sign-up', async ({ request }) => {
-		const data: DataInterface | DefaultBodyType = await request.json();
+		const data: SignUpInterface | DefaultBodyType = await request.json();
 
 		if (typeof data === 'object') {
-			if (data?.username === 'demo') {
-				return HttpResponse.json({
-					message: [`Username "demo" is already in use.`],
-				});
+			if (data?.username !== 'username') {
+				return HttpResponse.json(
+					{
+						message: [`Username "${data?.username}" is already in use.`],
+					},
+					{ status: 400 }
+				);
 			}
 		}
 
@@ -20,6 +23,30 @@ export const handlers = [
 		});
 	}),
 	http.get('http://localhost:3000/user/logged-out', () => {
+		return HttpResponse.json();
+	}),
+	http.post('http://localhost:3000/user/log-in', async ({ request }) => {
+		const data: LogInInterface | DefaultBodyType = await request.json();
+
+		if (typeof data === 'object') {
+			if (data?.username !== 'username') {
+				return HttpResponse.json(
+					{
+						message: [`Username "${data?.username}" does not exist.`],
+					},
+					{ status: 400 }
+				);
+			}
+			if (data?.password !== 'password') {
+				return HttpResponse.json(
+					{
+						message: [`Invalid password.`],
+					},
+					{ status: 400 }
+				);
+			}
+		}
+
 		return HttpResponse.json();
 	}),
 	http.get('https://api.spoonacular.com/food/trivia/random', ({ request }) => {

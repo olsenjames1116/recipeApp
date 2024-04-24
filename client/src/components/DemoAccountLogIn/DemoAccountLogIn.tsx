@@ -25,7 +25,7 @@ function DemoAccountLogIn() {
 	};
 
 	return (
-		<li className={styles.listItem}>
+		<li className={styles.listItem} data-testid="demo-account-log-in">
 			use the Demo Account
 			<button
 				onClick={logInDemoAccount}
