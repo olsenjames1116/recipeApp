@@ -1,14 +1,14 @@
 import { app } from '../app';
-import User from '../models/user';
 const request = require('supertest');
+import User from '../models/user';
 
-describe('Routes and Controllers', () => {
-	beforeAll(async () => {
-		await User.findOneAndDelete({ username: 'testUser2' });
-	});
+beforeAll(async () => {
+	await User.findOneAndDelete({ username: 'testUser2' });
+});
 
+describe('/user/sign-up', () => {
 	describe('Happy Path', () => {
-		it('should validate a user and store a user', (done) => {
+		it('should validate and store a user.', (done) => {
 			request(app)
 				.post('/user/sign-up')
 				.send({
@@ -25,7 +25,7 @@ describe('Routes and Controllers', () => {
 			it('should return an error if username is empty.', (done) => {
 				request(app)
 					.post('/user/sign-up')
-					.send({ password: '123', confirmPassword: '123' })
+					.send({ username: '', password: '123', confirmPassword: '123' })
 					.expect(400, done);
 			});
 			it('should return an error if username already exists in database.', (done) => {
@@ -53,7 +53,7 @@ describe('Routes and Controllers', () => {
 			it('should return an error if password is empty.', (done) => {
 				request(app)
 					.post('/user/sign-up')
-					.send({ username: 'testUser3', confirmPassword: '123' })
+					.send({ username: 'testUser3', password: '', confirmPassword: '123' })
 					.expect(400, done);
 			});
 
@@ -76,6 +76,7 @@ describe('Routes and Controllers', () => {
 					.send({
 						username: 'testUser3',
 						password: '123',
+						confirmPassword: '',
 					})
 					.expect(400, done);
 			});

@@ -120,6 +120,8 @@ export const checkLogInValidationResult = asyncHandler(
 			res.status(400).json({
 				message: errorMessages,
 			});
+
+			return;
 		}
 
 		// There are no errors, pass on to the next middleware.

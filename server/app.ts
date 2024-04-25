@@ -82,12 +82,14 @@ app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
 });
 
 // Listen on port when server is started.
-app.listen(port, () => {
-	const url =
-		process.env.NODE_ENV === 'production'
-			? 'https://api.whisk-recipes.com'
-			: `http://localhost:${port}`;
-	console.log(`Server running at ${url}`);
-});
+if (process.env.NODE_ENV !== 'test') {
+	app.listen(port, () => {
+		const url =
+			process.env.NODE_ENV === 'production'
+				? 'https://api.whisk-recipes.com'
+				: `http://localhost:${port}`;
+		console.log(`Server running at ${url}`);
+	});
+}
 
 export default app;
