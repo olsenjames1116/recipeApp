@@ -21,6 +21,8 @@ export const saveRecipe = asyncHandler(async (req, res, next) => {
 			timestamp: Date.now(),
 		};
 
+		console.log(recipe);
+
 		await User.findOneAndUpdate({ _id: _id }, { $push: { recipes: recipe } });
 
 		res.sendStatus(200);

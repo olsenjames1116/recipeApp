@@ -24,26 +24,25 @@ describe('Recipes', () => {
 				.post('/user/save-recipe')
 				.set('Accept', 'application/json')
 				.set('Cookie', res.headers['set-cookie'][0])
-				.set({
+				.send({
 					title: 'test recipe',
 					image: 'testImage.png',
 					url: 'testrecipe.com',
 					id: 1234,
-					timestamp: Date.now(),
 				})
 				.expect(200, done);
 		});
 	});
 
 	it('should delete a recipe.', (done) => {
-		getRecipeId();
-
-		logInUser().end(function (err: Error, res: any) {
-			request(app)
-				.delete(`/user/recipe/${recipe?._id}`)
-				.set('Accept', 'application/json')
-				.set('Cookie', res.headers['set-cookie'][0])
-				.expect(200, done);
+		getRecipeId().then(() => {
+			logInUser().end(function (err: Error, res: any) {
+				request(app)
+					.delete(`/user/recipe/${recipe?._id}`)
+					.set('Accept', 'application/json')
+					.set('Cookie', res.headers['set-cookie'][0])
+					.expect(200, done);
+			});
 		});
 	});
 });
