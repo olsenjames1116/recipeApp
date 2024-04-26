@@ -56,5 +56,5 @@ export const deleteRecipe = asyncHandler(async (req, res, next) => {
 		{ returnDocument: 'after' }
 	);
 
-	res.json({ recipes: user?.recipes });
+	res.status(200).json({ recipes: user?.recipes });
 });
