@@ -34,6 +34,19 @@ describe('Recipes', () => {
 		});
 	});
 
+	it('should return stored recipes.', (done) => {
+		logInUser().end(function (err: Error, res: any) {
+			request(app)
+				.get('/user/recipes')
+				.set('Accept', 'application/json')
+				.set('Cookie', res.headers['set-cookie'][0])
+				.end(function (err: Error, res: any) {
+					expect(res.body.recipes);
+					done();
+				});
+		});
+	});
+
 	it('should delete a recipe.', (done) => {
 		getRecipeId().then(() => {
 			logInUser().end(function (err: Error, res: any) {
