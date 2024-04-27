@@ -124,7 +124,7 @@ function IngredientsForm() {
 	return (
 		<form ref={formRef} onSubmit={saveIngredients} className={styles.form}>
 			<ul className={styles.list}>
-				{allIngredients.map((ingredient: IIngredientWithId) => {
+				{allIngredients.map((ingredient: IIngredientWithId, index) => {
 					const checked = userIngredients.some(
 						({ _id }) => _id === ingredient._id
 					);
@@ -135,6 +135,7 @@ function IngredientsForm() {
 							ingredient={ingredient}
 							checked={checked}
 							saveButtonRef={saveButtonRef}
+							index={index}
 						/>
 					);
 				})}
@@ -143,6 +144,7 @@ function IngredientsForm() {
 				<button
 					onClick={cancelChanges}
 					className={`${styles.button} ${styles.cancelButton}`}
+					data-testid="ingredients-form-cancel-button"
 				>
 					Cancel
 				</button>
@@ -150,6 +152,7 @@ function IngredientsForm() {
 					ref={saveButtonRef}
 					disabled
 					className={`${styles.button} ${styles.saveButton}`}
+					data-testid="ingredients-form-save-button"
 				>
 					Save
 				</button>

@@ -32,6 +32,7 @@ describe('RecipesPage', () => {
 		});
 
 		it("should link you recipe's site when recipe card is clicked.", () => {
+			cy.wait(500);
 			cy.visit('http://localhost:5173/recipes');
 
 			cy.get(

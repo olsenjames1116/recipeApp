@@ -65,4 +65,14 @@ describe('LogInPage', () => {
 
 		cy.url().should('match', /\/$/);
 	});
+
+	it('should redirect user to homepage if authenticated.', () => {
+		cy.login();
+
+		cy.wait(500);
+		cy.visit('http://localhost:5173/log-in');
+		cy.url().should('match', /\//);
+
+		cy.logout();
+	});
 });

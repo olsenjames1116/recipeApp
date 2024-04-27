@@ -74,4 +74,14 @@ describe('SignUpForm', () => {
 
 		cy.url().should('match', /\/log-in$/);
 	});
+
+	it('should redirect user to homepage if authenticated.', () => {
+		cy.login();
+
+		cy.wait(500);
+		cy.visit('http://localhost:5173/sign-up');
+		cy.url().should('match', /\//);
+
+		cy.logout();
+	});
 });
