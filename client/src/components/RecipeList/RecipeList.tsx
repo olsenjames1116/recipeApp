@@ -43,6 +43,7 @@ function RecipeList() {
 			className={`${styles.list} ${
 				recipeList.length === 0 ? styles.noRecipes : styles.recipes
 			}`}
+			data-testid="recipe-list"
 		>
 			{recipeList.length === 0 ? (
 				<li className={styles.text}>
@@ -53,8 +54,10 @@ function RecipeList() {
 					and save one!
 				</li>
 			) : (
-				recipeList.map((recipe: IRecipeWithId) => {
-					return <RecipeListItem key={recipe._id} recipe={recipe} />;
+				recipeList.map((recipe: IRecipeWithId, index) => {
+					return (
+						<RecipeListItem key={recipe._id} recipe={recipe} index={index} />
+					);
 				})
 			)}
 		</ul>

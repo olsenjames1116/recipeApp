@@ -9,10 +9,11 @@ import styles from './RecipeListItem.module.scss';
 
 interface RecipeListItemProps {
 	recipe: IRecipeWithId;
+	index: number;
 }
 
 // Represents a single recipe on the list of recipes stored by user on the recipe page.
-function RecipeListItem({ recipe }: RecipeListItemProps) {
+function RecipeListItem({ recipe, index }: RecipeListItemProps) {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 
@@ -35,15 +36,25 @@ function RecipeListItem({ recipe }: RecipeListItemProps) {
 	};
 
 	return (
-		<li key={recipe._id} className={styles.listItem}>
+		<li
+			key={recipe._id}
+			className={styles.listItem}
+			data-testid={`recipe-list-item-${index}`}
+		>
 			<img
 				src={trashIcon}
 				alt="Delete recipe"
 				onClick={() => deleteRecipe(recipe._id)}
 				className={styles.delete}
 				tabIndex={0}
+				data-testid="recipe-list-item-delete"
 			/>
-			<a href={recipe.url} target="_blank" className={styles.link}>
+			<a
+				href={recipe.url}
+				target="_blank"
+				className={styles.link}
+				data-testid="recipe-list-item-link"
+			>
 				<img
 					src={recipe.image}
 					className={styles.image}
