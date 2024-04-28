@@ -124,6 +124,7 @@ function GroceryItemInput({
 				required
 				maxLength={50}
 				className={styles.input}
+				data-testid="grocery-item-input"
 			/>
 			<InputMessages messages={inputMessages} error={error} />
 			<div className={styles.container}>
@@ -136,6 +137,7 @@ function GroceryItemInput({
 				<button
 					onClick={validateInput}
 					className={`${styles.button} ${styles.addButton}`}
+					data-testid="grocery-item-input-add-button"
 				>
 					Add
 				</button>

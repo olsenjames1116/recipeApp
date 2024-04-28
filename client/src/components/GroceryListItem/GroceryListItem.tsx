@@ -8,10 +8,11 @@ import styles from './GroceryListItem.module.scss';
 
 interface GroceryListItemProps {
 	grocery: IGrocery;
+	index: number;
 }
 
 // Represents an item from the grocery list.
-function GroceryListItem({ grocery }: GroceryListItemProps) {
+function GroceryListItem({ grocery, index }: GroceryListItemProps) {
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
 
@@ -65,7 +66,12 @@ function GroceryListItem({ grocery }: GroceryListItemProps) {
 	};
 
 	return (
-		<li key={grocery._id} id={grocery._id} className={styles.listItem}>
+		<li
+			key={grocery._id}
+			id={grocery._id}
+			className={styles.listItem}
+			data-testid={`grocery-list-item-${index}`}
+		>
 			<input
 				type="checkbox"
 				id={grocery._id}
@@ -79,7 +85,11 @@ function GroceryListItem({ grocery }: GroceryListItemProps) {
 			>
 				{grocery.name}
 			</label>
-			<button onClick={deleteGroceryItem} className={styles.button}>
+			<button
+				onClick={deleteGroceryItem}
+				className={styles.button}
+				data-testid="grocery-list-item-remove-button"
+			>
 				Remove
 			</button>
 		</li>

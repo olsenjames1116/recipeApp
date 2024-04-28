@@ -96,7 +96,11 @@ function GroceriesForm({
 			<ul ref={listRef} className={styles.list}>
 				{!displayInput && (
 					<li className={`${styles.button} ${styles.addItemButton}`}>
-						<button onClick={displayInputElement} className={styles.button}>
+						<button
+							onClick={displayInputElement}
+							className={styles.button}
+							data-testid="groceries-form-add-button"
+						>
 							+Add Item
 						</button>
 					</li>
@@ -108,8 +112,8 @@ function GroceriesForm({
 						setDisplayInput={setDisplayInput}
 					/>
 				)}
-				{groceryList.map((grocery) => (
-					<GroceryListItem key={grocery._id} grocery={grocery} />
+				{groceryList.map((grocery, index) => (
+					<GroceryListItem key={grocery._id} grocery={grocery} index={index} />
 				))}
 			</ul>
 			<ReactToPrint
@@ -124,6 +128,7 @@ function GroceriesForm({
 			<button
 				onClick={clearList}
 				className={`${styles.button} ${styles.clearButton}`}
+				data-testid="groceries-form-clear-button"
 			>
 				Clear All
 			</button>
