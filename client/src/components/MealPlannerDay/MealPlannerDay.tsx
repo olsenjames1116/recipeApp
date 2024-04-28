@@ -48,6 +48,7 @@ function MealPlannerDay({
 			className={`${styles.listItem} ${index === today ? styles.today : ''}`}
 			onClick={displayMealPlannerMenu}
 			tabIndex={0}
+			data-testid={`meal-planner-${dayOfTheWeek}`}
 		>
 			<span
 				className={styles.span}

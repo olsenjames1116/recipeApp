@@ -56,12 +56,13 @@ function MealPlannerRecipes({ setDisplayMenu }: MealPlannerRecipesProps) {
 					and save one!
 				</li>
 			) : (
-				recipeList.map((recipe: IRecipeWithId) => {
+				recipeList.map((recipe: IRecipeWithId, index) => {
 					return (
 						<MealPlannerRecipe
 							key={recipe._id}
 							recipe={recipe}
 							setDisplayMenu={setDisplayMenu}
+							index={index}
 						/>
 					);
 				})

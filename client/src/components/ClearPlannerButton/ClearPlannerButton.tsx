@@ -33,7 +33,11 @@ function ClearPlannerButton() {
 	};
 
 	return (
-		<button onClick={clearPlanner} className={styles.button}>
+		<button
+			onClick={clearPlanner}
+			className={styles.button}
+			data-testid="clear-planner-button"
+		>
 			Clear All
 		</button>
 	);

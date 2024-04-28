@@ -49,7 +49,11 @@ function AddMealToPlannerButton({ setDisplayMenu }: AddMealToPlannerProps) {
 	};
 
 	return (
-		<button onClick={addMealToPlanner} className={styles.button}>
+		<button
+			onClick={addMealToPlanner}
+			className={styles.button}
+			data-testid="add-meal-to-planner-button"
+		>
 			+Add
 		</button>
 	);

@@ -58,13 +58,14 @@ function Meal({ dayOfTheWeek }: MealProps) {
 	return (
 		<>
 			{Object.keys(meal).length !== 0 ? (
-				<div className={styles.container}>
+				<div className={styles.container} data-testid={`meal-${dayOfTheWeek}`}>
 					<img
 						src={trashIcon}
 						alt=""
 						onClick={deleteMeal}
 						className={styles.delete}
 						tabIndex={0}
+						data-testid="meal-delete"
 					/>
 					<a
 						href={(meal as IPlanner).recipe.url}
