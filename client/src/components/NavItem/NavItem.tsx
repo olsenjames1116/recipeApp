@@ -11,9 +11,20 @@ interface NavItemProps {
 
 function NavItem({ to, src, alt, title, className }: NavItemProps) {
 	return (
-		<Link to={to} className={`${styles.link} ${className}`}>
-			<img src={src} alt={alt} className={styles.image} />
-			<span className={styles.span}>{title}</span>
+		<Link
+			to={to}
+			className={`${styles.link} ${className}`}
+			data-testid="nav-item"
+		>
+			<img
+				src={src}
+				alt={alt}
+				className={styles.image}
+				data-testid="nav-item-image"
+			/>
+			<span className={styles.span} data-testid="nav-item-title">
+				{title}
+			</span>
 		</Link>
 	);
 }

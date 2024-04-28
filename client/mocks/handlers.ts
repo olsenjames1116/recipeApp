@@ -49,6 +49,9 @@ export const handlers = [
 
 		return HttpResponse.json();
 	}),
+	http.get('http://localhost:3000/user/authenticate', () => {
+		return new HttpResponse(null, { status: 200 });
+	}),
 	http.get('https://api.spoonacular.com/food/trivia/random', ({ request }) => {
 		const url = new URL(request.url);
 		const apiKey = url.searchParams.get('apiKey');

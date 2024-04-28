@@ -41,7 +41,7 @@ function HomePage() {
 	});
 
 	return (
-		<div className={styles.page}>
+		<div className={styles.page} data-testid="home-page">
 			<Header location="home" />
 			<HomeContent menuRef={menuRef} />
 		</div>
