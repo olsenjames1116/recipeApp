@@ -27,9 +27,6 @@ function IngredientSearchForm({ setDisplayMenu }: IngredientSearchFormProps) {
 	const userIngredients = useSelector(
 		(state: IRootState) => state.userIngredients.value
 	);
-	// const searchIngredients = useSelector(
-	// 	(state: IRootState) => state.searchIngredients.value
-	// );
 
 	const [inputMessages, setInputMessages] = useState<string[]>([]);
 	const [error, setError] = useState(false);
@@ -162,9 +159,14 @@ function IngredientSearchForm({ setDisplayMenu }: IngredientSearchFormProps) {
 	};
 
 	return (
-		<form ref={formRef} onSubmit={findCheckedElements} className={styles.form}>
+		<form
+			ref={formRef}
+			onSubmit={findCheckedElements}
+			className={styles.form}
+			data-testid="ingredient-search-form"
+		>
 			<ul className={styles.list} data-testid="ingredient-search-list">
-				{allIngredients.map((ingredient: IIngredientWithId) => {
+				{allIngredients.map((ingredient: IIngredientWithId, index) => {
 					const userHasIngredient = userIngredients.some(
 						(userIngredient) => userIngredient._id === ingredient._id
 					);
@@ -175,6 +177,7 @@ function IngredientSearchForm({ setDisplayMenu }: IngredientSearchFormProps) {
 							ingredient={ingredient}
 							userHasIngredient={userHasIngredient}
 							submitButtonRef={submitButtonRef}
+							index={index}
 						/>
 					);
 				})}

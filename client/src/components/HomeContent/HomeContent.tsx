@@ -19,7 +19,7 @@ function HomeContent({ menuRef }: HomeContentProps) {
 	const [displayMenu, setDisplayMenu] = useState(false);
 
 	return (
-		<main className={styles.main}>
+		<main className={styles.main} data-testid="home-content">
 			{Object.keys(randomRecipe).length === 0 ? (
 				<GenerateRecipes setDisplayMenu={setDisplayMenu} />
 			) : (

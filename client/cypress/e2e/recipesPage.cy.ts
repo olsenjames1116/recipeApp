@@ -18,7 +18,7 @@ describe('RecipesPage', () => {
 
 		it('should delete a saved recipe.', () => {
 			cy.get('[data-testid="random-recipe-button"]').click();
-			cy.get('[data-testid="save-recipe-container"]').click();
+			cy.get('[data-testid="save-recipe"]').click();
 			('[data-testid="recipe-list-item-0"] > [data-testid="recipe-list-item-delete"]');
 			cy.get('[data-testid="recipe-list-item-0"]').then(
 				(element: JQuery<HTMLElement>) => {

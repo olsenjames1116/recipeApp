@@ -10,7 +10,12 @@ function GeneratedRecipeInfo() {
 	);
 
 	return (
-		<a href={randomRecipe.url} target="_blank" className={styles.link}>
+		<a
+			href={randomRecipe.url}
+			target="_blank"
+			className={styles.link}
+			data-testid="generated-recipe-info"
+		>
 			<img src={randomRecipe.image} alt="" className={styles.image} />
 			<span className={styles.span}>{randomRecipe.title}</span>
 		</a>

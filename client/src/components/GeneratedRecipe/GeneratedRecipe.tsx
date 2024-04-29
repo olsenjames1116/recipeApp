@@ -16,7 +16,7 @@ function GeneratedRecipe() {
 	};
 
 	return (
-		<div className={styles.container}>
+		<div className={styles.container} data-testid="generated-recipe">
 			<GeneratedRecipeContainer />
 			<button
 				onClick={startOver}

@@ -24,14 +24,14 @@ describe('HomePage', () => {
 
 		it('should display and save a random recipe.', () => {
 			cy.get('[data-testid="random-recipe-button"]').click();
-			cy.get('[data-testid="save-recipe-container"]').click();
+			cy.get('[data-testid="save-recipe"]').click();
 
 			cy.url().should('match', /\/recipes$/);
 		});
 
 		it('should display a new recipe if the user does not like the current recipe.', () => {
 			cy.get('[data-testid="random-recipe-button"]').click();
-			cy.get('[data-testid="next-recipe-container"]').click();
+			cy.get('[data-testid="next-recipe"]').click();
 
 			cy.get('[data-testid="generated-recipe-container"]').should('exist');
 		});
@@ -40,11 +40,13 @@ describe('HomePage', () => {
 			cy.get('[data-testid="random-recipe-button"]').click();
 			cy.get('[data-testid="start-over-button"]').click();
 
-			cy.get('[data-testid="generate-recipes-container"]').should('exist');
+			cy.get('[data-testid="generate-recipes"]').should('exist');
 		});
 
 		it('should display a random recipe if the user searches with their ingredients.', () => {
-			cy.get('[data-testid="use-ingredients-button"]').click();
+			cy.get(
+				'[data-testid="random-recipe-with-ingredients-button-button"]'
+			).click();
 			cy.get('[data-testid="ingredient-search-list"]')
 				.find('input')
 				.first()
@@ -57,12 +59,14 @@ describe('HomePage', () => {
 		describe('No ingredients selected', () => {
 			afterEach(() => {
 				cy.get(
-					'[data-testid="ingredient-search-menu-container"] [data-testid="close-icon"]'
+					'[data-testid="ingredient-search-menu"] [data-testid="close-icon"]'
 				).click();
 			});
 
 			it('should have disabled button if no ingredients are selected.', () => {
-				cy.get('[data-testid="use-ingredients-button"]').click();
+				cy.get(
+					'[data-testid="random-recipe-with-ingredients-button-button"]'
+				).click();
 
 				cy.get('[data-testid="submit-ingredient-search-form-button"]').should(
 					'be.disabled'
@@ -70,7 +74,9 @@ describe('HomePage', () => {
 			});
 
 			it('should not search and display error if ingredients are selected then de-selected.', () => {
-				cy.get('[data-testid="use-ingredients-button"]').click();
+				cy.get(
+					'[data-testid="random-recipe-with-ingredients-button-button"]'
+				).click();
 				cy.get('[data-testid="ingredient-search-list"]')
 					.find('input')
 					.first()

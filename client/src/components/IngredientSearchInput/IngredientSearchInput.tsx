@@ -5,6 +5,7 @@ interface IngredientSearchInputProps {
 	ingredient: IIngredientWithId;
 	userHasIngredient: boolean;
 	submitButtonRef: React.RefObject<HTMLButtonElement>;
+	index: number;
 }
 
 // Represents a single ingredient to search for a random recipe with.
@@ -12,6 +13,7 @@ function IngredientSearchInput({
 	ingredient,
 	userHasIngredient,
 	submitButtonRef,
+	index,
 }: IngredientSearchInputProps) {
 	// Enables the submit button to be pressed after a change has been made to the form.
 	const enableSubmit = () => {
@@ -26,6 +28,7 @@ function IngredientSearchInput({
 				value={ingredient.name}
 				onChange={enableSubmit}
 				className={styles.input}
+				data-testid={`ingredient-search-input-${index}`}
 			/>
 			<label
 				htmlFor={ingredient._id}

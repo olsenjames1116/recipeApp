@@ -52,6 +52,16 @@ export const handlers = [
 	http.get('http://localhost:3000/user/authenticate', () => {
 		return new HttpResponse(null, { status: 200 });
 	}),
+	http.get('http://localhost:3000/ingredients', () => {
+		return HttpResponse.json({
+			allStoredIngredients: [
+				{ _id: 1234, name: 'bacon' },
+				{ _id: 4567, name: 'chicken' },
+				{ _id: 8901, name: 'garlic' },
+			],
+			userIngredients: [{ _id: 4567, name: 'chicken' }],
+		});
+	}),
 	http.get('https://api.spoonacular.com/food/trivia/random', ({ request }) => {
 		const url = new URL(request.url);
 		const apiKey = url.searchParams.get('apiKey');
@@ -61,5 +71,24 @@ export const handlers = [
 		}
 
 		return HttpResponse.json({ text: 'food fact' });
+	}),
+	http.get('https://api.spoonacular.com/recipes/random', ({ request }) => {
+		const url = new URL(request.url);
+		const apiKey = url.searchParams.get('apiKey');
+
+		if (!apiKey) {
+			return new HttpResponse(null, { status: 404 });
+		}
+
+		return HttpResponse.json({
+			recipes: [
+				{
+					title: 'Chicken Parmesan',
+					image: 'chickenparm.png',
+					sourceUrl: 'http://fakepage.com',
+					id: 1234,
+				},
+			],
+		});
 	}),
 ];

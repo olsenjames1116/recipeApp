@@ -91,7 +91,7 @@ function NextRecipe() {
 			onClick={generateRecipe}
 			className={styles.container}
 			tabIndex={0}
-			data-testid="next-recipe-container"
+			data-testid="next-recipe"
 		>
 			<img src={closeRedIcon} alt="Next recipe" className={styles.image} />
 		</div>
