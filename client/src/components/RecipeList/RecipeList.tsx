@@ -46,7 +46,7 @@ function RecipeList() {
 			data-testid="recipe-list"
 		>
 			{recipeList.length === 0 ? (
-				<li className={styles.text}>
+				<li className={styles.text} data-testid="recipe-list-item-no-recipes">
 					You do not have saved recipes. View our{' '}
 					<Link to="/" className={styles.link}>
 						recipes

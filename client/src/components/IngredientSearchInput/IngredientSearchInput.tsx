@@ -21,7 +21,10 @@ function IngredientSearchInput({
 	};
 
 	return (
-		<li className={styles.listItem}>
+		<li
+			className={styles.listItem}
+			data-testid={`ingredient-search-input-container-${index}`}
+		>
 			<input
 				type="checkbox"
 				id={ingredient._id}
@@ -35,6 +38,7 @@ function IngredientSearchInput({
 				className={`${styles.label} ${
 					userHasIngredient ? styles.inPantry : ''
 				}`}
+				data-testid={`ingredient-search-label-${index}`}
 			>
 				{`${ingredient.name}${userHasIngredient ? '*' : ''}`}
 			</label>

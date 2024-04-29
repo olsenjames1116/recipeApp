@@ -53,14 +53,20 @@ function RecipeListItem({ recipe, index }: RecipeListItemProps) {
 				href={recipe.url}
 				target="_blank"
 				className={styles.link}
-				data-testid="recipe-list-item-link"
+				data-testid={`recipe-list-item-link-${index}`}
 			>
 				<img
 					src={recipe.image}
 					className={styles.image}
 					alt="Recipe information page"
+					data-testid={`recipe-list-item-image-${index}`}
 				/>
-				<span className={styles.span}>{recipe.title}</span>
+				<span
+					className={styles.span}
+					data-testid={`recipe-list-item-title-${index}`}
+				>
+					{recipe.title}
+				</span>
 			</a>
 		</li>
 	);

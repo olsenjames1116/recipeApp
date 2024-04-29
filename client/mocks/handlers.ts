@@ -1,6 +1,8 @@
 import { DefaultBodyType, HttpResponse, http } from 'msw';
 import { SignUpInterface, LogInInterface } from '../src/types';
 
+let timesCalled = 0;
+
 export const handlers = [
 	http.post('http://localhost:3000/user/sign-up', async ({ request }) => {
 		const data: SignUpInterface | DefaultBodyType = await request.json();
@@ -55,11 +57,33 @@ export const handlers = [
 	http.get('http://localhost:3000/ingredients', () => {
 		return HttpResponse.json({
 			allStoredIngredients: [
-				{ _id: 1234, name: 'bacon' },
-				{ _id: 4567, name: 'chicken' },
-				{ _id: 8901, name: 'garlic' },
+				{ _id: '1234', name: 'bacon' },
+				{ _id: '4567', name: 'chicken' },
+				{ _id: '8901', name: 'garlic' },
 			],
-			userIngredients: [{ _id: 4567, name: 'chicken' }],
+			userIngredients: [{ _id: '4567', name: 'chicken' }],
+		});
+	}),
+	http.get('http://localhost:3000/user/recipes', () => {
+		timesCalled += 1;
+
+		if (timesCalled < 2) {
+			return HttpResponse.json({
+				recipes: [],
+			});
+		}
+
+		return HttpResponse.json({
+			recipes: [
+				{
+					title: 'Chicken Parm',
+					image: 'chickenparm.png',
+					url: 'http://fakepage.com',
+					id: 1234,
+					timestamp: Date.now(),
+					_id: '1234',
+				},
+			],
 		});
 	}),
 	http.get('https://api.spoonacular.com/food/trivia/random', ({ request }) => {

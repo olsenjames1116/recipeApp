@@ -10,7 +10,7 @@ function RecipesPage() {
 	}, []);
 
 	return (
-		<div className={styles.page}>
+		<div className={styles.page} data-testid="recipes-page">
 			<Header location="recipes" />
 			<RecipesContent />
 		</div>
