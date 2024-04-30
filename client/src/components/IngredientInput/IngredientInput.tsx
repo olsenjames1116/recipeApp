@@ -31,7 +31,11 @@ function IngredientInput({
 				className={styles.input}
 				data-testid={`ingredient-input-${index}`}
 			/>
-			<label htmlFor={ingredient._id} className={styles.label}>
+			<label
+				htmlFor={ingredient._id}
+				className={styles.label}
+				data-testid={`ingredient-input-label-${index}`}
+			>
 				{ingredient.name}
 			</label>
 		</li>

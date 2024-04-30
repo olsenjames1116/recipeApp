@@ -10,7 +10,7 @@ function IngredientsPage() {
 	}, []);
 
 	return (
-		<div className={styles.page}>
+		<div className={styles.page} data-testid="ingredients-page">
 			<Header location="ingredients" />
 			<IngredientsContent />
 		</div>

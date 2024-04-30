@@ -122,7 +122,12 @@ function IngredientsForm() {
 	};
 
 	return (
-		<form ref={formRef} onSubmit={saveIngredients} className={styles.form}>
+		<form
+			ref={formRef}
+			onSubmit={saveIngredients}
+			className={styles.form}
+			data-testid="ingredients-form"
+		>
 			<ul className={styles.list}>
 				{allIngredients.map((ingredient: IIngredientWithId, index) => {
 					const checked = userIngredients.some(
