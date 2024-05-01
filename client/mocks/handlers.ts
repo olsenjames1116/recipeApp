@@ -86,6 +86,46 @@ export const handlers = [
 			],
 		});
 	}),
+	http.get('http://localhost:3000/user/planner', () => {
+		timesCalled += 1;
+
+		if (timesCalled < 2) {
+			return HttpResponse.json({
+				planner: [],
+			});
+		}
+
+		return HttpResponse.json({
+			planner: [
+				{
+					day: 'sunday',
+					recipe: {
+						title: 'Chicken Parm',
+						image: 'chickenparm.png',
+						url: 'http://fakepage.com',
+						id: 1234,
+					},
+					_id: '1234',
+				},
+			],
+		});
+	}),
+	http.post('http://localhost:3000/user/store-in-planner/', () => {
+		return HttpResponse.json({
+			planner: [
+				{
+					day: 'sunday',
+					recipe: {
+						title: 'Chicken Parm',
+						image: 'chickenparm.png',
+						url: 'http://fakepage.com',
+						id: 1234,
+					},
+					_id: '1234',
+				},
+			],
+		});
+	}),
 	http.get('https://api.spoonacular.com/food/trivia/random', ({ request }) => {
 		const url = new URL(request.url);
 		const apiKey = url.searchParams.get('apiKey');

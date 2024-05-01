@@ -19,16 +19,17 @@ function MealPlannerSearchResults({
 	);
 
 	return (
-		<ul className={styles.list}>
+		<ul className={styles.list} data-testid="meal-planner-search-results">
 			{recipeSearchResults.length === 0 ? (
 				<li className={styles.listItem}>No results for "{recipesQuery}"</li>
 			) : (
-				recipeSearchResults.map((recipe) => {
+				recipeSearchResults.map((recipe, index) => {
 					return (
 						<MealPlannerRecipe
 							key={recipe._id}
 							recipe={recipe}
 							setDisplayMenu={setDisplayMenu}
+							index={index}
 						/>
 					);
 				})

@@ -12,7 +12,7 @@ function MealPlannerPage() {
 	});
 
 	return (
-		<div className={styles.page}>
+		<div className={styles.page} data-testid="meal-planner-page">
 			<Header location="planner" />
 			<MealPlannerContent menuRef={menuRef} />
 		</div>

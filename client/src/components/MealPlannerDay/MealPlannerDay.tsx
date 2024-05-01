@@ -52,6 +52,7 @@ function MealPlannerDay({
 		>
 			<span
 				className={styles.span}
+				data-testid={`meal-planner-span-${dayOfTheWeek}`}
 			>{`${dayOfTheWeek[0].toUpperCase()}${dayOfTheWeek.substring(1)}`}</span>
 			{planner.find((meal: IPlanner) => meal.day === dayOfTheWeek) ? (
 				<Meal dayOfTheWeek={dayOfTheWeek} />

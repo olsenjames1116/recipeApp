@@ -37,7 +37,7 @@ function MealPlannerMenu({
 	}, []);
 
 	return (
-		<div className={styles.container}>
+		<div className={styles.container} data-testid="meal-planner-menu">
 			<div ref={menuRef} className={styles.popupContainer}>
 				<CloseIcon setDisplayMenu={setDisplayMenu} />
 				<span className={styles.span}>{selectedDay}</span>

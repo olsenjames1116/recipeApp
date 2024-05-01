@@ -24,12 +24,13 @@ function MealPlannerForm() {
 	};
 
 	return (
-		<form className={styles.form}>
+		<form className={styles.form} data-testid="meal-planner-form">
 			<input
 				type="text"
 				onChange={searchRecipes}
 				maxLength={50}
 				className={styles.input}
+				data-testid="meal-planner-form-input"
 			/>
 		</form>
 	);

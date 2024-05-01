@@ -48,7 +48,7 @@ function MealPlanner({ setDisplayMenu }: MealPlannerProps) {
 	}, []);
 
 	return (
-		<ul className={styles.list}>
+		<ul className={styles.list} data-testid="meal-planner">
 			{daysOfTheWeek.map((dayOfTheWeek, index) => {
 				return (
 					<MealPlannerDay

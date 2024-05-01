@@ -21,7 +21,9 @@ function MealPlannerRecipe({
 			className={styles.listItem}
 			data-testid={`meal-planner-recipe-${index}`}
 		>
-			<span className={styles.span}>{recipe.title}</span>
+			<span className={styles.span} data-testid="meal-planner-recipe-span-0">
+				{recipe.title}
+			</span>
 			<AddMealToPlannerButton setDisplayMenu={setDisplayMenu} />
 		</li>
 	);

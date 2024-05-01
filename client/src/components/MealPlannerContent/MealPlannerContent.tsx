@@ -13,7 +13,7 @@ function MealPlannerContent({ menuRef }: MealPlannerContentProps) {
 	const [displayMenu, setDisplayMenu] = useState(false);
 
 	return (
-		<main className={styles.main}>
+		<main className={styles.main} data-testid="meal-planner-content">
 			<ClearPlannerButton />
 			<MealPlanner setDisplayMenu={setDisplayMenu} />
 			{displayMenu && (

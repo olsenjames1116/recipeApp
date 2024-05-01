@@ -65,19 +65,23 @@ function Meal({ dayOfTheWeek }: MealProps) {
 						onClick={deleteMeal}
 						className={styles.delete}
 						tabIndex={0}
-						data-testid="meal-delete"
+						data-testid={`meal-delete-${dayOfTheWeek}`}
 					/>
 					<a
 						href={(meal as IPlanner).recipe.url}
 						target="_blank"
 						className={styles.link}
+						data-testid={`meal-link-${dayOfTheWeek}`}
 					>
 						<img
 							src={(meal as IPlanner).recipe.image}
 							alt=""
 							className={styles.image}
+							data-testid={`meal-image-${dayOfTheWeek}`}
 						/>
-						<span>{(meal as IPlanner).recipe.title}</span>
+						<span data-testid={`meal-span-${dayOfTheWeek}`}>
+							{(meal as IPlanner).recipe.title}
+						</span>
 					</a>
 				</div>
 			) : null}

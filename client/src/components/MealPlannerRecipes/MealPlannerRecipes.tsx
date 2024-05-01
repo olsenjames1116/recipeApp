@@ -46,7 +46,7 @@ function MealPlannerRecipes({ setDisplayMenu }: MealPlannerRecipesProps) {
 	}, []);
 
 	return (
-		<ul className={styles.list}>
+		<ul className={styles.list} data-testid="meal-planner-recipes">
 			{recipeList.length === 0 ? (
 				<li className={styles.listItem}>
 					You do not have saved recipes. View our{' '}
