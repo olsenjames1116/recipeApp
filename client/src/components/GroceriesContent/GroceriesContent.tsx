@@ -12,7 +12,7 @@ function GroceriesContent({ inputMenuRef }: GroceriesContentProps) {
 	const [displayInput, setDisplayInput] = useState(false);
 
 	return (
-		<main className={styles.main}>
+		<main className={styles.main} data-testid="groceries-content">
 			<IngredientsOnHand />
 			<GroceriesForm
 				inputMenuRef={inputMenuRef}

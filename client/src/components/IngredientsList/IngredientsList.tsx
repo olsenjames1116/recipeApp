@@ -11,7 +11,7 @@ function IngredientsList() {
 	);
 
 	return (
-		<ul className={styles.list}>
+		<ul className={styles.list} data-testid="ingredients-list">
 			{userIngredients.length === 0 ? (
 				<li className={styles.text}>
 					You do not have any ingredients in your pantry. You can add some{' '}

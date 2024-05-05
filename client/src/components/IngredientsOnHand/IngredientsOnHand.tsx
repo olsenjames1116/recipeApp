@@ -44,7 +44,7 @@ function IngredientsOnHand() {
 	}, []);
 
 	return (
-		<div className={styles.container}>
+		<div className={styles.container} data-testid="ingredients-on-hand">
 			<span className={styles.span}>Here is what you have:</span>
 			<IngredientsList />
 		</div>

@@ -12,7 +12,7 @@ function GroceriesPage() {
 	}, []);
 
 	return (
-		<div className={styles.page}>
+		<div className={styles.page} data-testid="groceries-page">
 			<Header location="groceries" />
 			<GroceriesContent inputMenuRef={inputMenuRef} />
 		</div>
