@@ -91,6 +91,7 @@ function GroceriesForm({
 			noValidate
 			ref={printFrameRef}
 			className={styles.form}
+			data-testid="groceries-form"
 		>
 			<span className={styles.span}>Groceries:</span>
 			<ul ref={listRef} className={styles.list}>

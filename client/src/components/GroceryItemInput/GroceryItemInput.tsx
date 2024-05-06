@@ -131,6 +131,7 @@ function GroceryItemInput({
 				<button
 					onClick={cancelItem}
 					className={`${styles.button} ${styles.cancelButton}`}
+					data-testid="grocery-item-input-cancel-button"
 				>
 					Cancel
 				</button>

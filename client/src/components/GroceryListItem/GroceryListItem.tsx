@@ -78,17 +78,19 @@ function GroceryListItem({ grocery, index }: GroceryListItemProps) {
 				onChange={handleChange}
 				defaultChecked={grocery.checked}
 				className={styles.input}
+				data-testid={`grocery-list-item-input-${index}`}
 			/>
 			<label
 				htmlFor={grocery._id}
 				className={`${styles.label} ${grocery.checked ? styles.strike : ''}`}
+				data-testid={`grocery-list-item-label-${index}`}
 			>
 				{grocery.name}
 			</label>
 			<button
 				onClick={deleteGroceryItem}
 				className={styles.button}
-				data-testid="grocery-list-item-remove-button"
+				data-testid={`grocery-list-item-remove-button-${index}`}
 			>
 				Remove
 			</button>

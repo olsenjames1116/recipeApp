@@ -27,9 +27,7 @@ describe('GroceriesPage', () => {
 		});
 
 		it('should delete an item from the grocery list.', () => {
-			cy.get(
-				'[data-testid="grocery-list-item-0"] > [data-testid="grocery-list-item-remove-button"]'
-			).click();
+			cy.get('[data-testid="grocery-list-item-remove-button-0"]').click();
 
 			cy.get('[data-testid="grocery-list-item-0"]').should('not.exist');
 		});

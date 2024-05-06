@@ -126,6 +126,54 @@ export const handlers = [
 			],
 		});
 	}),
+	http.get('http://localhost:3000/user/saved-ingredients', () => {
+		return HttpResponse.json({
+			ingredients: [{ _id: '1234', name: 'garlic powder' }],
+		});
+	}),
+	http.get('http://localhost:3000/user/groceries', () => {
+		return HttpResponse.json({
+			groceries: [{ _id: '4567', name: 'peppers' }],
+		});
+	}),
+	http.post('http://localhost:3000/user/save-grocery-item', () => {
+		return HttpResponse.json({
+			groceries: [
+				{ _id: '4567', name: 'peppers' },
+				{
+					_id: '8901',
+					name: 'beef',
+				},
+			],
+		});
+	}),
+	http.post('http://localhost:3000/user/grocery', () => {
+		return HttpResponse.json({
+			groceries: [
+				{
+					_id: '8901',
+					name: 'peppers',
+					checked: true,
+				},
+			],
+		});
+	}),
+	http.delete('http://localhost:3000/user/grocery/8901', () => {
+		return HttpResponse.json({
+			groceries: [
+				{
+					_id: '8901',
+					name: 'peppers',
+					checked: true,
+				},
+			],
+		});
+	}),
+	http.delete('http://localhost:3000/user/groceries', () => {
+		return HttpResponse.json({
+			groceries: [],
+		});
+	}),
 	http.get('https://api.spoonacular.com/food/trivia/random', ({ request }) => {
 		const url = new URL(request.url);
 		const apiKey = url.searchParams.get('apiKey');

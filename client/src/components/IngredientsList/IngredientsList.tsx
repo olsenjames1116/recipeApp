@@ -13,7 +13,7 @@ function IngredientsList() {
 	return (
 		<ul className={styles.list} data-testid="ingredients-list">
 			{userIngredients.length === 0 ? (
-				<li className={styles.text}>
+				<li className={styles.text} data-testid="no-user-ingredients">
 					You do not have any ingredients in your pantry. You can add some{' '}
 					<Link to="/ingredients" className={styles.link}>
 						here
@@ -21,8 +21,12 @@ function IngredientsList() {
 					.
 				</li>
 			) : (
-				userIngredients.map((ingredient) => (
-					<li key={ingredient._id} className={styles.ingredient}>
+				userIngredients.map((ingredient, index) => (
+					<li
+						key={ingredient._id}
+						className={styles.ingredient}
+						data-testid={`user-ingredient-${index}`}
+					>
 						{ingredient.name}
 					</li>
 				))
