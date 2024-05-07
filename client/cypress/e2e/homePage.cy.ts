@@ -44,9 +44,7 @@ describe('HomePage', () => {
 		});
 
 		it('should display a random recipe if the user searches with their ingredients.', () => {
-			cy.get(
-				'[data-testid="random-recipe-with-ingredients-button-button"]'
-			).click();
+			cy.get('[data-testid="random-recipe-with-ingredients-button"]').click();
 			cy.get('[data-testid="ingredient-search-list"]')
 				.find('input')
 				.first()
@@ -64,9 +62,7 @@ describe('HomePage', () => {
 			});
 
 			it('should have disabled button if no ingredients are selected.', () => {
-				cy.get(
-					'[data-testid="random-recipe-with-ingredients-button-button"]'
-				).click();
+				cy.get('[data-testid="random-recipe-with-ingredients-button"]').click();
 
 				cy.get('[data-testid="submit-ingredient-search-form-button"]').should(
 					'be.disabled'
@@ -74,9 +70,7 @@ describe('HomePage', () => {
 			});
 
 			it('should not search and display error if ingredients are selected then de-selected.', () => {
-				cy.get(
-					'[data-testid="random-recipe-with-ingredients-button-button"]'
-				).click();
+				cy.get('[data-testid="random-recipe-with-ingredients-button"]').click();
 				cy.get('[data-testid="ingredient-search-list"]')
 					.find('input')
 					.first()

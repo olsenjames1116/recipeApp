@@ -36,7 +36,7 @@ export const storeGroceryItem = asyncHandler(async (req, res, next) => {
 			{ returnDocument: 'after' }
 		);
 
-		res.json({ groceries: user?.groceries });
+		res.status(201).json({ groceries: user?.groceries });
 	}
 });
 
@@ -44,7 +44,7 @@ export const storeGroceryItem = asyncHandler(async (req, res, next) => {
 export const getGroceries = asyncHandler(async (req, res, next) => {
 	const { groceries }: any = req.user;
 
-	res.json({ groceries: groceries });
+	res.status(200).json({ groceries: groceries });
 });
 
 // Store the change to the checked attribute for a grocery item.
@@ -61,7 +61,7 @@ export const storeCheckedItem = asyncHandler(async (req, res, next) => {
 		{ returnDocument: 'after' }
 	);
 
-	res.json({ groceries: user?.groceries });
+	res.status(201).json({ groceries: user?.groceries });
 });
 
 // Delete the specified grocery item from user's profile.
@@ -75,7 +75,7 @@ export const deleteGrocery = asyncHandler(async (req, res, next) => {
 		{ returnDocument: 'after' }
 	);
 
-	res.json({ groceries: user?.groceries });
+	res.status(202).json({ groceries: user?.groceries });
 });
 
 // Delete all items from a user's grocery list.
@@ -88,5 +88,5 @@ export const clearGroceries = asyncHandler(async (req, res, next) => {
 		{ returnDocument: 'after' }
 	);
 
-	res.json({ groceries: user?.groceries });
+	res.status(202).json({ groceries: user?.groceries });
 });

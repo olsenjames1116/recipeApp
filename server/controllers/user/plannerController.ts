@@ -6,7 +6,7 @@ import User from '../../models/user';
 export const getPlanner = asyncHandler(async (req, res, next) => {
 	const { planner }: any = req.user;
 
-	res.json({ planner: planner });
+	res.status(200).json({ planner: planner });
 });
 
 // Store a recipe in the user's planner.
@@ -35,7 +35,7 @@ export const storeRecipeInPlanner = asyncHandler(async (req, res, next) => {
 			{ returnDocument: 'after' }
 		);
 
-		res.json({ planner: user?.planner });
+		res.status(201).json({ planner: user?.planner });
 	}
 });
 
@@ -50,7 +50,7 @@ export const deleteRecipeFromPlanner = asyncHandler(async (req, res, next) => {
 		{ returnDocument: 'after' }
 	);
 
-	res.json({ planner: user?.planner });
+	res.status(202).json({ planner: user?.planner });
 });
 
 // Clear planner of all recipes.
@@ -63,5 +63,5 @@ export const clearPlanner = asyncHandler(async (req, res, next) => {
 		{ returnDocument: 'after' }
 	);
 
-	res.json({ planner: user?.planner });
+	res.status(202).json({ planner: user?.planner });
 });

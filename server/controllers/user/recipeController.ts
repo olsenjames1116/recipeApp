@@ -40,7 +40,7 @@ export const getRecipes = asyncHandler(async (req, res, next) => {
 		}
 	});
 
-	res.json({
+	res.status(200).json({
 		recipes: recipes,
 	});
 });
@@ -56,5 +56,5 @@ export const deleteRecipe = asyncHandler(async (req, res, next) => {
 		{ returnDocument: 'after' }
 	);
 
-	res.status(200).json({ recipes: user?.recipes });
+	res.status(202).json({ recipes: user?.recipes });
 });

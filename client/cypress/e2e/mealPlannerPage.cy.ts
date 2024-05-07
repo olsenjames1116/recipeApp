@@ -28,9 +28,7 @@ describe('MealPlannerPage', () => {
 		});
 
 		it('should delete a recipe from the meal planner.', () => {
-			cy.get(
-				'[data-testid="meal-sunday"] > [data-testid="meal-delete"]'
-			).click();
+			cy.get('[data-testid="meal-delete-sunday"]').click();
 
 			cy.get('[data-testid="meal-sunday"]').should('not.exist');
 		});

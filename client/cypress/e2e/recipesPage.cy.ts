@@ -35,9 +35,7 @@ describe('RecipesPage', () => {
 			cy.wait(500);
 			cy.visit('http://localhost:5173/recipes');
 
-			cy.get(
-				'[data-testid="recipe-list-item-0"] > [data-testid="recipe-list-item-link"]'
-			)
+			cy.get('[data-testid="recipe-list-item-link-0"]')
 				.should('have.attr', 'href')
 				.should('match', /foodista/i);
 		});

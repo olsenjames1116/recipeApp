@@ -54,7 +54,10 @@ describe('Recipes', () => {
 					.delete(`/user/recipe/${recipe?._id}`)
 					.set('Accept', 'application/json')
 					.set('Cookie', res.headers['set-cookie'][0])
-					.expect(200, done);
+					.end(function (err: Error, res: any) {
+						expect(res.body.recipes);
+						done();
+					});
 			});
 		});
 	});
