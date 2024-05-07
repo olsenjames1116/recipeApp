@@ -25,7 +25,7 @@ afterAll(async () => {
 });
 
 describe('Planner', () => {
-	it("should post a meal in a user's planner.", (done) => {
+	it("should store a meal in a user's planner.", (done) => {
 		logInUser().end(function (err: Error, res: any) {
 			request(app)
 				.post('/user/save-recipe')
@@ -44,6 +44,19 @@ describe('Planner', () => {
 							expect(res.body.planner);
 							done();
 						});
+				});
+		});
+	});
+
+	it('should return an error if a meal is already stored in the planner for a day.', (done) => {
+		logInUser().end(function (err: Error, res: any) {
+			request(app)
+				.post('/user/store-in-planner/sunday/4567')
+				.set('Accept', 'application/json')
+				.set('Cookie', res.headers['set-cookie'][0])
+				.end(function (err: Error, res: any) {
+					expect(409);
+					done();
 				});
 		});
 	});

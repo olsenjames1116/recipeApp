@@ -21,9 +21,14 @@ export interface IUser {
 	ingredients: Types.ObjectId[];
 	_id?: Types.ObjectId;
 	planner: IPlanner[];
-	groceries: string[];
+	groceries: IGrocery[];
 }
 
 export interface IIngredient {
+	name: string;
+}
+
+export interface IGrocery {
+	_id: Types.ObjectId;
 	name: string;
 }
