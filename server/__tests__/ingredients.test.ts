@@ -1,11 +1,9 @@
 import { app } from '../app';
-import User from '../models/user';
-import { IRecipe } from '../utils/types';
 const request = require('supertest');
 
 const logInUser = () => {
 	return request(app).post('/user/log-in').send({
-		username: 'demo',
+		username: 'testUser',
 		password: '123',
 	});
 };

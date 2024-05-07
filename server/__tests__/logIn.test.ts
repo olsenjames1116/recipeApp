@@ -11,7 +11,7 @@ const logInUser = (username = '', password = '') => {
 describe('/user/log-in', () => {
 	describe('Happy Path', () => {
 		it('should authenticate a user.', (done) => {
-			logInUser('demo', '123').expect(200, done);
+			logInUser('testUser', '123').expect(200, done);
 		});
 	});
 
@@ -40,13 +40,13 @@ describe('/user/log-in', () => {
 
 			it('should return an error if password is too long.', (done) => {
 				logInUser(
-					'demo',
+					'testUser',
 					'qwertyuiopasdfghjklzxcvbnmqwertyuiopasdfghjklzxcvbnm'
 				).expect(400, done);
 			});
 
 			it('should return an error if input password does not match stored password.', (done) => {
-				logInUser('demo', '456').expect(401, done);
+				logInUser('testUser', '456').expect(401, done);
 			});
 		});
 	});

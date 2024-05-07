@@ -3,7 +3,7 @@ const request = require('supertest');
 
 const logInUser = () => {
 	return request(app).post('/user/log-in').send({
-		username: 'demo',
+		username: 'testUser',
 		password: '123',
 	});
 };

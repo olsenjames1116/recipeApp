@@ -5,7 +5,7 @@ const request = require('supertest');
 
 const logInUser = () => {
 	return request(app).post('/user/log-in').send({
-		username: 'demo',
+		username: 'testUser',
 		password: '123',
 	});
 };
@@ -13,7 +13,7 @@ const logInUser = () => {
 let recipe: IRecipe | undefined;
 
 const getRecipeId = async () => {
-	const user = await User.findOne({ username: 'demo' });
+	const user = await User.findOne({ username: 'testUser' });
 	recipe = user?.recipes.find((recipe) => recipe.id === 1234);
 };
 
