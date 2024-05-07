@@ -34,6 +34,11 @@ This project highlights:
 - MongoDB
 - TypeScript
 - Sass/SCSS
+- Jest
+- Vitest
+- Cypress
+- Supertest
+- Docker
 - Mixins and CSS variables
 - Redux
 - Google OAuth
@@ -42,5 +47,6 @@ This project highlights:
 - Responsive design
 - MVC architecture
 - CRUD operations
+- Automated testing
 
 © 2024 James Olsen. All Rights Reserved.
