@@ -12,7 +12,7 @@ export const storeIngredients = asyncHandler(async (req, res, next) => {
 		{ returnDocument: 'after' }
 	).populate('ingredients');
 
-	res.json({ ingredients: user?.ingredients });
+	res.status(201).json({ ingredients: user?.ingredients });
 });
 
 // Retrieve ingredients the user has stored.
@@ -21,5 +21,5 @@ export const getUserIngredients = asyncHandler(async (req, res, next) => {
 
 	const user = await User.findOne({ _id: _id }).populate('ingredients');
 
-	res.json({ ingredients: user?.ingredients });
+	res.status(200).json({ ingredients: user?.ingredients });
 });
