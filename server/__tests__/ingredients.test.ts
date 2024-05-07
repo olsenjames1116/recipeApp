@@ -9,6 +9,20 @@ const logInUser = () => {
 };
 
 describe('Ingredients', () => {
+	it('should return all the ingredients stored in collection.', (done) => {
+		logInUser().end(function (err: Error, res: any) {
+			request(app)
+				.get('/ingredients')
+				.set('Accept', 'application/json')
+				.set('Cookie', res.headers['set-cookie'][0])
+				.end(function (err: Error, res: any) {
+					expect(res.body.userIngredients);
+					expect(res.body.allStoredIngredients);
+					done();
+				});
+		});
+	});
+
 	it("should store a user's ingredients.", (done) => {
 		logInUser().end(function (err: Error, res: any) {
 			request(app)
