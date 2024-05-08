@@ -13,7 +13,7 @@ import session from 'express-session';
 import passport from 'passport';
 import helmet from 'helmet';
 import compression from 'compression';
-// import { rateLimit } from 'express-rate-limit';
+import { rateLimit } from 'express-rate-limit';
 const MemoryStore = require('memorystore')(session);
 
 import userRouter from './routes/user';
@@ -24,12 +24,12 @@ const port = process.env.PORT || 3000;
 app.set('trust proxy', 1);
 
 // Apply rate limit to all requests.
-// const limiter = rateLimit({
-// 	windowMs: 1 * 60 * 1000,
-// 	max: 30,
-// });
+const limiter = rateLimit({
+	windowMs: 1 * 60 * 1000,
+	max: 30,
+});
 
-// app.use(limiter);
+app.use(limiter);
 app.use(helmet());
 app.use(compression());
 

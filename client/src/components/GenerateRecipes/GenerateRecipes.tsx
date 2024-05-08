@@ -1,5 +1,5 @@
 import RandomRecipe from '../RandomRecipe/RandomRecipe';
-// import FoodFact from '../FoodFact/FoodFact';
+import FoodFact from '../FoodFact/FoodFact';
 import RandomRecipeWithIngredients from '../RandomRecipeWithIngredients/RandomRecipeWithIngredients';
 import styles from './GenerateRecipes.module.scss';
 
@@ -11,7 +11,7 @@ interface GenerateRecipesProps {
 function GenerateRecipes({ setDisplayMenu }: GenerateRecipesProps) {
 	return (
 		<div className={styles.container} data-testid="generate-recipes">
-			{/* <FoodFact /> */}
+			<FoodFact />
 			Select an option below to generate recipes <RandomRecipe /> or{' '}
 			<RandomRecipeWithIngredients setDisplayMenu={setDisplayMenu} />
 		</div>
